@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario - Panel de Administración</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/admin/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/admin/nuevo.css">
+    <script src="/javascripts/admin/nuevo.js"></script>
+</head>
+
+<body>
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> Academia</h2>
+        </div>
+
+        <div class="welcome-section">
+            <h3>Bienvenido, Admin</h3>
+            <p>Panel de Control</p>
+        </div>
+
+        <div class="nav-menu">
+            <a href="/admin/dashboard" class="nav-item"><i class="fas fa-home"></i> Inicio</a>
+            <a href="/admin/usuarios" class="nav-item active"><i class="fas fa-users"></i> Usuarios</a>
+            <a href="#" class="nav-item"><i class="fas fa-book"></i> Cursos</a>
+            <a href="#" class="nav-item"><i class="fas fa-chart-bar"></i> Reportes</a>
+            <a href="#" class="nav-item"><i class="fas fa-cog"></i> Configuración</a>
+        </div>
+
+        <div class="logout-btn">
+            <a href="/logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </a>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Nuevo Usuario</h1>
+            <div class="user-info">
+                <span><i class="fas fa-bell"></i></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="form-container">
+                                <h3 class="form-title">Información del Usuario</h3>
+                                <% if (typeof error !== 'undefined' && error) { %>
+                                    <div class="alert alert-danger" role="alert">
+                                        <i class="fas fa-exclamation-circle me-2"></i><%= error %>
+                                    </div>
+                                <% } %>
+                                <form action="/nuevousuario" method="POST">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
+                                            <select class="form-select" id="tipoDocumento" name="tipoDocumento" required>
+                                                <option value="">Seleccione...</option>
+                                                <option value="CC" <%= (typeof formData !== 'undefined' && formData.tipoDocumento === 'CC') ? 'selected' : '' %>>Cédula de Ciudadanía</option>
+                                                <option value="TI" <%= (typeof formData !== 'undefined' && formData.tipoDocumento === 'TI') ? 'selected' : '' %>>Tarjeta de Identidad</option>
+                                                <option value="CE" <%= (typeof formData !== 'undefined' && formData.tipoDocumento === 'CE') ? 'selected' : '' %>>Cédula de Extranjería</option>
+                                                <option value="PA" <%= (typeof formData !== 'undefined' && formData.tipoDocumento === 'PA') ? 'selected' : '' %>>Pasaporte</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="numeroDocumento" class="form-label">Número de Documento</label>
+                                            <input type="text" class="form-control" id="numeroDocumento"
+                                                name="numeroDocumento" value="<%= typeof formData !== 'undefined' ? formData.numeroDocumento || '' : '' %>" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-12 mb-3">
+                                            <label for="nombres" class="form-label">Nombres</label>
+                                            <input type="text" class="form-control" id="nombres" name="nombres"
+                                                value="<%= typeof formData !== 'undefined' ? formData.nombres || '' : '' %>"
+                                                placeholder="Ej: Juan Carlos" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-12 mb-3">
+                                            <label for="apellidos" class="form-label">Apellidos</label>
+                                            <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                                value="<%= typeof formData !== 'undefined' ? formData.apellidos || '' : '' %>"
+                                                placeholder="Ej: Pérez López" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="correo" class="form-label">Correo Electrónico</label>
+                                            <input type="email" class="form-control" id="correo" name="correo" 
+                                                value="<%= typeof formData !== 'undefined' ? formData.correo || '' : '' %>" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="contrasena" class="form-label">Contraseña</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="contrasena"
+                                                    name="contrasena" required>
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    id="mostrarContrasena" title="Mostrar contraseña">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="rol" class="form-label">Rol</label>
+                                            <select class="form-select" id="rol" name="rol" required>
+                                                <option value="">Seleccione...</option>
+                                                <option value="1">Administrador</option>
+                                                <option value="2">Profesor</option>
+                                                <option value="3">Estudiante</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="estado" class="form-label">Estado</label>
+                                            <select class="form-select" id="estado" name="estado" required>
+                                                <option value="1">Activo</option>
+                                                <option value="0">Inactivo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/admin/dashboard" class="btn btn-outline-secondary">
+                                            <i class="fas fa-arrow-left me-2"></i>Volver
+                                        </a>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save me-2"></i>Guardar Usuario
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>

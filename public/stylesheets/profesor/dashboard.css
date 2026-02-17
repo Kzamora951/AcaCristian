@@ -1,0 +1,192 @@
+/* Estilos específicos para el dashboard del profesor */
+
+/* Estilos para el botón de cierre de sesión */
+.logout-btn,
+.dropdown-item.text-danger {
+    color: #4a60c0 !important; /* Azul claro */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none !important;
+    background: none !important;
+}
+
+.logout-btn:hover,
+.dropdown-item.text-danger:hover {
+    color: #3a4e9a !important; /* Azul un poco más oscuro al pasar el mouse */
+    background-color: rgba(74, 96, 192, 0.1) !important; /* Fondo azul muy claro al pasar el mouse */
+    border-radius: 4px;
+}
+
+.logout-btn i,
+.dropdown-item.text-danger i {
+    margin-right: 8px;
+    color: #4a60c0; /* Mismo azul para el ícono */
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Colores de fondo para las tarjetas de estadísticas */
+.bg-primary { 
+    background: linear-gradient(45deg, #4a60c0, #6a82fb); 
+}
+
+.bg-success { 
+    background: linear-gradient(45deg, #1abc9c, #16a085); 
+}
+
+.bg-warning { 
+    background: linear-gradient(45deg, #f39c12, #f1c40f); 
+}
+
+.bg-danger { 
+    background: linear-gradient(45deg, #e74c3c, #c0392b); 
+}
+
+/* Estilos para la tabla de cursos */
+.table-responsive {
+    margin-top: 15px;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+/* Estilos para las tarjetas de tareas */
+.task-card {
+    border-left: 4px solid #4a60c0;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el menú activo */
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #fff;
+}
+
+.nav-item.active i {
+    color: #fff;
+}
+
+/* Estilos para el botón de ver detalles */
+.btn-outline-primary {
+    border-color: #4a60c0;
+    color: #4a60c0;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4a60c0;
+    color: white;
+}
+
+/* Estilos para los badges */
+.badge {
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+/* Estilos para el menú desplegable del usuario */
+.user-info .dropdown-toggle::after {
+    display: none;
+}
+
+.user-info .dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    min-width: 200px;
+}
+
+.user-info .dropdown-item {
+    padding: 8px 20px;
+    color: #4a5568;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.user-info .dropdown-item i {
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.user-info .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #4a60c0;
+}
+
+.user-info .dropdown-divider {
+    margin: 5px 0;
+}
+
+/* Estilos para el botón de cierre de sesión */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+    background-color: #ff1a1a;
+    color: white;
+    text-decoration: none;
+}
+
+.logout-btn i {
+    margin-right: 8px;
+}

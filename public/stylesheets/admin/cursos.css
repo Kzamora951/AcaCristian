@@ -1,0 +1,85 @@
+/* Estilos para la tabla de cursos */
+.table-responsive {
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    background: white;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estilos para los botones de acción */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.775rem;
+    border-radius: 0.2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el encabezado de la tabla */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para el botón de agregar */
+.btn-add {
+    background-color: #4a60c0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #3a4e9a;
+    color: white;
+}
+
+/* Estilos para los iconos */
+.fas {
+    font-size: 0.9em;
+}

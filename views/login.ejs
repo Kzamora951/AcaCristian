@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Sistema Académico</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <script src="/javascripts/login.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <% if (typeof showAlert !== 'undefined' && showAlert) { %>
+    <div class="alert" id="errorAlert">
+        <span><%= alertMessage %></span>
+        <button onclick="document.getElementById('errorAlert').style.display='none'" aria-label="Cerrar">&times;</button>
+    </div>
+    <script>
+        // Ocultar la alerta después de 5 segundos
+        setTimeout(function() {
+            var alert = document.getElementById('errorAlert');
+            if (alert) {
+                alert.style.display = 'none';
+            }
+        }, 5000);
+    </script>
+    <% } %>
+    
+    <div class="login-container">
+        <a id="regresar" class="regresar" href="/">
+            <i class="fas fa-arrow-left icono-flecha"></i>
+            <span class="texto-boton">Regresar</span>
+        </a>
+        <div class="login-box">
+            <div class="login-header">
+                <img src="/images/isotipoUPN.gif" alt="Logo" class="logo">
+                <h1>Bienvenido</h1>
+                <p>Por favor inicia sesión para continuar</p>
+            </div>
+            
+            <form class="login-form" action="/login" method="POST">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="correo" name="correo" placeholder="Usuario" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                </div>
+                
+                <div class="form-group remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Recordarme
+                    </label>
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <button type="submit" class="login-button">Iniciar Sesión</button>
+                
+                
+            </form>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

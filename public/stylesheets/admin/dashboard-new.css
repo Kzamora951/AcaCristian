@@ -1,0 +1,387 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+}
+
+/* -------------------------------------------
+   # LAYOUT PRINCIPAL
+   ------------------------------------------- */
+/* Contenedor principal */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 30px;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* Tarjetas */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.card .header {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.card .header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* -------------------------------------------
+   # BARRA LATERAL
+   ------------------------------------------- */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #4a60c0 0%, #3a4e9a 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-section h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.welcome-section p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Menú de navegación */
+.nav-menu {
+    flex-grow: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.nav-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #fff;
+}
+
+.nav-item.active i {
+    color: #fff;
+}
+
+/* Botón de cierre de sesión */
+.logout-btn {
+    text-align: center;
+    margin-top: auto;
+    padding: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn a,
+.dropdown-item.text-danger {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white !important;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border: none !important;
+    background: none !important;
+    width: 100%;
+}
+
+.logout-btn a:hover,
+.dropdown-item.text-danger:hover {
+    color: white !important;
+    background-color: rgba(74, 96, 192, 0.1) !important;
+    border-radius: 4px;
+}
+
+.logout-btn i,
+.dropdown-item.text-danger i {
+    margin-right: 8px;
+    color: white;
+}
+
+/* -------------------------------------------
+   # TABLAS
+   ------------------------------------------- */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* -------------------------------------------
+   # BOTONES Y ETIQUETAS
+   ------------------------------------------- */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn i {
+    margin-right: 6px;
+}
+
+.btn-primary {
+    background-color: #4a60c0;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3a4e9a;
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.btn-icon:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Botón de exportar */
+.ButtonExportDiv {
+    position: relative;  
+    display: inline-block;
+}
+
+.ButtonExportDiv .Exportar {
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 9px;
+}
+
+/* -------------------------------------------
+   # BADGES
+   ------------------------------------------- */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background-color: #e6e9ff;
+    color: #4a60c0;
+}
+
+.badge-secondary {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.badge-success {
+    background-color: #e6f7ee;
+    color: #28a745;
+}
+
+/* -------------------------------------------
+   # ESTADOS VACÍOS
+   ------------------------------------------- */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    margin-top: 10px;
+    color: #999;
+}
+
+/* -------------------------------------------
+   # MENÚ DE USUARIO
+   ------------------------------------------- */
+.user-info {
+    position: relative;
+    margin-left: auto;
+}
+
+.user-info .dropdown-toggle {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.user-info .dropdown-toggle:hover {
+    background-color: #f0f0f0;
+}
+
+.user-info .dropdown-toggle::after {
+    margin-left: 8px;
+}
+
+.user-info .dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 200px;
+}
+
+.user-info .dropdown-item {
+    padding: 8px 16px;
+    color: #333;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.user-info .dropdown-item i {
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.user-info .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #4a60c0;
+}
+
+.user-info .dropdown-divider {
+    margin: 4px 0;
+}
+
+/* -------------------------------------------
+   # TEXTO Y COLORES
+   ------------------------------------------- */
+.text-danger {
+    color: #dc3545;
+}
+
+.text-danger:hover {
+    color: #bd2130;
+}
+
+/* -------------------------------------------
+   # ROLES DE USUARIO
+   ------------------------------------------- */
+.user-role .badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
