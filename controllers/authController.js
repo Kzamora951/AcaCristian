@@ -63,13 +63,13 @@ exports.login = async (req, res) => {
             id: user.id_usuario,
             correo: user.correo,
             nombre: user.nombre,
-            rol: user.idrol_fk  // Guardar el rol del usuario en la sesión
+            rol: user.idrolfk  // Guardar el rol del usuario en la sesión
         };
 
         // Redirigir según el rol
-        if (user.idrol_fk == 1) {
+        if (user.idrolfk == 1) {
             return res.redirect('/admin/dashboard');
-        } else if (user.idrol_fk == 2) {
+        } else if (user.idrolfk == 2) {
             return res.redirect('/Profesor/dashboard');
         } else {
              return res.redirect('/Estudiante/HomeEstudiante');

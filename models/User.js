@@ -45,7 +45,7 @@ class User {
       console.log(`Buscando usuario con correo: ${correo}...`);
       // Asegurarse de que el correo esté en minúsculas y sin espacios
       const correoNormalizado = correo.toLowerCase().trim();
-      const url = `${APEX_BASE_URL}usuarios?q={"correousuario":"${correoNormalizado}"}`;
+      const url = `${APEX_BASE_URL}usuarios?q={"correo":"${correoNormalizado}"}`;
       console.log('URL de búsqueda:', url);
 
       const response = await axios.get(url, {
@@ -83,11 +83,11 @@ class User {
       const requestData = {
         NOMBREUSUARIO: data.nombres || 'Sin nombre',
         APELLIDOUSUARIO: data.apellidos || 'Sin apellido',
-        CORREOUSUARIO: data.correo || data.email || '',
+        CORREO: data.correo || data.email || '',
         CONTRASENA: data.contrasena || data.password || '',
-        IDROL_FK: data.rol || 2, // Por defecto rol 2 (usuario normal)
+        IDROLFK: data.rol || 2, // Por defecto rol 2 (usuario normal)
         IDENTIFICACION: data.numeroDocumento || '',
-        TIPO_IDENTIFICACION: data.tipoDocumento || 'C.C',
+        TIPOIDENTIFICACION: data.tipoDocumento || 'C.C',
         ESTADO: data.estado || 1 // 1 para activo, 0 para inactivo
       };
 
@@ -148,8 +148,8 @@ class User {
         APELLIDOUSUARIO: data.apellidos || 'Sin apellido',
         CORREOUSUARIO: data.correo || data.email || '',
         IDENTIFICACION: data.numeroDocumento || '',
-        TIPO_IDENTIFICACION: data.tipoDocumento || 'C.C',
-        IDROL_FK: data.rol || 2, // Por defecto rol 2 (usuario normal)
+        TIPOIDENTIFICACION: data.tipoDocumento || 'C.C',
+        IDROLFK: data.rol || 2, // Por defecto rol 2 (usuario normal)
         ESTADO: data.estado || 1, // 1 para activo, 0 para inactivo
         // Incluir contraseña solo si se proporcionó
         ...(data.contrasena && data.contrasena.trim() !== '' && { CONTRASENA: data.contrasena })

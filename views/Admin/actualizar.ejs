@@ -75,16 +75,16 @@
         });
     </script>
 <% } %>
-                                <form id="formActualiza" action="/Actualizacion/<%= usuarios.correousuario %>" method="POST" class="needs-validation" novalidate>
+                                <form id="formActualiza" action="/Actualizacion/<%= usuarios.correo %>" method="POST" class="needs-validation" novalidate>
                                     <div class="row mb-3">
                                         <div class="col-md-6 mb-3">
                                             <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
                                             <select class="form-select" id="tipoDocumento" name="tipoDocumento" required>
                                                 <option value="">Seleccione...</option>
-                                                <option value="CC" <%= usuarios.tipo_identificacion === 'CC' ? 'selected' : '' %>>Cédula de Ciudadanía</option>
-                                                <option value="TI" <%= usuarios.tipo_identificacion === 'TI' ? 'selected' : '' %>>Tarjeta de Identidad</option>
-                                                <option value="CE" <%= usuarios.tipo_identificacion === 'CE' ? 'selected' : '' %>>Cédula de Extranjería</option>
-                                                <option value="PA" <%= usuarios.tipo_identificacion === 'PA' ? 'selected' : '' %>>Pasaporte</option>
+                                                <option value="CC" <%= usuarios.tipoidentificacion === 'CC' ? 'selected' : '' %>>Cédula de Ciudadanía</option>
+                                                <option value="TI" <%= usuarios.tipoidentificacion === 'TI' ? 'selected' : '' %>>Tarjeta de Identidad</option>
+                                                <option value="CE" <%= usuarios.tipoidentificacion === 'CE' ? 'selected' : '' %>>Cédula de Extranjería</option>
+                                                <option value="PA" <%= usuarios.tipoidentificacion === 'PA' ? 'selected' : '' %>>Pasaporte</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6 mb-3">
@@ -116,7 +116,7 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="correo" class="form-label">Correo Electrónico</label>
                                             <input type="email" class="form-control" id="correo" name="correo" 
-                                                value="<%= usuarios.correousuario || '' %>" readonly required>
+                                                value="<%= usuarios.correo || '' %>" readonly required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="contrasena" class="form-label">Contraseña (dejar en blanco para no cambiar)</label>

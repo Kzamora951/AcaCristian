@@ -120,18 +120,18 @@
                                         <%= usuario.nombreusuario+" "+usuario.apellidousuario ||
                   'N/A'%>
                 </td>
-                <td><%= usuario.correousuario || 'N/A' %></td>
+                <td><%= usuario.correo || 'N/A' %></td>
                 <td>
                   <span
-                    class=" badge <%=usuario.idrol_fk===1 ? 'badge-primary' : 'badge-secondary' %>"
+                    class=" badge <%=usuario.idrolfk===1 ? 'badge-primary' : 'badge-secondary' %>"
                                             >
-                                            <% if (usuario.idrol_fk===1) { %> Administrador <% } else if
-                                                    (usuario.idrol_fk===2) { %> Profesor <% } else if
-                                                        (usuario.idrol_fk===3) { %> Alumno <% } %>
+                                            <% if (usuario.idrolfk===1) { %> Administrador <% } else if
+                                                    (usuario.idrolfk===2) { %> Profesor <% } else if
+                                                        (usuario.idrolfk===3) { %> Alumno <% } %>
                                                             </span>
                                     </td>
                                     <td>
-                                        <%= usuario.tipo_identificacion || 'N/A' %>
+                                        <%= usuario.tipoidentificacion || 'N/A' %>
                                     </td>
                                     <td>
                                         <%= usuario.identificacion || 'N/A' %>
@@ -144,7 +144,7 @@
                                         <% } %>
                                     </td>
                                     <td>
-                                        <a href="/editar/<%= usuario.correousuario %>" class="btn btn-sm btn-icon" title="Editar">
+                                        <a href="/editar/<%= usuario.correo %>" class="btn btn-sm btn-icon" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
