@@ -42,12 +42,12 @@ if (process.env.NODE_ENV === 'production') {
     sessionConfig.cookie.domain = process.env.DOMAIN || undefined;
     
     // Usar Redis en producción si está configurado
-    if (process.env.REDIS_URL) {
+    if (process.env.UPSTASH_REDIS_REST_URL) {
         const RedisStore = require('connect-redis')(session);
         const { createClient } = require('redis');
         
         const redisClient = createClient({
-            url: process.env.REDIS_URL,
+            url: process.env.UPSTASH_REDIS_REST_URL,
             legacyMode: true
         });
         
@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'production') {
         sessionConfig.store = new RedisStore({ client: redisClient });
         console.log('✅ Redis configurado para sesiones en producción');
     } else {
-        console.warn('⚠️  REDIS_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
+        console.warn('⚠️  UPSTASH_REDIS_REST_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
 }
 
