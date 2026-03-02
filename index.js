@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
         httpOnly: true,
         sameSite: 'none', // Requerido para Vercel
         maxAge: 24 * 60 * 60 * 1000, // 24 horas
-        domain: process.env.DOMAIN || undefined
+        domain: process.env.DOMAIN || '.vercel.app'
     };
     
     console.log('✅ Cookies configuradas:', {
