@@ -52,32 +52,39 @@ if (process.env.NODE_ENV === 'production') {
     });
     
     // Usar Redis en producción si está configurado
-    // Temporalmente deshabilitado para evitar error 500
-    /*
     if (process.env.UPSTASH_REDIS_REST_URL) {
-        const RedisStore = require('connect-redis')(session);
-        const { createClient } = require('redis');
-        
-        const redisClient = createClient({
-            url: process.env.UPSTASH_REDIS_REST_URL,
-            password: process.env.UPSTASH_REDIS_REST_TOKEN,
-            legacyMode: true
-        });
-        
-        redisClient.connect().catch(console.error);
-        
-        redisClient.on('error', (err) => {
-            console.error('Error de Redis:', err);
-        });
-        
-        // Reemplazar MemoryStore con RedisStore
-        sessionConfig.store = new RedisStore({ client: redisClient });
-        console.log('✅ Redis configurado para sesiones en producción');
+        try {
+            const RedisStore = require('connect-redis')(session);
+            const { createClient } = require('redis');
+            
+            const redisClient = createClient({
+                url: process.env.UPSTASH_REDIS_REST_URL,
+                password: process.env.UPSTASH_REDIS_REST_TOKEN,
+                legacyMode: true
+            });
+            
+            // Manejar errores de conexión
+            redisClient.on('error', (err) => {
+                console.error('Error de Redis:', err);
+            });
+            
+            // Conectar y configurar
+            redisClient.connect()
+                .then(() => {
+                    sessionConfig.store = new RedisStore({ client: redisClient });
+                    console.log('✅ Redis configurado para sesiones en producción');
+                })
+                .catch((err) => {
+                    console.error('❌ Error conectando a Redis:', err);
+                    console.warn('⚠️  Usando MemoryStore como fallback');
+                });
+        } catch (error) {
+            console.error('❌ Error al configurar Redis:', error.message);
+            console.warn('⚠️  Usando MemoryStore como fallback');
+        }
     } else {
         console.warn('⚠️  UPSTASH_REDIS_REST_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
-    */
-    console.log('🔧 Redis temporalmente deshabilitado - usando MemoryStore');
 } else {
     console.log('🏠 Modo desarrollo detectado');
     console.log('🔧 Usando MemoryStore para sesiones');
