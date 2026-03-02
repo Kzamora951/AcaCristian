@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { isAuthenticated, hasRole } = require('../middlewares/auth');
 const profesorController = require('../controllers/profesorController');
 
-// Aplicar el middleware de autenticación a todas las rutas
-router.use(isAuthenticated);
-router.use(hasRole([2])); // Solo profesores
-
+// Rutas de acceso libre
 // Ruta principal del dashboard del profesor
 router.get('/dashboard', profesorController.getDashboard);
 

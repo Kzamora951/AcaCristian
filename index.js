@@ -140,10 +140,10 @@ app.get('/logout', authController.logout);
 
 // Ruta del dashboard de administración (solo para administradores)
 
-app.get('/Admin/dashboard', isAuthenticated, hasRole([1]), usuariosController.getUsuarios);
+app.get('/Admin/dashboard', usuariosController.getUsuarios);
 
-//Ruta del dashboard de cursos (solo para administradores)
-app.get('/Admin/cursos', isAuthenticated, hasRole([1]), cursosController.getCursos);
+//Ruta del dashboard de cursos (acceso libre)
+app.get('/Admin/cursos', cursosController.getCursos);
 
 
 
@@ -153,20 +153,20 @@ const profesorRoutes = require('./routes/profesor');
 // Usar rutas de profesor
 app.use('/Profesor', profesorRoutes);
 
-// Ruta del dashboard de alumno (solo para alumnos)
-app.get('/Estudiante/HomeEstudiante', isAuthenticated, hasRole([3]), (req, res) => {
+// Ruta del dashboard de alumno (acceso libre)
+app.get('/Estudiante/HomeEstudiante', (req, res) => {
   res.render('Estudiante/HomeEstudiante');
 });
 
-app.get('/Estudiante/primersemestre', isAuthenticated, hasRole([3]), (req, res) => {
+app.get('/Estudiante/primersemestre', (req, res) => {
   res.render('Estudiante/primersemestre');
 });
 
-app.get('/Estudiante/segundosemestre', isAuthenticated, hasRole([3]), (req, res) => {
+app.get('/Estudiante/segundosemestre', (req, res) => {
   res.render('Estudiante/segundosemestre');
 });
 
-app.get('/Estudiante/tercersemestre', isAuthenticated, hasRole([3]), (req, res) => {
+app.get('/Estudiante/tercersemestre', (req, res) => {
   res.render('Estudiante/tercersemestre');
 });
 
@@ -177,14 +177,14 @@ app.get('/Admin/nuevoAdmin', (req, res) => {
 
  
 
-// Ruta para crear un nuevo usuario (solo administradores)
-app.post('/nuevousuario', isAuthenticated, hasRole([1]), usuariosController.createUsuario);
+// Ruta para crear un nuevo usuario (acceso libre)
+app.post('/nuevousuario', usuariosController.createUsuario);
 
-// Rutas para actualizar usuario (solo administradores)
-app.get('/editar/:correo', isAuthenticated, hasRole([1]), usuariosController.getUsuariobyCorreo);
+// Rutas para actualizar usuario (acceso libre)
+app.get('/editar/:correo', usuariosController.getUsuariobyCorreo);
 
-// Ruta para manejar la actualización (solo administradores)
-app.post('/Actualizacion/:correo', isAuthenticated, hasRole([1]), usuariosController.updateUsuario);
+// Ruta para manejar la actualización (acceso libre)
+app.post('/Actualizacion/:correo', usuariosController.updateUsuario);
 
 
 // Manejador de errores 404
