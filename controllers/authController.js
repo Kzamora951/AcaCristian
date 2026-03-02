@@ -16,6 +16,9 @@ exports.showLogin = (req, res) => {
 exports.login = async (req, res) => {
     
     try {
+        // Limpiar cualquier sesión existente por seguridad
+        req.session.destroy();
+        
         const { correo, password } = req.body;
         
         //Llama a la funcion buscarPorCorreo en el modelo User
