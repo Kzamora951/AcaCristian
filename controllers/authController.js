@@ -4,14 +4,7 @@ const User = require('../models/User');
 // Mostrar formulario de login
 exports.showLogin = (req, res) => {
     if (req.session.user) {
-        // Redirigir según el rol del usuario
-        if (req.session.user.rol == 1) {
-            return res.redirect('/Admin/dashboard');
-        } else if (req.session.user.rol == 2) {
-            return res.redirect('/Profesor/dashboard');
-        } else {
-            return res.redirect('/Estudiante/HomeEstudiante');
-        }
+        return res.redirect('/admin/dashboard');
     }
     res.render('login', { 
         title: 'Iniciar Sesión',
