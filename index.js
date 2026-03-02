@@ -17,77 +17,15 @@ const MemoryStore = require('memorystore')(session);
 const sessionConfig = {
     secret: process.env.SESSION_SECRET || 'secreto_para_desarrollo_cambiar_en_produccion',
     resave: false,
-    saveUninitialized: false, // No guardar sesiones vacías para evitar problemas
+    saveUninitialized: false,
     store: new MemoryStore({
-        checkPeriod: 86400000 // Limpiar entradas expiradas cada 24h
+        checkPeriod: 86400000
     }),
     cookie: {
-        maxAge: 24 * 60 * 60 * 1000, // 24 horas
-        httpOnly: true,
-        // En producción, asegúrate de configurar estos valores:
-        // secure: true,
-        // sameSite: 'none',
-        // domain: 'tudominio.com'
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true
     }
 };
-
-// Validar SESSION_SECRET en producción
-if (process.env.NODE_ENV === 'production') {
-    if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET === 'secreto_para_desarrollo_cambiar_en_produccion') {
-        console.warn('⚠️  ADVERTENCIA: SESSION_SECRET no configurado o usa valor por defecto en producción');
-        console.warn('⚠️  Esto puede causar inestabilidad en las sesiones');
-    }
-}
-
-// Configuración para producción
-if (process.env.NODE_ENV === 'production') {
-    // Forzar HTTPS en producción
-    app.set('trust proxy', 1);
-    
-    // Configuración segura de cookies en producción
-    sessionConfig.cookie.secure = true;
-    
-    // Usar sameSite 'lax' en lugar de 'none' para mejor compatibilidad
-    sessionConfig.cookie.sameSite = 'lax';
-    
-    // Configurar dominio dinámicamente si está disponible
-    if (process.env.DOMAIN) {
-        // Remover el protocolo si está presente
-        let domain = process.env.DOMAIN;
-        if (domain.startsWith('https://')) {
-            domain = domain.replace('https://', '');
-        } else if (domain.startsWith('http://')) {
-            domain = domain.replace('http://', '');
-        }
-        sessionConfig.cookie.domain = domain;
-        console.log('Dominio configurado para cookies:', domain);
-    }
-    
-    // Usar Redis en producción si está configurado
-    if (process.env.REDIS_URL) {
-        const RedisStore = require('connect-redis')(session);
-        const { createClient } = require('redis');
-        
-        const redisClient = createClient({
-            url: process.env.REDIS_URL,
-            legacyMode: true
-        });
-        
-        redisClient.connect().catch(console.error);
-        
-        redisClient.on('error', (err) => {
-            console.error('Error de Redis:', err);
-        });
-        
-        sessionConfig.store = new RedisStore({ client: redisClient });
-    }
-}
-
-// Si estás en producción, usa secure: true
-if (app.get('env') === 'production') {
-    app.set('trust proxy', 1); // Confía en el primer proxy
-    sessionConfig.cookie.secure = true;
-}
 
 app.use(session(sessionConfig));
 
