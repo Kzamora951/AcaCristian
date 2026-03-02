@@ -31,36 +31,22 @@ const sessionConfig = {
     }
 };
 
+
 // Configuración para producción
 if (process.env.NODE_ENV === 'production') {
-    // Forzar HTTPS en producción
-    app.set('trust proxy', 1);
-    
-    // Configuración segura de cookies en producción
-    sessionConfig.cookie.secure = true;
-    sessionConfig.cookie.sameSite = 'none';
-    sessionConfig.cookie.domain = 'tudominio.com';
-    
-    // Usar Redis en producción si está configurado
-    if (process.env.REDIS_URL) {
-        const RedisStore = require('connect-redis')(session);
-        const { createClient } = require('redis');
-        
-        const redisClient = createClient({
-            url: process.env.REDIS_URL,
-            legacyMode: true
-        });
-        
-        redisClient.connect().catch(console.error);
-        
-        redisClient.on('error', (err) => {
-            console.error('Error de Redis:', err);
-        });
-        
-        sessionConfig.store = new RedisStore({ client: redisClient });
-    }
-}
+    // 1. Indispensable para que Vercel pase la cookie a través de su proxy
+    app.set('trust proxy', 1); 
 
+    // 2. Forzar seguridad
+    sessionConfig.cookie.secure = true;    
+    
+    // 3. Cambia 'none' por 'lax'. 'none' a veces da problemas si no hay CORS perfecto
+    sessionConfig.cookie.sameSite = 'lax'; 
+
+    // 4. ¡ELIMINA LA LÍNEA DE TUDOMINIO.COM! 
+    // Al no poner 'domain', el navegador usará automáticamente el de Vercel.
+    delete sessionConfig.cookie.domain; 
+}
 // Si estás en producción, usa secure: true
 if (app.get('env') === 'production') {
     app.set('trust proxy', 1); // Confía en el primer proxy
