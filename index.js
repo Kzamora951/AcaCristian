@@ -41,6 +41,12 @@ if (process.env.NODE_ENV === 'production') {
     sessionConfig.cookie.sameSite = 'none';
     sessionConfig.cookie.domain = process.env.DOMAIN || undefined;
     
+    console.log('✅ Cookies configuradas:', {
+        secure: sessionConfig.cookie.secure,
+        sameSite: sessionConfig.cookie.sameSite,
+        domain: sessionConfig.cookie.domain
+    });
+    
     // Usar Redis en producción si está configurado
     if (process.env.REDIS_URL) {
         const RedisStore = require('connect-redis')(session);
@@ -63,7 +69,17 @@ if (process.env.NODE_ENV === 'production') {
     } else {
         console.warn('⚠️  REDIS_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
+} else {
+    console.log('🏠 Modo desarrollo detectado');
+    console.log('🔧 Usando MemoryStore para sesiones');
 }
+
+console.log('📋 Variables de entorno:', {
+    NODE_ENV: process.env.NODE_ENV,
+    REDIS_URL: process.env.REDIS_URL ? '✅ Configurada' : '❌ No configurada',
+    SESSION_SECRET: process.env.SESSION_SECRET ? '✅ Configurada' : '❌ No configurada',
+    DOMAIN: process.env.DOMAIN || 'No configurado'
+});
 
 app.use(session(sessionConfig));
 
