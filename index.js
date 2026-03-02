@@ -31,6 +31,14 @@ const sessionConfig = {
     }
 };
 
+// Validar SESSION_SECRET en producción
+if (process.env.NODE_ENV === 'production') {
+    if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET === 'secreto_para_desarrollo_cambiar_en_produccion') {
+        console.warn('⚠️  ADVERTENCIA: SESSION_SECRET no configurado o usa valor por defecto en producción');
+        console.warn('⚠️  Esto puede causar inestabilidad en las sesiones');
+    }
+}
+
 // Configuración para producción
 if (process.env.NODE_ENV === 'production') {
     // Forzar HTTPS en producción
@@ -38,8 +46,22 @@ if (process.env.NODE_ENV === 'production') {
     
     // Configuración segura de cookies en producción
     sessionConfig.cookie.secure = true;
-    sessionConfig.cookie.sameSite = 'none';
-    sessionConfig.cookie.domain = 'tudominio.com';
+    
+    // Usar sameSite 'lax' en lugar de 'none' para mejor compatibilidad
+    sessionConfig.cookie.sameSite = 'lax';
+    
+    // Configurar dominio dinámicamente si está disponible
+    if (process.env.DOMAIN) {
+        // Remover el protocolo si está presente
+        let domain = process.env.DOMAIN;
+        if (domain.startsWith('https://')) {
+            domain = domain.replace('https://', '');
+        } else if (domain.startsWith('http://')) {
+            domain = domain.replace('http://', '');
+        }
+        sessionConfig.cookie.domain = domain;
+        console.log('Dominio configurado para cookies:', domain);
+    }
     
     // Usar Redis en producción si está configurado
     if (process.env.REDIS_URL) {
