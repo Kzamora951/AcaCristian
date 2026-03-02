@@ -25,8 +25,8 @@ const sessionConfig = {
     cookie: {
         maxAge: 24 * 60 * 60 * 1000, // 24 horas
         httpOnly: true,
-        secure: false, // Se cambiará a true en producción
-        sameSite: 'lax' // Se cambiará a 'none' en producción
+        secure: false, 
+        sameSite: 'lax' 
     }
 };
 
