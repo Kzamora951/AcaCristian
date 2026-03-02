@@ -59,19 +59,25 @@ exports.login = async (req, res) => {
 
         // Guardar en sesión
         req.session.user = {
-            id: user.id_usuario,
+            id: user.idusuario,
             correo: user.correo,
-            nombre: user.nombre,
+            nombre: user.nombreusuario,
             rol: user.idrolfk  // Guardar el rol del usuario en la sesión
         };
 
+        console.log('Sesión guardada:', JSON.stringify(req.session.user, null, 2));
+        console.log('Rol del usuario:', user.idrolfk);
+
         // Redirigir según el rol
         if (user.idrolfk == 1) {
-            return res.redirect('/admin/dashboard');
+            console.log('Redirigiendo a /Admin/dashboard');
+            return res.redirect('/Admin/dashboard');
         } else if (user.idrolfk == 2) {
+            console.log('Redirigiendo a /Profesor/dashboard');
             return res.redirect('/Profesor/dashboard');
         } else {
-             return res.redirect('/Estudiante/HomeEstudiante');
+            console.log('Redirigiendo a /Estudiante/HomeEstudiante');
+            return res.redirect('/Estudiante/HomeEstudiante');
         }
 
     } catch (error) {

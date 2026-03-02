@@ -14,20 +14,19 @@ const { isAuthenticated, hasRole } = require('./middlewares/auth');
 // Configuración de sesión
 const MemoryStore = require('memorystore')(session);
 
+// Configuración base de sesión
 const sessionConfig = {
     secret: process.env.SESSION_SECRET || 'secreto_para_desarrollo_cambiar_en_produccion',
     resave: false,
-    saveUninitialized: true, // Permitir guardar sesiones nuevas
+    saveUninitialized: false,
     store: new MemoryStore({
         checkPeriod: 86400000 // Limpiar entradas expiradas cada 24h
     }),
     cookie: {
         maxAge: 24 * 60 * 60 * 1000, // 24 horas
         httpOnly: true,
-        // En producción, asegúrate de configurar estos valores:
-        // secure: true,
-        // sameSite: 'none',
-        // domain: 'tudominio.com'
+        secure: false, // Se cambiará a true en producción
+        sameSite: 'lax' // Se cambiará a 'none' en producción
     }
 };
 
@@ -40,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
     // Configuración segura de cookies en producción
     sessionConfig.cookie.secure = true;
     sessionConfig.cookie.sameSite = 'none';
-    sessionConfig.cookie.domain = 'tudominio.com';
+    sessionConfig.cookie.domain = process.env.DOMAIN || undefined;
     
     // Usar Redis en producción si está configurado
     if (process.env.REDIS_URL) {
@@ -58,14 +57,12 @@ if (process.env.NODE_ENV === 'production') {
             console.error('Error de Redis:', err);
         });
         
+        // Reemplazar MemoryStore con RedisStore
         sessionConfig.store = new RedisStore({ client: redisClient });
+        console.log('✅ Redis configurado para sesiones en producción');
+    } else {
+        console.warn('⚠️  REDIS_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
-}
-
-// Si estás en producción, usa secure: true
-if (app.get('env') === 'production') {
-    app.set('trust proxy', 1); // Confía en el primer proxy
-    sessionConfig.cookie.secure = true;
 }
 
 app.use(session(sessionConfig));
