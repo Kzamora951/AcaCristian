@@ -40,15 +40,15 @@ if (process.env.NODE_ENV === 'production') {
     sessionConfig.cookie = {
         secure: true, // Forzar HTTPS
         httpOnly: true,
-        sameSite: 'none', // Requerido para Vercel
+        sameSite: 'lax', // Más compatible con Vercel
         maxAge: 24 * 60 * 60 * 1000, // 24 horas
-        domain: process.env.DOMAIN || '.vercel.app'
+        // domain: process.env.DOMAIN || '.vercel.app' // Comentado para permitir dominio automático
     };
     
     console.log('✅ Cookies configuradas:', {
         secure: sessionConfig.cookie.secure,
         sameSite: sessionConfig.cookie.sameSite,
-        domain: sessionConfig.cookie.domain
+        domain: sessionConfig.cookie.domain || 'automático'
     });
     
     // Usar Redis en producción si está configurado
