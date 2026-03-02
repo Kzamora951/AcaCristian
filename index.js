@@ -37,9 +37,13 @@ if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
     
     // Configuración segura de cookies en producción
-    sessionConfig.cookie.secure = true;
-    sessionConfig.cookie.sameSite = 'none';
-    sessionConfig.cookie.domain = process.env.DOMAIN || undefined;
+    sessionConfig.cookie = {
+        secure: true, // Forzar HTTPS
+        httpOnly: true,
+        sameSite: 'none', // Requerido para Vercel
+        maxAge: 24 * 60 * 60 * 1000, // 24 horas
+        domain: process.env.DOMAIN || undefined
+    };
     
     console.log('✅ Cookies configuradas:', {
         secure: sessionConfig.cookie.secure,
