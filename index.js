@@ -17,7 +17,7 @@ const MemoryStore = require('memorystore')(session);
 const sessionConfig = {
     secret: process.env.SESSION_SECRET || 'secreto_para_desarrollo_cambiar_en_produccion',
     resave: false,
-    saveUninitialized: true, // Permitir guardar sesiones nuevas
+    saveUninitialized: false, // No guardar sesiones vacías para evitar problemas
     store: new MemoryStore({
         checkPeriod: 86400000 // Limpiar entradas expiradas cada 24h
     }),

@@ -5,9 +5,15 @@ exports.isAuthenticated = (req, res, next) => {
     res.set('Pragma', 'no-cache');
     res.set('Expires', '0');
     
+    console.log('Verificando autenticación - Session:', req.session);
+    console.log('Usuario en sesión:', req.session.user);
+    
     if (req.session && req.session.user) {
+        console.log('Usuario autenticado correctamente:', req.session.user.correo);
         return next();
     }
+    
+    console.log('Usuario no autenticado, redirigiendo a login');
     
     // Si hay una sesión expirada, redirigir con un mensaje
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
