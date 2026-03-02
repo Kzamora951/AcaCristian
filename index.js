@@ -52,6 +52,8 @@ if (process.env.NODE_ENV === 'production') {
     });
     
     // Usar Redis en producción si está configurado
+    // Temporalmente deshabilitado para evitar error 500
+    /*
     if (process.env.UPSTASH_REDIS_REST_URL) {
         const RedisStore = require('connect-redis')(session);
         const { createClient } = require('redis');
@@ -74,6 +76,8 @@ if (process.env.NODE_ENV === 'production') {
     } else {
         console.warn('⚠️  UPSTASH_REDIS_REST_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
+    */
+    console.log('🔧 Redis temporalmente deshabilitado - usando MemoryStore');
 } else {
     console.log('🏠 Modo desarrollo detectado');
     console.log('🔧 Usando MemoryStore para sesiones');
