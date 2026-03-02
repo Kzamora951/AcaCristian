@@ -48,18 +48,25 @@ if (process.env.NODE_ENV === 'production') {
         
         const redisClient = createClient({
             url: process.env.UPSTASH_REDIS_REST_URL,
+            password: process.env.UPSTASH_REDIS_REST_TOKEN,
             legacyMode: true
         });
         
-        redisClient.connect().catch(console.error);
+        redisClient.connect()
+            .then(() => {
+                // Reemplazar MemoryStore con RedisStore solo si la conexión es exitosa
+                sessionConfig.store = new RedisStore({ client: redisClient });
+                console.log('✅ Redis configurado para sesiones en producción');
+            })
+            .catch((err) => {
+                console.error('❌ Error conectando a Redis, usando MemoryStore:', err);
+                console.warn('⚠️  Las sesiones no persistirán entre reinicios en Vercel');
+                // Mantener MemoryStore como fallback
+            });
         
         redisClient.on('error', (err) => {
             console.error('Error de Redis:', err);
         });
-        
-        // Reemplazar MemoryStore con RedisStore
-        sessionConfig.store = new RedisStore({ client: redisClient });
-        console.log('✅ Redis configurado para sesiones en producción');
     } else {
         console.warn('⚠️  UPSTASH_REDIS_REST_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
