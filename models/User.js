@@ -139,26 +139,23 @@ class User {
     try {
       console.log('Actualizando usuario con correo:', correo);
       console.log('Datos recibidos para actualizar:', JSON.stringify(data, null, 2));
-      
+
       const url = `${APEX_BASE_URL}usuarios/${correo}`;
 
       // Mapear los datos del formulario al formato que espera la API
       const requestData = {
-        NOMBREUSUARIO: data.nombres || 'Sin nombre',
-        APELLIDOUSUARIO: data.apellidos || 'Sin apellido',
-        CORREOUSUARIO: data.correo || data.email || '',
-        IDENTIFICACION: data.numeroDocumento || '',
-        TIPOIDENTIFICACION: data.tipoDocumento || 'C.C',
-        IDROLFK: data.rol || 2, // Por defecto rol 2 (usuario normal)
-        ESTADO: data.estado || 1, // 1 para activo, 0 para inactivo
-        // Incluir contraseña solo si se proporcionó
-        ...(data.contrasena && data.contrasena.trim() !== '' && { CONTRASENA: data.contrasena })
+        nombreusuario: data.nombres || 'Sin nombre',
+        apellidousuario: data.apellidos || 'Sin apellido',
+        contrasena: data.contrasena,
+        tipoidentificacion: data.tipoDocumento || 'C.C',
+        idrolfk: data.rol || 2,
+        estado: data.estado || 1
       };
 
       console.log('Datos a enviar a la API para actualización:', JSON.stringify(requestData, null, 2));
 
       const response = await axios({
-        method: 'post',
+        method: 'put',
         url: url,
         data: requestData,
         headers: {
@@ -182,9 +179,9 @@ class User {
 
       // Si es un array, devolver el primer elemento, de lo contrario devolver la respuesta completa
       const usuario = Array.isArray(responseData) ? responseData[0] : responseData;
-      
+
       return usuario;
-      
+
     } catch (error) {
       console.error('Error en User.update:', error.response?.data || error.message);
       const errorMessage = error.response?.data?.message || 'Error al actualizar el usuario en la API';
@@ -192,5 +189,5 @@ class User {
       throw new Error(errorMessage);
     }
   }
-}  
+}
 module.exports = User;

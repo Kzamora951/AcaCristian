@@ -149,7 +149,6 @@ exports.updateUsuario = async (req, res) => {
             apellidos: req.body.apellidos,
             correo: req.body.correo,
             tipoDocumento: req.body.tipoDocumento,
-            numeroDocumento: req.body.numeroDocumento,
             rol: req.body.rol,  // Se mapeará a IDROL_FK en el modelo
             estado: req.body.estado,
             contrasena: req.body.contrasena

@@ -24,7 +24,6 @@ exports.login = async (req, res) => {
         
         if (!user) {
             console.log("usuario no encontrado");
-            window.alert("Hello world!");
             return res.render('login', {
                 title: 'Iniciar Sesión',
                 error: 'Usuario no encontrado'
@@ -77,6 +76,22 @@ exports.login = async (req, res) => {
 
     } catch (error) {
         console.error('Error en el login:', error);
+        
+        // Verificar si es un error de conexión o servicio no disponible
+        if (error.code === 'ECONNREFUSED' || 
+            error.code === 'ETIMEDOUT' || 
+            error.code === 'ENOTFOUND' ||
+            error.message.includes('connect') ||
+            error.message.includes('timeout') ||
+            error.message.includes('network')) {
+            return res.render('login', {
+                title: 'Iniciar Sesión',
+                error: 'Servicio no disponible',
+                showAlert: true,
+                alertMessage: 'El servidor se encuentra en mantenimiento. Por favor, intente más tarde.'
+            });
+        }
+        
         res.status(500).render('Error/error', {
             title: 'Error',
             message: 'Ocurrió un error al procesar la solicitud'

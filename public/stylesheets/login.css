@@ -73,6 +73,29 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     text-align: center;
     margin-top: 20px;
+    overflow: hidden;
+}
+
+/* Contenedor de formularios */
+.form-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+}
+
+.login-form-container,
+.register-form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+.register-form-container {
+    transform: translateX(100%);
+    opacity: 0;
 }
 
 /* Encabezado */
@@ -118,7 +141,7 @@ body {
     width: 100%;
 }
 
-/* Estilo para el ícono de usuario y candado */
+/* Estilo para el ícono de usuario, candado y sobre */
 .input-with-icon > i:first-child {
     position: absolute;
     left: 15px;
@@ -162,6 +185,23 @@ input[type="password"]:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
     outline: none;
+}
+
+/* Estilos específicos para el input de correo */
+.email-input {
+    width: 100% !important;
+    padding: 12px 45px 12px 40px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+}
+
+.email-input:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2) !important;
+    outline: none !important;
 }
 
 /* Recordar y olvidar contraseña */
@@ -272,6 +312,30 @@ input[type="password"]:focus {
 }
 
 .signup-link:hover {
+    color: #4a60c0;
+    text-decoration: underline;
+}
+
+/* Estilos para los enlaces de cambio de formulario */
+.form-switch {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-switch p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.form-switch a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.form-switch a:hover {
     color: #4a60c0;
     text-decoration: underline;
 }

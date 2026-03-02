@@ -32,42 +32,121 @@
             <span class="texto-boton">Regresar</span>
         </a>
         <div class="login-box">
-            <div class="login-header">
-                <img src="/images/isotipoUPN.gif" alt="Logo" class="logo">
-                <h1>Bienvenido</h1>
-                <p>Por favor inicia sesión para continuar</p>
+            <div class="form-container">
+                <!-- Formulario de Login -->
+                <div class="login-form-container" id="loginFormContainer">
+                    <div class="login-header">
+                        <img src="/images/isotipoUPN.gif" alt="Logo" class="logo">
+                        <h1>Bienvenido</h1>
+                        <p>Por favor inicia sesión para continuar</p>
+                    </div>
+                    
+                    <form class="login-form" action="/login" method="POST">
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="correo" name="correo" placeholder="Usuario" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                                <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group remember-forgot">
+                            <label class="remember-me">
+                                <input type="checkbox" name="remember"> Recordarme
+                            </label>
+                            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        
+                        <button type="submit" class="login-button">Iniciar Sesión</button>
+                        
+                        <!-- <div class="form-switch">
+                            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate</a></p>
+                        </div> -->
+                    </form>
+                </div>
+
+                <!-- Formulario de Registro -->
+                <div class="register-form-container" id="registerFormContainer">
+                    <div class="login-header">
+                        <img src="/images/isotipoUPN.gif" alt="Logo" class="logo">
+                        <h1>Crear Cuenta</h1>
+                        <p>Por favor completa tus datos para registrarte</p>
+                    </div>
+                    
+                    <form class="login-form" action="/register" method="POST">
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="regNombre" name="nombre" placeholder="Nombre completo" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-at"></i>
+                                <input type="email" class="email-input" id="regCorreo" name="regCorreo" placeholder="Correo electrónico" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="regPassword" name="password" placeholder="Contraseña" required>
+                                <i class="fas fa-eye toggle-password" id="toggleRegPassword"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="Confirmar contraseña" required>
+                                <i class="fas fa-eye toggle-password" id="toggleRegConfirmPassword"></i>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="login-button">Registrarse</button>
+                        
+                        <div class="form-switch">
+                            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+                        </div>
+                    </form>
+                </div>
             </div>
-            
-            <form class="login-form" action="/login" method="POST">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="correo" name="correo" placeholder="Usuario" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
-                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
-                    </div>
-                </div>
-                
-                <div class="form-group remember-forgot">
-                    <label class="remember-me">
-                        <input type="checkbox" name="remember"> Recordarme
-                    </label>
-                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-                </div>
-                
-                <button type="submit" class="login-button">Iniciar Sesión</button>
-                
-                
-            </form>
         </div>
     </div>
     
+    <script>
+        // Manejar la animación entre formularios
+        document.addEventListener('DOMContentLoaded', function() {
+            const showRegisterBtn = document.getElementById('showRegister');
+            const showLoginBtn = document.getElementById('showLogin');
+            const loginFormContainer = document.getElementById('loginFormContainer');
+            const registerFormContainer = document.getElementById('registerFormContainer');
+            
+            showRegisterBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginFormContainer.style.transform = 'translateX(-100%)';
+                loginFormContainer.style.opacity = '0';
+                registerFormContainer.style.transform = 'translateX(0)';
+                registerFormContainer.style.opacity = '1';
+            });
+            
+            showLoginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginFormContainer.style.transform = 'translateX(0)';
+                loginFormContainer.style.opacity = '1';
+                registerFormContainer.style.transform = 'translateX(100%)';
+                registerFormContainer.style.opacity = '0';
+            });
+        });
+    </script>
     
 </body>
 </html>

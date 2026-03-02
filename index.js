@@ -127,6 +127,18 @@ app.get('/Estudiante/HomeEstudiante', isAuthenticated, hasRole([3]), (req, res) 
   res.render('Estudiante/HomeEstudiante');
 });
 
+app.get('/Estudiante/primersemestre', isAuthenticated, hasRole([3]), (req, res) => {
+  res.render('Estudiante/primersemestre');
+});
+
+app.get('/Estudiante/segundosemestre', isAuthenticated, hasRole([3]), (req, res) => {
+  res.render('Estudiante/segundosemestre');
+});
+
+app.get('/Estudiante/tercersemestre', isAuthenticated, hasRole([3]), (req, res) => {
+  res.render('Estudiante/tercersemestre');
+});
+
 // Ruta del dashboard de nuevo admin
 app.get('/Admin/nuevoAdmin', (req, res) => {
   res.render('Admin/nuevoAdmin');
