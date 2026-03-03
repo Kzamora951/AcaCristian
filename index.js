@@ -37,33 +37,66 @@ if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
     
     // Configuración segura de cookies en producción
-    sessionConfig.cookie.secure = true;
-    sessionConfig.cookie.sameSite = 'none';
-    sessionConfig.cookie.domain = process.env.DOMAIN || undefined;
+    sessionConfig.cookie = {
+        secure: true, // Forzar HTTPS
+        httpOnly: true,
+        sameSite: 'lax', // Más compatible con Vercel
+        maxAge: 24 * 60 * 60 * 1000, // 24 horas
+        // domain: process.env.DOMAIN || '.vercel.app' // Comentado para permitir dominio automático
+    };
+    
+    console.log('✅ Cookies configuradas:', {
+        secure: sessionConfig.cookie.secure,
+        sameSite: sessionConfig.cookie.sameSite,
+        domain: sessionConfig.cookie.domain || 'automático'
+    });
     
     // Usar Redis en producción si está configurado
-    if (process.env.REDIS_URL) {
-        const RedisStore = require('connect-redis')(session);
-        const { createClient } = require('redis');
-        
-        const redisClient = createClient({
-            url: process.env.REDIS_URL,
-            legacyMode: true
-        });
-        
-        redisClient.connect().catch(console.error);
-        
-        redisClient.on('error', (err) => {
-            console.error('Error de Redis:', err);
-        });
-        
-        // Reemplazar MemoryStore con RedisStore
-        sessionConfig.store = new RedisStore({ client: redisClient });
-        console.log('✅ Redis configurado para sesiones en producción');
+    if (process.env.UPSTASH_REDIS_REST_URL) {
+        try {
+            const RedisStore = require('connect-redis')(session);
+            const { createClient } = require('redis');
+            
+            const redisClient = createClient({
+                url: process.env.UPSTASH_REDIS_REST_URL,
+                password: process.env.UPSTASH_REDIS_REST_TOKEN,
+                legacyMode: true
+            });
+            
+            // Manejar errores de conexión
+            redisClient.on('error', (err) => {
+                console.error('Error de Redis:', err);
+            });
+            
+            // Conectar y configurar
+            redisClient.connect()
+                .then(() => {
+                    sessionConfig.store = new RedisStore({ client: redisClient });
+                    console.log('✅ Redis configurado para sesiones en producción');
+                })
+                .catch((err) => {
+                    console.error('❌ Error conectando a Redis:', err);
+                    console.warn('⚠️  Usando MemoryStore como fallback');
+                });
+        } catch (error) {
+            console.error('❌ Error al configurar Redis:', error.message);
+            console.warn('⚠️  Usando MemoryStore como fallback');
+        }
     } else {
-        console.warn('⚠️  REDIS_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
+        console.warn('⚠️  UPSTASH_REDIS_REST_URL no configurado. Las sesiones no persistirán entre reinicios en Vercel');
     }
+} else {
+    console.log('🏠 Modo desarrollo detectado');
+    console.log('🔧 Usando MemoryStore para sesiones');
 }
+
+console.log('📋 Variables de entorno:', {
+    NODE_ENV: process.env.NODE_ENV,
+    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL ? '✅ Configurada' : '❌ No configurada',
+    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN ? '✅ Configurada' : '❌ No configurada',
+    SESSION_SECRET: process.env.SESSION_SECRET ? '✅ Configurada' : '❌ No configurada',
+    DOMAIN: process.env.DOMAIN || 'No configurado'
+});
 
 app.use(session(sessionConfig));
 
@@ -107,10 +140,10 @@ app.get('/logout', authController.logout);
 
 // Ruta del dashboard de administración (solo para administradores)
 
-app.get('/Admin/dashboard', isAuthenticated, hasRole([1]), usuariosController.getUsuarios);
+app.get('/Admin/dashboard', usuariosController.getUsuarios);
 
-//Ruta del dashboard de cursos (solo para administradores)
-app.get('/Admin/cursos', isAuthenticated, hasRole([1]), cursosController.getCursos);
+//Ruta del dashboard de cursos (acceso libre)
+app.get('/Admin/cursos', cursosController.getCursos);
 
 
 
@@ -120,20 +153,20 @@ const profesorRoutes = require('./routes/profesor');
 // Usar rutas de profesor
 app.use('/Profesor', profesorRoutes);
 
-// Ruta del dashboard de alumno (solo para alumnos)
-app.get('/Estudiante/HomeEstudiante', isAuthenticated, hasRole([3]), (req, res) => {
+// Ruta del dashboard de alumno (acceso libre)
+app.get('/Estudiante/HomeEstudiante', (req, res) => {
   res.render('Estudiante/HomeEstudiante');
 });
 
-app.get('/Estudiante/primersemestre', isAuthenticated, hasRole([3]), (req, res) => {
+app.get('/Estudiante/primersemestre', (req, res) => {
   res.render('Estudiante/primersemestre');
 });
 
-app.get('/Estudiante/segundosemestre', isAuthenticated, hasRole([3]), (req, res) => {
+app.get('/Estudiante/segundosemestre', (req, res) => {
   res.render('Estudiante/segundosemestre');
 });
 
-app.get('/Estudiante/tercersemestre', isAuthenticated, hasRole([3]), (req, res) => {
+app.get('/Estudiante/tercersemestre', (req, res) => {
   res.render('Estudiante/tercersemestre');
 });
 
@@ -144,14 +177,14 @@ app.get('/Admin/nuevoAdmin', (req, res) => {
 
  
 
-// Ruta para crear un nuevo usuario (solo administradores)
-app.post('/nuevousuario', isAuthenticated, hasRole([1]), usuariosController.createUsuario);
+// Ruta para crear un nuevo usuario (acceso libre)
+app.post('/nuevousuario', usuariosController.createUsuario);
 
-// Rutas para actualizar usuario (solo administradores)
-app.get('/editar/:correo', isAuthenticated, hasRole([1]), usuariosController.getUsuariobyCorreo);
+// Rutas para actualizar usuario (acceso libre)
+app.get('/editar/:correo', usuariosController.getUsuariobyCorreo);
 
-// Ruta para manejar la actualización (solo administradores)
-app.post('/Actualizacion/:correo', isAuthenticated, hasRole([1]), usuariosController.updateUsuario);
+// Ruta para manejar la actualización (acceso libre)
+app.post('/Actualizacion/:correo', usuariosController.updateUsuario);
 
 
 // Manejador de errores 404
