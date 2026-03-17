@@ -591,6 +591,95 @@ body {
     transform: translateY(-1px);
 }
 
+/* Semester Toggle Styles */
+#fundamentos-toggle,
+#teoria-toggle,
+#diseno-toggle {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+#fundamentos-toggle:hover,
+#teoria-toggle:hover,
+#diseno-toggle:hover {
+    background-color: var(--primary-dark) !important;
+    transform: translateX(3px);
+    box-shadow: 0 2px 8px rgba(74, 96, 192, 0.3);
+}
+
+#fundamentos-toggle::before,
+#teoria-toggle::before,
+#diseno-toggle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Subcategories Styles */
+#fundamentos-subjects,
+#teoria-subjects,
+#diseno-subjects {
+    padding-left: 0 !important;
+    list-style: none !important;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    display: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fundamentos-subjects.show,
+#teoria-subjects.show,
+#diseno-subjects.show {
+    display: block;
+    max-height: 500px;
+    opacity: 1;
+    margin-left: 20px !important;
+}
+
+#fundamentos-subjects .subject-item a,
+#teoria-subjects .subject-item a,
+#diseno-subjects .subject-item a {
+    background-color: var(--white) !important;
+    color: var(--text-dark) !important;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    width: 100%;
+    padding: 12px 20px !important;
+    margin: 0;
+}
+
+#fundamentos-subjects .subject-item a:hover,
+#teoria-subjects .subject-item a:hover,
+#diseno-subjects .subject-item a:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    border-left-color: var(--primary-dark);
+    transform: translateX(5px);
+    box-shadow: 0 2px 6px rgba(74, 96, 192, 0.2);
+}
+
+/* Icon animation */
+#fundamentos-icon,
+#teoria-icon,
+#diseno-icon {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fundamentos-icon.rotated,
+#teoria-icon.rotated,
+#diseno-icon.rotated {
+    transform: rotate(90deg);
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .cores-grid {

@@ -6,7 +6,7 @@
     <title>Tercer Semestre - Universidad Pedagógica</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/stylesheets/tercersemestre.css">
+    <link rel="stylesheet" href="/stylesheets/estudiante/tercersemestre.css">
 </head>
 
 <body>
@@ -50,25 +50,41 @@
                     <h4 class="semester-title">SEMESTRE 1</h4>
                     <ul class="subject-list">
                         <li class="subject-item">
-                            <a href="/Estudiante/primersemestre">
+                            <a href="#" id="fundamentos-toggle" style="cursor: pointer; user-select: none;">
                                 <i class="fas fa-palette"></i>
-                                <span>Fundamentos de Diseño</span>
-                                <i class="fas fa-chevron-right"></i>
+                                <span>1. Fundamentos de Diseño</span>
+                                <i class="fas fa-chevron-right" id="fundamentos-icon" style="transition: transform 0.3s ease;"></i>
                             </a>
-                        </li>
-                        <li class="subject-item">
-                            <a href="/Estudiante/primersemestre">
-                                <i class="fas fa-shapes"></i>
-                                <span>Geometría</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </li>
-                        <li class="subject-item">
-                            <a href="/Estudiante/primersemestre">
-                                <i class="fas fa-pencil-ruler"></i>
-                                <span>Dibujo Técnico</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
+                            <ul class="subject-list" id="fundamentos-subjects">
+                                <li class="subject-item">
+                                    <a href="/Estudiante/gramatica_visual">
+                                        <i class="fas fa-shapes"></i>
+                                        <span>1.1 Gramática Visual y Composición</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/diseno_bidimensional">
+                                        <i class="fas fa-pencil-ruler"></i>
+                                        <span>1.2 Principios de Diseño Bidimensional e Tridimensional</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/principios_diseño">
+                                        <i class="fas fa-shapes"></i>
+                                        <span>1.3 Principios Universales de Diseño</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/naturaleza_objetos">
+                                        <i class="fas fa-pencil-ruler"></i>
+                                        <span>1.4 La Naturaleza de los Objetos</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -76,25 +92,34 @@
                     <h4 class="semester-title">SEMESTRE 2</h4>
                     <ul class="subject-list">
                         <li class="subject-item">
-                            <a href="/Estudiante/segundosemestre">
+                            <a href="#" id="teoria-toggle" style="cursor: pointer; user-select: none;">
                                 <i class="fas fa-brain"></i>
-                                <span>Teoría y Métodos</span>
-                                <i class="fas fa-chevron-right"></i>
+                                <span>2. Teoría y Métodos de Diseño</span>
+                                <i class="fas fa-chevron-right" id="teoria-icon" style="transition: transform 0.3s ease;"></i>
                             </a>
-                        </li>
-                        <li class="subject-item">
-                            <a href="/Estudiante/segundosemestre">
-                                <i class="fas fa-cube"></i>
-                                <span>Diseño Tridimensional</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </li>
-                        <li class="subject-item">
-                            <a href="/Estudiante/segundosemestre">
-                                <i class="fas fa-paint-brush"></i>
-                                <span>Teoría del Color</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
+                            <ul class="subject-list" id="teoria-subjects">
+                                <li class="subject-item">
+                                    <a href="/Estudiante/epistemologia_diseño">
+                                        <i class="fas fa-cube"></i>
+                                        <span>2.1 Epistemología y Evolución del Diseño</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/design_thinking">
+                                        <i class="fas fa-paint-brush"></i>
+                                        <span>2.2 El Pensamiento de Diseño (Design Thinking)</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/historia_impacto">
+                                        <i class="fas fa-book"></i>
+                                        <span>2.3 Historia e Impacto Social</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -102,25 +127,34 @@
                     <h4 class="semester-title">SEMESTRE 3</h4>
                     <ul class="subject-list">
                         <li class="subject-item active">
-                            <a href="/Estudiante/tercersemestre">
+                            <a href="#" id="diseno-toggle" style="cursor: pointer; user-select: none;">
                                 <i class="fas fa-laptop-code"></i>
-                                <span>Diseño y Bionica</span>
-                                <i class="fas fa-chevron-right"></i>
+                                <span>3. Diseño y Bionica</span>
+                                <i class="fas fa-chevron-right" id="diseno-icon" style="transition: transform 0.3s ease;"></i>
                             </a>
-                        </li>
-                        <li class="subject-item">
-                            <a href="/Estudiante/tercersemestre">
-                                <i class="fas fa-camera"></i>
-                                <span>Fotografía</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </li>
-                        <li class="subject-item">
-                            <a href="/Estudiante/tercersemestre">
-                                <i class="fas fa-video"></i>
-                                <span>Producción Audiovisual</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
+                            <ul class="subject-list" id="diseno-subjects">
+                                <li class="subject-item">
+                                    <a href="/Estudiante/fisica_vida">
+                                        <i class="fas fa-atom"></i>
+                                        <span>3.1 La física como escultora de la vida</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/biomecanica">
+                                        <i class="fas fa-dna"></i>
+                                        <span>3.2 Biomecánica y Estructuras</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="subject-item">
+                                    <a href="/Estudiante/objeto_contexto">
+                                        <i class="fas fa-cube"></i>
+                                        <span>3.3 El Objeto y su Contexto</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -293,6 +327,51 @@
         // Toggle sidebar
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+
+        // Toggle Fundamentos de Diseño subjects
+        document.getElementById('fundamentos-toggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const subjects = document.getElementById('fundamentos-subjects');
+            const icon = document.getElementById('fundamentos-icon');
+            
+            if (subjects.classList.contains('show')) {
+                subjects.classList.remove('show');
+                icon.classList.remove('rotated');
+            } else {
+                subjects.classList.add('show');
+                icon.classList.add('rotated');
+            }
+        });
+
+        // Toggle Teoría y Métodos subjects
+        document.getElementById('teoria-toggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const subjects = document.getElementById('teoria-subjects');
+            const icon = document.getElementById('teoria-icon');
+            
+            if (subjects.classList.contains('show')) {
+                subjects.classList.remove('show');
+                icon.classList.remove('rotated');
+            } else {
+                subjects.classList.add('show');
+                icon.classList.add('rotated');
+            }
+        });
+
+        // Toggle Diseño y Bionica subjects
+        document.getElementById('diseno-toggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const subjects = document.getElementById('diseno-subjects');
+            const icon = document.getElementById('diseno-icon');
+            
+            if (subjects.classList.contains('show')) {
+                subjects.classList.remove('show');
+                icon.classList.remove('rotated');
+            } else {
+                subjects.classList.add('show');
+                icon.classList.add('rotated');
+            }
         });
 
         // Search functionality
