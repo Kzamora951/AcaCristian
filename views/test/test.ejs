@@ -50,35 +50,39 @@
                     <h4 class="semester-title">SEMESTRE 1</h4>
                     <ul class="subject-list">
                         <li class="subject-item active">
-                            <a href="#" id="fundamentos-toggle" style="cursor: pointer; user-select: none;">
-                                <i class="fas fa-palette"></i>
-                                <span>1. Fundamentos de Diseño</span>
-                                <i class="fas fa-chevron-right" id="fundamentos-icon" style="transition: transform 0.3s ease;"></i>
-                            </a>
+                            <div class="semester-toggle-container">
+                                <a href="/Estudiante/primersemestre" class="semester-link">
+                                    <i class="fas fa-palette"></i>
+                                    <span>1. Fundamentos de Diseño</span>
+                                </a>
+                                <button class="arrow-toggle" id="fundamentos-toggle">
+                                    <i class="fas fa-chevron-right" id="fundamentos-icon"></i>
+                                </button>
+                            </div>
                             <ul class="subject-list" id="fundamentos-subjects">
                                 <li class="subject-item">
-                                    <a href="/Estudiante/primersemestre">
+                                    <a href="/Estudiante/gramatica_visual">
                                         <i class="fas fa-shapes"></i>
                                         <span>1.1 Gramática Visual y Composición</span>
                                         <i class="fas fa-chevron-right"></i>
                                     </a>
                                 </li>
                                 <li class="subject-item">
-                                    <a href="/Estudiante/primersemestre">
+                                    <a href="/Estudiante/diseno_bidimensional">
                                         <i class="fas fa-pencil-ruler"></i>
                                         <span>1.2 Principios de Diseño Bidimensional e Tridimensional</span>
                                         <i class="fas fa-chevron-right"></i>
                                     </a>
                                 </li>
                                 <li class="subject-item">
-                                    <a href="/Estudiante/primersemestre">
+                                    <a href="/Estudiante/principios_diseño">
                                         <i class="fas fa-shapes"></i>
                                         <span>1.3 Principios Universales de Diseño</span>
                                         <i class="fas fa-chevron-right"></i>
                                     </a>
                                 </li>
                                 <li class="subject-item">
-                                    <a href="/Estudiante/primersemestre">
+                                    <a href="/Estudiante/naturaleza_objetos">
                                         <i class="fas fa-pencil-ruler"></i>
                                         <span>1.4 La Naturaleza de los Objetos</span>
                                         <i class="fas fa-chevron-right"></i>
@@ -92,11 +96,15 @@
                     <h4 class="semester-title">SEMESTRE 2</h4>
                     <ul class="subject-list">
                         <li class="subject-item">
-                            <a href="#" id="teoria-toggle" style="cursor: pointer; user-select: none;">
-                                <i class="fas fa-brain"></i>
-                                <span>2. Teoría y Métodos de Diseño</span>
-                                <i class="fas fa-chevron-right" id="teoria-icon" style="transition: transform 0.3s ease;"></i>
-                            </a>
+                            <div class="semester-toggle-container">
+                                <a href="/Estudiante/segundosemestre" class="semester-link">
+                                    <i class="fas fa-brain"></i>
+                                    <span>2. Teoría y Métodos de Diseño</span>
+                                </a>
+                                <button class="arrow-toggle" id="teoria-toggle">
+                                    <i class="fas fa-chevron-right" id="teoria-icon"></i>
+                                </button>
+                            </div>
                             <ul class="subject-list" id="teoria-subjects">
                                 <li class="subject-item">
                                     <a href="/Estudiante/segundosemestre">
@@ -127,11 +135,15 @@
                     <h4 class="semester-title">SEMESTRE 3</h4>
                     <ul class="subject-list">
                         <li class="subject-item">
-                            <a href="#" id="diseno-toggle" style="cursor: pointer; user-select: none;">
-                                <i class="fas fa-laptop-code"></i>
-                                <span>3. Diseño y Bionica</span>
-                                <i class="fas fa-chevron-right" id="diseno-icon" style="transition: transform 0.3s ease;"></i>
-                            </a>
+                            <div class="semester-toggle-container">
+                                <a href="/Estudiante/tercersemestre" class="semester-link">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <span>3. Diseño y Bionica</span>
+                                </a>
+                                <button class="arrow-toggle" id="diseno-toggle">
+                                    <i class="fas fa-chevron-right" id="diseno-icon"></i>
+                                </button>
+                            </div>
                             <ul class="subject-list" id="diseno-subjects">
                                 <li class="subject-item">
                                     <a href="/Estudiante/tercersemestre">
@@ -178,7 +190,6 @@
 
         // Toggle Fundamentos de Diseño subjects
         document.getElementById('fundamentos-toggle').addEventListener('click', function(e) {
-            e.preventDefault();
             const subjects = document.getElementById('fundamentos-subjects');
             const icon = document.getElementById('fundamentos-icon');
             
@@ -193,7 +204,6 @@
 
         // Toggle Teoría y Métodos subjects
         document.getElementById('teoria-toggle').addEventListener('click', function(e) {
-            e.preventDefault();
             const subjects = document.getElementById('teoria-subjects');
             const icon = document.getElementById('teoria-icon');
             
@@ -208,7 +218,6 @@
 
         // Toggle Diseño y Bionica subjects
         document.getElementById('diseno-toggle').addEventListener('click', function(e) {
-            e.preventDefault();
             const subjects = document.getElementById('diseno-subjects');
             const icon = document.getElementById('diseno-icon');
             
