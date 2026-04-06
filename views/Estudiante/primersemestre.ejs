@@ -184,12 +184,23 @@
             <div class="content-wrapper">
                 <!-- Subject Header -->
                 <header class="subject-header">
-                    <div class="subject-info">
-                        <div class="subject-badge">SEMESTRE 1</div>
-                        <h1 class="subject-title">1. Fundamentos de Diseño</h1>
-                        <p class="subject-description">
-                            Esta asignatura pertenece al ciclo de fundamentación general. No se trata solo de hacer "cosas bonitas", sino de comprender el diseño como un eje estructurante de la enseñanza tecnológica. La asignatura integra perspectivas pedagógicas y proyectuales, preparando al futuro docente para usar el diseño para resolver problemas reales en el aula.
-                        </p>
+                    <div class="subject-content">
+                        <div class="subject-info">
+                            <div class="subject-badge">SEMESTRE 1</div>
+                            <h1 class="subject-title">1. Fundamentos de Diseño</h1>
+                            <p class="subject-description">
+                                Esta asignatura pertenece al ciclo de fundamentación general. No se trata solo de hacer "cosas bonitas", sino de comprender el diseño como un eje estructurante de la enseñanza tecnológica. La asignatura integra perspectivas pedagógicas y proyectuales, preparando al futuro docente para usar el diseño para resolver problemas reales en el aula.
+                            </p>
+                        </div>
+                        <div class="subject-video">
+                            <video id="fundamentosVideo" class="course-video" controls preload="metadata" poster="/images/video-poster.jpg">
+                                <source src="/videos/Fuundamentos.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                            <div class="video-overlay" id="videoOverlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="subject-actions">
                         <button class="action-btn primary">
@@ -363,6 +374,35 @@
                 icon.classList.add('rotated');
             }
         });
+
+        // Video functionality
+        const video = document.getElementById('fundamentosVideo');
+        const videoOverlay = document.getElementById('videoOverlay');
+        
+        if (video && videoOverlay) {
+            // Play video when clicking on overlay
+            videoOverlay.addEventListener('click', function() {
+                video.play();
+                videoOverlay.style.display = 'none';
+            });
+            
+            // Show overlay when video is paused
+            video.addEventListener('pause', function() {
+                if (video.currentTime > 0 && !video.ended) {
+                    videoOverlay.style.display = 'flex';
+                }
+            });
+            
+            // Hide overlay when video is playing
+            video.addEventListener('play', function() {
+                videoOverlay.style.display = 'none';
+            });
+            
+            // Show overlay when video ends
+            video.addEventListener('ended', function() {
+                videoOverlay.style.display = 'flex';
+            });
+        }
 
         // Search functionality
         document.querySelector('.search-input').addEventListener('keypress', function(e) {

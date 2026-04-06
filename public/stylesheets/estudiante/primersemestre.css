@@ -299,9 +299,6 @@ body {
 
 /* Subject Header */
 .subject-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     margin-bottom: 40px;
     padding: 30px;
     background: var(--white);
@@ -309,8 +306,62 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+.subject-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
 .subject-info {
     flex: 1;
+    min-width: 0;
+}
+
+.subject-video {
+    flex: 0 0 500px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.video-overlay:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.video-overlay i {
+    font-size: 4rem;
+    color: var(--white);
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.video-overlay:hover i {
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 .subject-badge {
@@ -783,10 +834,20 @@ body {
 }
 
 @media (max-width: 992px) {
-    .subject-header {
+    .subject-content {
         flex-direction: column;
         gap: 20px;
-        align-items: stretch;
+    }
+    
+    .subject-video {
+        flex: 1;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .course-video {
+        height: 280px;
     }
     
     .subject-actions {
@@ -828,6 +889,14 @@ body {
         font-size: 2rem;
     }
     
+    .course-video {
+        height: 220px;
+    }
+    
+    .video-overlay i {
+        font-size: 3rem;
+    }
+    
     .delivery-card {
         flex-direction: column;
         text-align: center;
@@ -854,6 +923,14 @@ body {
     
     .subject-title {
         font-size: 1.5rem;
+    }
+    
+    .course-video {
+        height: 200px;
+    }
+    
+    .video-overlay i {
+        font-size: 2.5rem;
     }
     
     .core-card {
