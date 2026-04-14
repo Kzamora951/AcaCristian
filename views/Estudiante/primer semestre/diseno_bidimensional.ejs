@@ -193,7 +193,6 @@
                 </a>
             </div>
         </aside>
-
 <main class="main-content">
     <nav class="anchor-nav" id="anchor-nav">
         <a href="#resumen" class="active">Resumen</a>
@@ -325,43 +324,47 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Toggle sidebar
-        document.getElementById('menuToggle').addEventListener('click', function() {
+    /* =========================================================
+       1. LÓGICA DE LA BARRA LATERAL (SIDEBAR Y MENÚS)
+       ========================================================= */
+       
+    // Toggle sidebar principal
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('collapsed');
         });
+    }
 
-        // Mostrar sidebar por defecto en principios_diseno
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebar');
-            const fundamentosSubjects = document.getElementById('fundamentos-subjects');
-            const fundamentosIcon = document.getElementById('fundamentos-icon');
-            
-            // Expandir automáticamente los subtemas de primer semestre
-            if (fundamentosSubjects && fundamentosIcon) {
+    // Mostrar sidebar por defecto y expandir Semestre 1
+    const fundamentosSubjects = document.getElementById('fundamentos-subjects');
+    const fundamentosIcon = document.getElementById('fundamentos-icon');
+    
+    if (fundamentosSubjects && fundamentosIcon) {
+        fundamentosSubjects.classList.add('show');
+        fundamentosIcon.classList.add('rotated');
+    }
+
+    // Toggle Fundamentos de Diseño subjects
+    const fundamentosToggle = document.getElementById('fundamentos-toggle');
+    if (fundamentosToggle) {
+        fundamentosToggle.addEventListener('click', function(e) {
+            if (fundamentosSubjects.classList.contains('show')) {
+                fundamentosSubjects.classList.remove('show');
+                fundamentosIcon.classList.remove('rotated');
+            } else {
                 fundamentosSubjects.classList.add('show');
                 fundamentosIcon.classList.add('rotated');
             }
         });
+    }
 
-        // Toggle Fundamentos de Diseño subjects
-        document.getElementById('fundamentos-toggle').addEventListener('click', function(e) {
-            const subjects = document.getElementById('fundamentos-subjects');
-            const icon = document.getElementById('fundamentos-icon');
-            
-            if (subjects.classList.contains('show')) {
-                subjects.classList.remove('show');
-                icon.classList.remove('rotated');
-            } else {
-                subjects.classList.add('show');
-                icon.classList.add('rotated');
-            }
-        });
-
-        // Toggle Teoría y Métodos subjects
-        document.getElementById('teoria-toggle').addEventListener('click', function(e) {
+    // Toggle Teoría y Métodos subjects
+    const teoriaToggle = document.getElementById('teoria-toggle');
+    if (teoriaToggle) {
+        teoriaToggle.addEventListener('click', function(e) {
             const subjects = document.getElementById('teoria-subjects');
             const icon = document.getElementById('teoria-icon');
-            
             if (subjects.classList.contains('show')) {
                 subjects.classList.remove('show');
                 icon.classList.remove('rotated');
@@ -370,12 +373,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.add('rotated');
             }
         });
+    }
 
-        // Toggle Diseño y Biónica subjects
-        document.getElementById('diseno-toggle').addEventListener('click', function(e) {
+    // Toggle Diseño y Biónica subjects
+    const disenoToggle = document.getElementById('diseno-toggle');
+    if (disenoToggle) {
+        disenoToggle.addEventListener('click', function(e) {
             const subjects = document.getElementById('diseno-subjects');
             const icon = document.getElementById('diseno-icon');
-            
             if (subjects.classList.contains('show')) {
                 subjects.classList.remove('show');
                 icon.classList.remove('rotated');
@@ -384,13 +389,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.add('rotated');
             }
         });
+    }
 
-        // Search functionality
-        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+    // Funcionalidad de Búsqueda
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const searchTerm = e.target.value;
                 console.log('Buscando:', searchTerm);
-                // Implementar lógica de búsqueda
+                // Aquí va la lógica de búsqueda
             }
         });
     }
@@ -453,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sectionsObj.forEach(s => observerObj.observe(s));
     }
 
-);
+});
 </script>
 </body>
 </html>
