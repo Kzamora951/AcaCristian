@@ -321,75 +321,64 @@
     </div>
 </main>
 
-    <script>
-        // Toggle sidebar
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
-        });
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ── 1. Generador de Fichas (Flip cards) del Glosario ──
+    const glossary = [
+        { label: 'Equilibrio',  icon: '⚖️' },
+        { label: 'Tensión',     icon: '↔'  },
+        { label: 'Contraste',   icon: '◑'  },
+        { label: 'Armonía',     icon: '◎'  },
+        { label: 'Proporción',  icon: '📐' },
+        { label: 'Ritmo',       icon: '≋'  },
+    ];
 
-        // Mostrar sidebar por defecto en diseno_bidimensional
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebar');
-            const fundamentosSubjects = document.getElementById('fundamentos-subjects');
-            const fundamentosIcon = document.getElementById('fundamentos-icon');
-            
-            // Expandir automáticamente los subtemas de primer semestre
-            if (fundamentosSubjects && fundamentosIcon) {
-                fundamentosSubjects.classList.add('show');
-                fundamentosIcon.classList.add('rotated');
-            }
+    const grid = document.getElementById('cards-grid');
+    
+    // Verificamos que el contenedor exista antes de inyectar el HTML
+    if (grid) {
+        glossary.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'flip-card';
+            card.innerHTML = `
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="flip-icon-wrap">${item.icon}</div>
+                        <div class="flip-label">${item.label}</div>
+                        <div class="flip-hint">▸ clic para video</div>
+                    </div>
+                    <div class="flip-back">
+                        <div class="flip-back-play"><div class="back-play-icon"></div></div>
+                        <div class="flip-back-label">${item.label}</div>
+                    </div>
+                </div>`;
+            card.addEventListener('click', () => card.classList.toggle('flipped'));
+            grid.appendChild(card);
         });
+    }
 
-        // Toggle Fundamentos de Diseño subjects
-        document.getElementById('fundamentos-toggle').addEventListener('click', function(e) {
-            const subjects = document.getElementById('fundamentos-subjects');
-            const icon = document.getElementById('fundamentos-icon');
-            
-            if (subjects.classList.contains('show')) {
-                subjects.classList.remove('show');
-                icon.classList.remove('rotated');
-            } else {
-                subjects.classList.add('show');
-                icon.classList.add('rotated');
-            }
-        });
+    // ── 2. Resaltar enlace activo en el menú de anclaje interno (Opcional) ──
+    const anchorNav = document.getElementById('anchor-nav');
+    if (anchorNav) {
+        const sectionsObj = document.querySelectorAll('.section-block');
+        const navLinksObj = document.querySelectorAll('.anchor-nav a');
+        const navHeight = anchorNav.offsetTop + anchorNav.offsetHeight;
+        
+        const observerObj = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinksObj.forEach(link => link.classList.remove('active'));
+                    const active = document.querySelector(`.anchor-nav a[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: `-${navHeight + 20}px 0px -60% 0px` });
 
-        // Toggle Teoría y Métodos subjects
-        document.getElementById('teoria-toggle').addEventListener('click', function(e) {
-            const subjects = document.getElementById('teoria-subjects');
-            const icon = document.getElementById('teoria-icon');
-            
-            if (subjects.classList.contains('show')) {
-                subjects.classList.remove('show');
-                icon.classList.remove('rotated');
-            } else {
-                subjects.classList.add('show');
-                icon.classList.add('rotated');
-            }
-        });
+        sectionsObj.forEach(s => observerObj.observe(s));
+    }
 
-        // Toggle Diseño y Biónica subjects
-        document.getElementById('diseno-toggle').addEventListener('click', function(e) {
-            const subjects = document.getElementById('diseno-subjects');
-            const icon = document.getElementById('diseno-icon');
-            
-            if (subjects.classList.contains('show')) {
-                subjects.classList.remove('show');
-                icon.classList.remove('rotated');
-            } else {
-                subjects.classList.add('show');
-                icon.classList.add('rotated');
-            }
-        });
-
-        // Search functionality
-        document.querySelector('.search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = e.target.value;
-                console.log('Buscando:', searchTerm);
-                // Implementar lógica de búsqueda
-            }
-        });
-    </script>
+});
+</script>
 </body>
 </html>
