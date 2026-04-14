@@ -24,10 +24,18 @@
    MAIN CONTENT WRAPPER
 ══════════════════════════════════════════ */
 .main-content {
-  padding: 32px 28px 80px;
   background: var(--bg);
   min-height: calc(100vh - 80px);
   font-family: 'DM Sans', sans-serif;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 30px 100px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
 /* ══════════════════════════════════════════
