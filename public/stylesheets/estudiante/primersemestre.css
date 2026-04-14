@@ -445,6 +445,25 @@ body {
     border-radius: 2px;
 }
 
+/* Core Card Links */
+.core-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.core-card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.core-card-link:hover .core-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
 /* Thematic Cores */
 .thematic-cores {
     margin-bottom: 40px;
