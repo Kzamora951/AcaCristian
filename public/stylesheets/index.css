@@ -96,6 +96,58 @@ nav ul {
       max-width: 600px;
     }
 
+    /* ====== Two Column Layout ====== */
+    .two-column-section {
+      display: flex;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      align-items: flex-start;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .column h2 {
+      color: #004080;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .text-column p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #333;
+      text-align: left;
+    }
+
+    .video-container {
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .two-column-section {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .text-column p {
+        text-align: center;
+      }
+    }
+
     /* ====== Secciones ====== */
     section {
       padding: 60px 20px;

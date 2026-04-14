@@ -170,6 +170,56 @@ app.get('/Estudiante/tercersemestre', (req, res) => {
   res.render('Estudiante/tercersemestre');
 });
 
+app.get('/Estudiante/test', (req, res) => {
+  res.render('test/test');
+});
+
+//Subtemas de cada semestre 
+
+// Rutas para subtemas del Semestre 1
+app.get('/Estudiante/gramatica_visual', (req, res) => {
+  res.render('Estudiante/subtemas/gramatica_visual');
+});
+
+app.get('/Estudiante/diseno_bidimensional', (req, res) => {
+  res.render('Estudiante/subtemas/diseno_bidimensional');
+});
+
+app.get('/Estudiante/principios_diseño', (req, res) => {
+  res.render('Estudiante/subtemas/principios_diseño');
+});
+
+app.get('/Estudiante/naturaleza_objetos', (req, res) => {
+  res.render('Estudiante/subtemas/naturaleza_objetos');
+});
+
+// Rutas para subtemas del Semestre 2
+app.get('/Estudiante/epistemologia_diseño', (req, res) => {
+  res.render('Estudiante/subtemas/epistemologia_diseño');
+});
+
+app.get('/Estudiante/design_thinking', (req, res) => {
+  res.render('Estudiante/subtemas/design_thinking');
+});
+
+app.get('/Estudiante/historia_impacto', (req, res) => {
+  res.render('Estudiante/subtemas/historia_impacto');
+});
+
+// Rutas para subtemas del Semestre 3
+app.get('/Estudiante/fisica_vida', (req, res) => {
+  res.render('Estudiante/subtemas/fisica_vida');
+});
+
+app.get('/Estudiante/biomecanica', (req, res) => {
+  res.render('Estudiante/subtemas/biomecanica');
+});
+
+app.get('/Estudiante/objeto_contexto', (req, res) => {
+  res.render('Estudiante/subtemas/objeto_contexto');
+}); 
+
+
 // Ruta del dashboard de nuevo admin
 app.get('/Admin/nuevoAdmin', (req, res) => {
   res.render('Admin/nuevoAdmin');
