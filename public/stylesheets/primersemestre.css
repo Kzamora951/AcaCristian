@@ -585,11 +585,15 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+<style>
+    :root {
+        --primary-blue: #4a59bd;
+        --bg-gray: #f8faff;
+        --text-dark: #2c3e50;
+        --text-muted: #667085;
+        --card-bg: #ffffff;
+    }
 
-.delivery-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-}
 
 /* Responsive Design */
 @media (max-width: 1200px) {
