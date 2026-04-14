@@ -25,443 +25,508 @@
 </head>
 
 <body>
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <div class="nav-container">
-            <div class="nav-left">
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="nav-brand">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>UPN</span>
-                </div>
-            </div>
-            <div class="nav-center">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Buscar en el repositorio (ej: 'Biomímesis', 'Deductivo')..." class="search-input">
-                </div>
-            </div>
-            <div class="nav-right">
-                <div class="user-info">
-                    <span class="user-name">Bienvenido Estudiante</span>
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-            </div>
+    <!-- ══════════════════════ TOP NAV ══════════════════════ -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-left">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-brand">
+          <i class="fas fa-graduation-cap"></i>
+          <span>UPN</span>
         </div>
-    </nav>
-
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h3>LÍNEA DE DISEÑO</h3>
-            </div>
-            <nav class="semester-nav">
-                <div class="semester-group">
-                    <h4 class="semester-title">SEMESTRE 1</h4>
-                    <ul class="subject-list">
-                        <li class="subject-item">
-                            <div class="semester-toggle-container">
-                                <a href="/Estudiante/primersemestre" class="semester-link">
-                                    <i class="fas fa-palette"></i>
-                                    <span>1. Fundamentos de Diseño</span>
-                                </a>
-                                <button class="arrow-toggle" id="fundamentos-toggle">
-                                    <i class="fas fa-chevron-right" id="fundamentos-icon"></i>
-                                </button>
-                            </div>
-                            <ul class="subject-list" id="fundamentos-subjects">
-                                <li class="subject-item">
-                                    <a href="/Estudiante/gramatica_visual">
-                                        <i class="fas fa-shapes"></i>
-                                        <span>1.1 Gramática Visual y Composición</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item active">
-                                    <a href="/Estudiante/diseno_bidimensional">
-                                        <i class="fas fa-pencil-ruler"></i>
-                                        <span>1.2 Principios de Diseño Bidimensional y Tridimensional</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item">
-                                    <a href="/Estudiante/principios_diseno">
-                                        <i class="fas fa-shapes"></i>
-                                        <span>1.3 Principios Universales de Diseño</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item">
-                                    <a href="/Estudiante/naturaleza_objetos">
-                                        <i class="fas fa-pencil-ruler"></i>
-                                        <span>1.4 La Naturaleza de los Objetos</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="semester-group">
-                    <h4 class="semester-title">SEMESTRE 2</h4>
-                    <ul class="subject-list">
-                        <li class="subject-item">
-                            <div class="semester-toggle-container">
-                                <a href="/Estudiante/segundosemestre" class="semester-link">
-                                    <i class="fas fa-brain"></i>
-                                    <span>2. Teoría y Métodos de Diseño</span>
-                                </a>
-                                <button class="arrow-toggle" id="teoria-toggle">
-                                    <i class="fas fa-chevron-right" id="teoria-icon"></i>
-                                </button>
-                            </div>
-                            <ul class="subject-list" id="teoria-subjects">
-                                <li class="subject-item">
-                                    <a href="/Estudiante/segundosemestre">
-                                        <i class="fas fa-cube"></i>
-                                        <span>2.1 Epistemología y Evolución del Diseño</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item">
-                                    <a href="/Estudiante/segundosemestre">
-                                        <i class="fas fa-paint-brush"></i>
-                                        <span>2.2 El Pensamiento de Diseño (Design Thinking)</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item">
-                                    <a href="/Estudiante/segundosemestre">
-                                        <i class="fas fa-book"></i>
-                                        <span>2.3 Historia e Impacto Social</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="semester-group">
-                    <h4 class="semester-title">SEMESTRE 3</h4>
-                    <ul class="subject-list">
-                        <li class="subject-item">
-                            <div class="semester-toggle-container">
-                                <a href="/Estudiante/tercersemestre" class="semester-link">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <span>3. Diseño y Biónica</span>
-                                </a>
-                                <button class="arrow-toggle" id="diseno-toggle">
-                                    <i class="fas fa-chevron-right" id="diseno-icon"></i>
-                                </button>
-                            </div>
-                            <ul class="subject-list" id="diseno-subjects">
-                                <li class="subject-item">
-                                    <a href="/Estudiante/tercersemestre">
-                                        <i class="fas fa-atom"></i>
-                                        <span>3.1 La física como escultora de la vida</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item">
-                                    <a href="/Estudiante/tercersemestre">
-                                        <i class="fas fa-dna"></i>
-                                        <span>3.2 Biomecánica y Estructuras</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                                <li class="subject-item">
-                                    <a href="/Estudiante/tercersemestre">
-                                        <i class="fas fa-cube"></i>
-                                        <span>3.3 El Objeto y su Contexto</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="sidebar-footer">
-                <a href="/Estudiante/HomeEstudiante" class="back-btn">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Volver al Inicio</span>
-                </a>
-            </div>
-        </aside>
-<main class="main-content">
-    <nav class="anchor-nav" id="anchor-nav">
-        <a href="#resumen" class="active">Resumen</a>
-        <a href="#glosario">Glosario</a>
-        <a href="#practica">Aplicación práctica</a>
-        <a href="#docente">Conexión docente</a>
-    </nav>
-
-    <div class="page-wrapper">
-        <section class="section-block" id="resumen">
-            <div class="section-heading">
-                <div class="section-acento"></div>
-                <span class="section-label">Resumen del tema</span>
-            </div>
-
-            <div class="card">
-                <div class="hero-card">
-                    <div>
-                        <p class="hero-eyebrow">Fundamentos de Diseño · La Sintaxis de la Imagen</p>
-                        <h1 class="hero-title">¿Qué es la<br>Alfabetidad Visual?</h1>
-                        <p class="hero-desc">
-                            Así como aprendemos a leer y escribir palabras mediante la gramática, el diseño requiere
-                            aprender a "leer" y "escribir" imágenes y objetos. Donis A. Dondis plantea que la
-                            comunicación visual no es un talento mágico, sino un lenguaje con reglas claras: una sintaxis.
-                            Para el diseñador tecnológico, dominar este "alfabeto" significa tener control total sobre lo
-                            que un objeto transmite al usuario, mucho antes de que interactúe físicamente con él.
-                        </p>
-                        <div class="hero-actions">
-                            <button class="btn-primary">&#9654; Ver introducción</button>
-                            <a class="btn-link" href="#">📄 Descargar PDF (Extracto Editorial GG)</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="video-box">
-                            <div class="play-btn"><div class="play-icon"></div></div>
-                        </div>
-                        <p class="video-caption">Introducción al tema · 1:46</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="two-col">
-                <div class="sub-card">
-                    <div class="sub-card-header">
-                        <div class="step-badge">1</div>
-                        <h3>Elementos de composición</h3>
-                    </div>
-                    <p>Punto, línea, contorno, tono, color, textura, dimensión, escala y movimiento. Los ingredientes fundamentales con los que se construye cualquier mensaje visual.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
-                </div>
-                <div class="sub-card">
-                    <div class="sub-card-header">
-                        <div class="step-badge">2</div>
-                        <h3>Sintaxis visual en proyectos</h3>
-                    </div>
-                    <p>Cómo aplicar la sintaxis visual en el diseño de herramientas pedagógicas: el contraste para resaltar piezas de agarre, la proporción respecto a la escala del usuario.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-block" id="glosario">
-            <div class="section-heading">
-                <div class="section-acento"></div>
-                <span class="section-label">Glosario · El alfabeto visual</span>
-                <span class="section-hint">Haz clic en cada ficha para ver el video explicativo</span>
-            </div>
-            <div class="card">
-                <div class="cards-grid" id="cards-grid"></div>
-            </div>
-        </section>
-
-        <section class="section-block" id="practica">
-            <div class="section-heading">
-                <div class="section-acento"></div>
-                <span class="section-label">Aplicación práctica en el taller de diseño</span>
-            </div>
-            <div class="card">
-                <h2>¿Cómo se usa esto en los proyectos?</h2>
-                <p>
-                    Premisa: entender por qué un diseño funciona visualmente antes de ser funcionalmente útil.
-                    Antes de que un estudiante resuelva un problema mecánico o tecnológico complejo, el artefacto
-                    debe comunicar su función a través de su forma.
-                </p>
-                <div class="highlight-box">
-                    <p>
-                        Si diseñas una herramienta pedagógica (un juguete de ensamble) y no usas el <strong>contraste</strong>
-                        para resaltar las piezas de agarre, el niño no sabrá dónde poner las manos. Si el objeto no
-                        tiene <strong>proporción</strong> respecto a las manos del usuario, fracasará.
-                    </p>
-                </div>
-            </div>
-            <div class="two-col">
-                <div class="sub-card">
-                    <div class="sub-card-header">
-                        <div class="step-badge">▶</div>
-                        <h3>Demostración: contraste</h3>
-                    </div>
-                    <p>Análisis de un objeto real donde el contraste guía al usuario hacia los puntos de interacción correctos.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
-                </div>
-                <div class="sub-card">
-                    <div class="sub-card-header">
-                        <div class="step-badge">▶</div>
-                        <h3>Demostración: proporción</h3>
-                    </div>
-                    <p>Análisis de escala y relación con el cuerpo humano en prototipos físicos del taller.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-block" id="docente">
-            <div class="section-heading">
-                <div class="section-acento"></div>
-                <span class="section-label">Conexión con la práctica docente · Perfil LDT</span>
-            </div>
-            <div class="card">
-                <h2>Enseñar Alfabetidad Visual en el aula</h2>
-                <p>
-                    Como futuros docentes de tecnología, enseñar Alfabetidad Visual en los colegios es vital.
-                    Permite a los niños y jóvenes dejar de ser consumidores pasivos de imágenes y convertirse en lectores críticos.
-                </p>
-            </div>
-        </section>
+      </div>
+      <div class="nav-center">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Buscar en el repositorio (ej: 'Módulos', 'Gradación', 'Volumen')..." class="search-input">
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="user-info">
+          <span class="user-name">Bienvenido Estudiante</span>
+          <div class="user-avatar"><i class="fas fa-user"></i></div>
+        </div>
+      </div>
     </div>
-</main>
+  </nav>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    
-    /* =========================================================
-       1. LÓGICA DE LA BARRA LATERAL (SIDEBAR Y MENÚS)
-       ========================================================= */
-       
-    // Toggle sidebar principal
-    const menuToggle = document.getElementById('menuToggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
-        });
-    }
+  <div class="main-container">
 
-    // Mostrar sidebar por defecto y expandir Semestre 1
-    const fundamentosSubjects = document.getElementById('fundamentos-subjects');
-    const fundamentosIcon = document.getElementById('fundamentos-icon');
-    
-    if (fundamentosSubjects && fundamentosIcon) {
-        fundamentosSubjects.classList.add('show');
-        fundamentosIcon.classList.add('rotated');
-    }
+    <!-- ══════════════════════ SIDEBAR ══════════════════════ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3>LÍNEA DE DISEÑO</h3>
+      </div>
+      <nav class="semester-nav">
 
-    // Toggle Fundamentos de Diseño subjects
-    const fundamentosToggle = document.getElementById('fundamentos-toggle');
-    if (fundamentosToggle) {
-        fundamentosToggle.addEventListener('click', function(e) {
-            if (fundamentosSubjects.classList.contains('show')) {
-                fundamentosSubjects.classList.remove('show');
-                fundamentosIcon.classList.remove('rotated');
-            } else {
-                fundamentosSubjects.classList.add('show');
-                fundamentosIcon.classList.add('rotated');
-            }
-        });
-    }
+        <!-- Semestre 1 -->
+        <div class="semester-group">
+          <h4 class="semester-title">SEMESTRE 1</h4>
+          <ul class="subject-list">
+            <li class="subject-item">
+              <div class="semester-toggle-container">
+                <a href="/Estudiante/primersemestre" class="semester-link">
+                  <i class="fas fa-palette"></i>
+                  <span>1. Fundamentos de Diseño</span>
+                </a>
+                <button class="arrow-toggle" id="fundamentos-toggle">
+                  <i class="fas fa-chevron-right" id="fundamentos-icon"></i>
+                </button>
+              </div>
+              <ul class="subject-list" id="fundamentos-subjects">
+                <li class="subject-item">
+                  <a href="/Estudiante/gramatica_visual">
+                    <i class="fas fa-shapes"></i>
+                    <span>1.1 Gramática Visual y Composición</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item active">
+                  <a href="/Estudiante/diseno_bidimensional">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <span>1.2 Principios de Diseño Bidimensional y Tridimensional</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item">
+                  <a href="/Estudiante/principios_diseno">
+                    <i class="fas fa-shapes"></i>
+                    <span>1.3 Principios Universales de Diseño</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item">
+                  <a href="/Estudiante/naturaleza_objetos">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <span>1.4 La Naturaleza de los Objetos</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-    // Toggle Teoría y Métodos subjects
-    const teoriaToggle = document.getElementById('teoria-toggle');
-    if (teoriaToggle) {
-        teoriaToggle.addEventListener('click', function(e) {
-            const subjects = document.getElementById('teoria-subjects');
-            const icon = document.getElementById('teoria-icon');
-            if (subjects.classList.contains('show')) {
-                subjects.classList.remove('show');
-                icon.classList.remove('rotated');
-            } else {
-                subjects.classList.add('show');
-                icon.classList.add('rotated');
-            }
-        });
-    }
+        <!-- Semestre 2 -->
+        <div class="semester-group">
+          <h4 class="semester-title">SEMESTRE 2</h4>
+          <ul class="subject-list">
+            <li class="subject-item">
+              <div class="semester-toggle-container">
+                <a href="/Estudiante/segundosemestre" class="semester-link">
+                  <i class="fas fa-brain"></i>
+                  <span>2. Teoría y Métodos de Diseño</span>
+                </a>
+                <button class="arrow-toggle" id="teoria-toggle">
+                  <i class="fas fa-chevron-right" id="teoria-icon"></i>
+                </button>
+              </div>
+              <ul class="subject-list" id="teoria-subjects">
+                <li class="subject-item">
+                  <a href="/Estudiante/segundosemestre">
+                    <i class="fas fa-cube"></i>
+                    <span>2.1 Epistemología y Evolución del Diseño</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item">
+                  <a href="/Estudiante/segundosemestre">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>2.2 El Pensamiento de Diseño (Design Thinking)</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item">
+                  <a href="/Estudiante/segundosemestre">
+                    <i class="fas fa-book"></i>
+                    <span>2.3 Historia e Impacto Social</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-    // Toggle Diseño y Biónica subjects
-    const disenoToggle = document.getElementById('diseno-toggle');
-    if (disenoToggle) {
-        disenoToggle.addEventListener('click', function(e) {
-            const subjects = document.getElementById('diseno-subjects');
-            const icon = document.getElementById('diseno-icon');
-            if (subjects.classList.contains('show')) {
-                subjects.classList.remove('show');
-                icon.classList.remove('rotated');
-            } else {
-                subjects.classList.add('show');
-                icon.classList.add('rotated');
-            }
-        });
-    }
+        <!-- Semestre 3 -->
+        <div class="semester-group">
+          <h4 class="semester-title">SEMESTRE 3</h4>
+          <ul class="subject-list">
+            <li class="subject-item">
+              <div class="semester-toggle-container">
+                <a href="/Estudiante/tercersemestre" class="semester-link">
+                  <i class="fas fa-laptop-code"></i>
+                  <span>3. Diseño y Biónica</span>
+                </a>
+                <button class="arrow-toggle" id="diseno-toggle">
+                  <i class="fas fa-chevron-right" id="diseno-icon"></i>
+                </button>
+              </div>
+              <ul class="subject-list" id="diseno-subjects">
+                <li class="subject-item">
+                  <a href="/Estudiante/tercersemestre">
+                    <i class="fas fa-atom"></i>
+                    <span>3.1 La física como escultora de la vida</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item">
+                  <a href="/Estudiante/tercersemestre">
+                    <i class="fas fa-dna"></i>
+                    <span>3.2 Biomecánica y Estructuras</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+                <li class="subject-item">
+                  <a href="/Estudiante/tercersemestre">
+                    <i class="fas fa-cube"></i>
+                    <span>3.3 El Objeto y su Contexto</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-    // Funcionalidad de Búsqueda
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = e.target.value;
-                console.log('Buscando:', searchTerm);
-                // Aquí va la lógica de búsqueda
-            }
-        });
-    }
+      </nav>
+      <div class="sidebar-footer">
+        <a href="/Estudiante/HomeEstudiante" class="back-btn">
+          <i class="fas fa-arrow-left"></i>
+          <span>Volver al Inicio</span>
+        </a>
+      </div>
+    </aside>
 
-    /* =========================================================
-       2. LÓGICA DEL CONTENIDO (FICHAS DEL GLOSARIO)
-       ========================================================= */
-       
-    const glossary = [
-        { label: 'Equilibrio',  icon: '⚖️' },
-        { label: 'Tensión',     icon: '↔'  },
-        { label: 'Contraste',   icon: '◑'  },
-        { label: 'Armonía',     icon: '◎'  },
-        { label: 'Proporción',  icon: '📐' },
-        { label: 'Ritmo',       icon: '≋'  },
+    <!-- ══════════════════════ MAIN CONTENT ══════════════════════ -->
+    <main class="main-content">
+
+      <!-- Navegación de anclaje -->
+      <nav class="anchor-nav" id="anchor-nav">
+        <a href="#resumen"   class="active">Resumen</a>
+        <a href="#conceptos">Conceptos clave</a>
+        <a href="#practica" >Aplicación práctica</a>
+        <a href="#docente"  >Conexión docente</a>
+      </nav>
+
+      <!-- ─────────────────────────────────────────
+           SECCIÓN 1 · RESUMEN
+      ───────────────────────────────────────── -->
+      <section class="section-block" id="resumen">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Resumen del tema</span>
+        </div>
+
+        <!-- Hero card -->
+        <div class="upn-card">
+          <div class="hero-grid">
+            <div>
+              <p class="hero-eyebrow">Fundamentos de Diseño · Wucius Wong — Fundamentos del Diseño</p>
+              <h1 class="hero-title">La Evolución<br>de la Forma</h1>
+              <p class="hero-desc">
+                Wucius Wong establece un sistema lógico para entender el diseño desde su unidad mínima
+                hasta la complejidad del espacio. El concepto central es la <em>conceptualización de
+                la forma</em>: cómo elementos invisibles (puntos y líneas) se vuelven tangibles al
+                convertirse en planos y, finalmente, en volúmenes tridimensionales. Para el diseñador
+                tecnológico, Wong es la guía para dejar de diseñar "cosas aisladas" y empezar a
+                diseñar sistemas estructurados y familias de objetos.
+              </p>
+              <div class="hero-actions">
+                <a href="#" class="btn-upn"><i class="fas fa-play"></i> Ver introducción</a>
+                <a href="#" class="btn-link-upn"><i class="fas fa-book-open"></i> Leer en Scribd</a>
+              </div>
+            </div>
+            <div>
+              <div class="video-box">
+                <div class="play-btn"><div class="play-icon"></div></div>
+              </div>
+              <p class="video-caption">Introducción al tema · Wong y la forma</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagrama Del Punto al Volumen -->
+        <div class="upn-card">
+          <div class="section-heading" style="margin-bottom: 20px;">
+            <div class="section-acento"></div>
+            <span class="section-label">Del punto al volumen</span>
+          </div>
+          <div class="dimension-flow">
+            <div class="dim-step">
+              <div class="dim-shape"><div class="dim-dot"></div></div>
+              <div class="dim-label">Punto</div>
+              <div class="dim-sub">Indica posición. Sin dimensión real.</div>
+            </div>
+            <div class="dim-arrow">→</div>
+            <div class="dim-step">
+              <div class="dim-shape"><div class="dim-line"></div></div>
+              <div class="dim-label">Línea</div>
+              <div class="dim-sub">Rastro del punto en movimiento. Da dirección.</div>
+            </div>
+            <div class="dim-arrow">→</div>
+            <div class="dim-step">
+              <div class="dim-shape"><div class="dim-plane"></div></div>
+              <div class="dim-label">Plano</div>
+              <div class="dim-sub">Recorrido de la línea. Define límites.</div>
+            </div>
+            <div class="dim-arrow">→</div>
+            <div class="dim-step">
+              <div class="dim-shape"><div class="dim-cube"></div></div>
+              <div class="dim-label">Volumen</div>
+              <div class="dim-sub">Recorrido del plano. Ocupa espacio.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-tarjetas -->
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">1</div>
+              <h3>Módulos y Supermódulos</h3>
+            </div>
+            <p>Unidades pequeñas (módulos) que al agruparse crean estructuras más complejas. La base del diseño sistémico y los objetos escalables o desarmables.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">2</div>
+              <h3>Repetición y Gradación</h3>
+            </div>
+            <p>La repetición genera orden. La gradación —cambio gradual de tamaño o forma— crea dinamismo e ilusión de profundidad en el objeto diseñado.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ─────────────────────────────────────────
+           SECCIÓN 2 · CONCEPTOS CLAVE
+      ───────────────────────────────────────── -->
+      <section class="section-block" id="conceptos">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Conceptos clave · Elementos de relación y composición</span>
+          <span class="section-hint">Haz clic en cada ficha para ver el video explicativo</span>
+        </div>
+
+        <!-- Flip cards -->
+        <div class="upn-card">
+          <div class="cards-grid" id="cards-grid"></div>
+        </div>
+
+        <!-- Videos 2D y 3D -->
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">2D</div>
+              <h3>Diseño Bidimensional</h3>
+            </div>
+            <p>Exploración de planos, superficies y composición en el espacio gráfico. Fundamento para la comunicación visual y el diseño gráfico aplicado.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">3D</div>
+              <h3>Diseño Tridimensional</h3>
+            </div>
+            <p>Construcción de volúmenes y estructuras espaciales. Base conceptual para el modelado CAD con AutoCad y SolidWorks en los talleres de la Licenciatura.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ─────────────────────────────────────────
+           SECCIÓN 3 · APLICACIÓN PRÁCTICA
+      ───────────────────────────────────────── -->
+      <section class="section-block" id="practica">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Aplicación práctica · Maquetas y estructuras espaciales</span>
+        </div>
+
+        <div class="upn-card">
+          <h2>¿Cómo se aplica en la Licenciatura?</h2>
+          <p>
+            Premisa: creación de maquetas conceptuales y estructuras espaciales a partir de formas
+            básicas. En los ejercicios de taller —especialmente en el "Cubo de Diseño" o estructuras
+            modulares— el estudiante debe demostrar que puede controlar el espacio.
+          </p>
+          <div class="highlight-upn">
+            <p>
+              Al sustentar una maqueta ante el docente Ricardo, el estudiante no dice
+              <em>"puse esto aquí porque se ve bien"</em>, sino:
+              <strong>"Apliqué una anomalía en la estructura para señalar el punto de
+              interacción del usuario."</strong>
+            </p>
+          </div>
+          <p>
+            Los principios de Wong son también el <strong>algoritmo mental</strong> detrás del
+            modelado CAD: entender cómo un plano se convierte en volumen es la base para usar
+            software como AutoCad o SolidWorks. Aplicar el concepto de módulos permite diseñar
+            objetos <strong>escalables o desarmables</strong> (diseño sistémico).
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-play" style="font-size:9px"></i></div>
+              <h3>Cubo de Diseño: ejercicio modular</h3>
+            </div>
+            <p>Demostración del ejercicio clásico de taller aplicando los principios de módulo y supermódulo en una estructura física.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-play" style="font-size:9px"></i></div>
+              <h3>De Wong al modelo CAD</h3>
+            </div>
+            <p>Cómo los conceptos de Wong se traducen directamente al modelado 3D en software técnico como AutoCad y SolidWorks.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ─────────────────────────────────────────
+           SECCIÓN 4 · CONEXIÓN DOCENTE
+      ───────────────────────────────────────── -->
+      <section class="section-block" id="docente">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Conexión con la práctica docente · Perfil LDT</span>
+        </div>
+
+        <div class="upn-card">
+          <h2>Wong como herramienta pedagógica</h2>
+          <p>
+            Wucius Wong es una herramienta pedagógica poderosa para la enseñanza de la tecnología
+            en bachillerato. Permite a los docentes explicar temas de geometría descriptiva, dibujo
+            técnico y estructuras de forma creativa, pasando de la abstracción matemática a la
+            construcción de objetos reales que los estudiantes pueden tocar y ensamblar.
+          </p>
+          <p>
+            El Licenciado en Diseño Tecnológico puede usar los principios de Wong para conectar
+            la geometría descriptiva del currículo con la fabricación de objetos reales en el aula
+            taller, haciendo tangible lo que los estudiantes aprenden en matemáticas y física.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-play" style="font-size:9px"></i></div>
+              <h3>Geometría descriptiva con módulos</h3>
+            </div>
+            <p>Cómo usar los ejercicios modulares de Wong para enseñar geometría de forma práctica y visual en el aula de tecnología.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-play" style="font-size:9px"></i></div>
+              <h3>Diseño sistémico en el aula</h3>
+            </div>
+            <p>Actividades de taller para que los estudiantes de bachillerato diseñen y construyan objetos desarmables con principios de Wong.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div><!-- /main-container -->
+
+  <script>
+    // ── Sidebar toggle ───────────────────────────────────────
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    // ── Expandir semestre 1 automáticamente ─────────────────
+    document.addEventListener('DOMContentLoaded', function () {
+      var subjects = document.getElementById('fundamentos-subjects');
+      var icon     = document.getElementById('fundamentos-icon');
+      if (subjects && icon) {
+        subjects.classList.add('show');
+        icon.classList.add('rotated');
+      }
+    });
+
+    // ── Toggle accordions del sidebar ───────────────────────
+    ['fundamentos', 'teoria', 'diseno'].forEach(function (key) {
+      document.getElementById(key + '-toggle').addEventListener('click', function () {
+        var list = document.getElementById(key + '-subjects');
+        var icon = document.getElementById(key + '-icon');
+        list.classList.toggle('show');
+        icon.classList.toggle('rotated');
+      });
+    });
+
+    // ── Flip cards ───────────────────────────────────────────
+    var concepts = [
+      { label: 'Del Punto al Volumen',    icon: '◆'  },
+      { label: 'Módulos',                 icon: '⊞'  },
+      { label: 'Supermódulos',            icon: '⊟'  },
+      { label: 'Repetición',              icon: '≡'  },
+      { label: 'Gradación',               icon: '▲'  },
+      { label: 'Anomalía',                icon: '✦'  },
+      { label: 'Radiación',               icon: '✳'  },
+      { label: 'Superposición',           icon: '⧉'  },
     ];
 
-    const grid = document.getElementById('cards-grid');
-    if (grid) {
-        glossary.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'flip-card';
-            card.innerHTML = `
-                <div class="flip-inner">
-                    <div class="flip-front">
-                        <div class="flip-icon-wrap">${item.icon}</div>
-                        <div class="flip-label">${item.label}</div>
-                        <div class="flip-hint">▸ clic para video</div>
-                    </div>
-                    <div class="flip-back">
-                        <div class="flip-back-play"><div class="back-play-icon"></div></div>
-                        <div class="flip-back-label">${item.label}</div>
-                    </div>
-                </div>`;
-            card.addEventListener('click', () => card.classList.toggle('flipped'));
-            grid.appendChild(card);
-        });
-    }
+    // 8 tarjetas → 8 columnas
+    var grid = document.getElementById('cards-grid');
+    grid.style.gridTemplateColumns = 'repeat(8, 1fr)';
 
-    /* =========================================================
-       3. LÓGICA DEL NAVEGADOR INTERNO (Scroll Spy)
-       ========================================================= */
-       
-    const anchorNav = document.getElementById('anchor-nav');
-    if (anchorNav) {
-        const sectionsObj = document.querySelectorAll('.section-block');
-        const navLinksObj = document.querySelectorAll('.anchor-nav a');
-        const navHeight = anchorNav.offsetTop + anchorNav.offsetHeight;
-        
-        const observerObj = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinksObj.forEach(link => link.classList.remove('active'));
-                    const active = document.querySelector(`.anchor-nav a[href="#${entry.target.id}"]`);
-                    if (active) active.classList.add('active');
-                }
-            });
-        }, { rootMargin: `-${navHeight + 20}px 0px -60% 0px` });
+    concepts.forEach(function (item) {
+      var card = document.createElement('div');
+      card.className = 'flip-card';
+      card.innerHTML =
+        '<div class="flip-inner">' +
+          '<div class="flip-front">' +
+            '<div class="flip-icon-wrap">' + item.icon + '</div>' +
+            '<div class="flip-label">'     + item.label + '</div>' +
+            '<div class="flip-hint">▸ clic para video</div>' +
+          '</div>' +
+          '<div class="flip-back">' +
+            '<div class="flip-back-play"><div class="back-play-icon"></div></div>' +
+            '<div class="flip-back-label">' + item.label + '</div>' +
+          '</div>' +
+        '</div>';
+      card.addEventListener('click', function () { card.classList.toggle('flipped'); });
+      grid.appendChild(card);
+    });
 
-        sectionsObj.forEach(s => observerObj.observe(s));
-    }
+    // ── Highlight active anchor on scroll ───────────────────
+    var sections = document.querySelectorAll('.section-block');
+    var navLinks = document.querySelectorAll('.anchor-nav a');
 
-});
-</script>
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (l) { l.classList.remove('active'); });
+          var active = document.querySelector('.anchor-nav a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-120px 0px -60% 0px' });
+
+    sections.forEach(function (s) { observer.observe(s); });
+
+    // ── Search ───────────────────────────────────────────────
+    document.querySelector('.search-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') console.log('Buscando:', e.target.value);
+    });
+  </script>
+
 </body>
 </html>
