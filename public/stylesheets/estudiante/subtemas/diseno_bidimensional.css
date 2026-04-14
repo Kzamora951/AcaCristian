@@ -1,241 +1,339 @@
 /* Importar estilos base */
 @import url('../primersemestre.css');
 
-/* Estilos específicos para Naturaleza de los Objetos */
-.main-content {
-    padding: 20px;
-    background: #f8f9fa;
-    min-height: calc(100vh - 80px);
-}
+/* ==========================================================================
+   1. FUENTES Y VARIABLES GLOBALES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
-.content-section {
-    background: white;
-    border-radius: 12px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.content-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #e9ecef;
-}
-
-.content-header h2 {
-    color: #2c3e50;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.content-header .icon {
-    font-size: 2.5rem;
-    color: #4a60c0;
-    margin-right: 15px;
-}
-
-.content-body {
-    line-height: 1.6;
-    color: #495057;
-}
-
-.content-body p {
-    margin-bottom: 15px;
-}
-
-.content-body h3 {
-    color: #2c3e50;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin: 25px 0 15px 0;
-}
-
-.content-body ul {
-    margin: 15px 0;
-    padding-left: 25px;
-}
-
-.content-body li {
-    margin-bottom: 8px;
-}
-
-.highlight-box {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.highlight-box h4 {
-    margin: 0 0 10px 0;
-    font-weight: 600;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .content-section {
-        padding: 20px;
-    }
-    
-    .content-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .content-header .icon {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .content-header h2 {
-        font-size: 1.5rem;
-    }
-}
-
-/* Variables de color y formato (agrégalas a tu archivo si no existen) */
 :root {
+  /* Colores de la marca y UI */
   --blue:       #2d3fb5;
   --blue-light: #e8ebf8;
   --blue-mid:   #4a5cc8;
   --text:       #1a1b2e;
   --text-muted: #6b6f8a;
   --text-hint:  #a0a4bd;
-  --bg:         #f0f2fa;
-  --surface:    #ffffff;
+  --bg-app:     #f0f2fa; /* El gris azulado del fondo */
+  --surface:    #ffffff; /* El blanco de las tarjetas */
   --border:     rgba(45, 63, 181, 0.12);
+  
+  /* Radios y Sombras */
   --radius-sm:  8px;
   --radius-md:  12px;
   --radius-lg:  18px;
-  --shadow-sm:  0 1px 4px rgba(45,63,181,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:  0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-/* Para que la navegación por anclajes sea suave */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text);
+  line-height: 1.6;
+}
+
 html { scroll-behavior: smooth; }
 
-/* ── Ajustes del contenedor principal para que no se esconda tras el sidebar ── */
-.main-content {
-  margin-left: 280px; /* Igual al ancho de tu sidebar */
-  width: calc(100% - 280px);
-  background: var(--bg);
-  min-height: 100vh;
+/* ==========================================================================
+   2. ESTRUCTURA PRINCIPAL (Evita que el contenido se esconda)
+   ========================================================================== */
+
+/* Asegúrate de que tu sidebar tenga position: fixed y su ancho definido (ej. 280px) */
+.sidebar {
+  width: 280px;
+  position: fixed;
+  top: 0; /* O debajo de tu top-nav si la tienes fija */
+  left: 0;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  /* ... tus otros estilos de sidebar ... */
 }
 
-/* ── Anchor nav interno ── */
+/* El contenedor principal empuja el contenido para dejarle espacio al sidebar */
+.main-content {
+  margin-left: 280px; /* DEBE COINCIDIR CON EL ANCHO DE TU SIDEBAR */
+  width: calc(100% - 280px);
+  min-height: 100vh;
+  background-color: var(--bg-app);
+}
+
+/* ==========================================================================
+   3. NAVEGACIÓN INTERNA (Anchor Nav)
+   ========================================================================== */
 .anchor-nav {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: 0 40px;
   display: flex;
-  gap: 4px;
+  gap: 10px;
   position: sticky;
-  top: 0;
+  top: 0; /* Cambia a 60px o 80px si tienes una barra superior fija */
   z-index: 99;
-  box-shadow: 0 1px 3px rgba(45,63,181,0.05);
 }
 
 .anchor-nav a {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  padding: 13px 18px;
+  padding: 15px 18px;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition: all 0.2s ease;
 }
 
-.anchor-nav a:hover, .anchor-nav a.active {
+.anchor-nav a:hover, 
+.anchor-nav a.active {
   color: var(--blue);
-  font-weight: 500;
   border-bottom-color: var(--blue);
 }
 
-/* ── Contenedor de la página ── */
+/* ==========================================================================
+   4. ESTILOS DE LOS BLOQUES DE CONTENIDO (Tarjetas y Textos)
+   ========================================================================== */
 .page-wrapper {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px 100px;
+  padding: 40px 30px 100px 30px;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 60px;
 }
 
-/* ── Títulos de sección ── */
-.section-block { display: flex; flex-direction: column; gap: 20px; }
-.section-heading { display: flex; align-items: center; gap: 12px; }
-.section-acento { width: 4px; height: 24px; background: var(--blue); border-radius: 2px; }
-.section-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.09em; }
-.section-hint { margin-left: auto; font-size: 11px; color: var(--text-hint); }
+.section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-/* ── Tarjetas Base ── */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-acento {
+  width: 4px; height: 24px;
+  background: var(--blue);
+  border-radius: 2px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section-hint {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-hint);
+}
+
+/* ── Tarjeta Base Blanca ── */
 .card {
-  background: var(--surface);
+  background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 35px;
   box-shadow: var(--shadow-sm);
 }
 
-/* ── Hero card ── */
-.hero-card { display: grid; grid-template-columns: 1fr 300px; gap: 32px; }
-.hero-eyebrow { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
-.hero-title { font-family: 'DM Serif Display', serif; font-size: 30px; font-weight: 400; color: var(--text); line-height: 1.2; margin-bottom: 14px; }
-.hero-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 22px; }
-.hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.card h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* ── Tarjeta Principal (Hero) ── */
+.hero-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 15px;
+}
 
 /* ── Botones ── */
-.btn-primary { background: var(--blue); color: #fff; font-size: 13px; font-weight: 500; padding: 10px 22px; border-radius: var(--radius-sm); border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
-.btn-primary:hover  { background: var(--blue-mid); }
-.btn-link { font-size: 12px; color: var(--blue); text-decoration: none; display: inline-flex; gap: 5px; }
+.hero-actions { display: flex; gap: 15px; align-items: center; margin-top: 20px; }
+
+.btn-primary {
+  background-color: var(--blue);
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background-color: var(--blue-mid); }
+
+.btn-link {
+  font-size: 13px;
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+.btn-link:hover { text-decoration: underline; }
 
 /* ── Cajas de Video ── */
-.video-box { background: #111; border-radius: var(--radius-md); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; overflow: hidden; }
-.video-box::after { content: ''; position: absolute; inset: 0; background: rgba(45,63,181,0.15); transition: background 0.2s; }
-.video-box:hover::after { background: rgba(45,63,181,0.04); }
-.play-btn { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; transition: transform 0.2s; }
-.video-box:hover .play-btn { transform: scale(1.1); border-color: #fff; }
-.play-icon { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 16px solid rgba(255,255,255,0.9); margin-left: 4px; }
-.video-caption { font-size: 11px; color: var(--text-hint); margin-top: 8px; text-align: center; }
+.video-box {
+  background-color: #111;
+  border-radius: var(--radius-md);
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.play-btn {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.8);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s;
+}
+.video-box:hover .play-btn { transform: scale(1.1); }
+.play-icon {
+  width: 0; height: 0;
+  border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid white;
+  margin-left: 5px;
+}
+.video-caption { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; }
 
-/* ── Columnas secundarias ── */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.sub-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; }
-.sub-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.step-badge { width: 26px; height: 26px; border-radius: 50%; background: var(--blue-light); color: var(--blue); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.sub-card h3 { font-size: 14px; font-weight: 500; color: var(--text); margin:0;}
-.sub-card p { font-size: 12px; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; flex: 1; }
-.video-sm { background: #111; border-radius: var(--radius-sm); height: 100px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-top: auto; }
-.play-sm { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; }
-.play-sm-icon { width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 11px solid rgba(255,255,255,0.8); margin-left: 2px; }
+/* ── Tarjetas a dos columnas ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-/* ── Glosario Flip Cards ── */
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; }
-.flip-card { height: 130px; perspective: 800px; cursor: pointer; }
-.flip-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s; }
+.sub-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 25px;
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
+}
+
+.sub-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.step-badge {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background-color: var(--blue-light);
+  color: var(--blue);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.sub-card h3 { font-size: 15px; color: var(--text); }
+.sub-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+
+.video-sm {
+  background-color: #111;
+  border-radius: var(--radius-sm);
+  height: 120px; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.play-sm { width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center;}
+.play-sm-icon { width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid white; margin-left: 3px;}
+
+/* ── Caja de Resaltado ── */
+.highlight-box {
+  background-color: var(--blue-light);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 20px;
+  margin: 20px 0;
+}
+.highlight-box p { color: var(--blue); font-weight: 500; margin: 0; }
+
+/* ==========================================================================
+   5. GLOSARIO INTERACTIVO (Flip Cards)
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.flip-card { height: 140px; perspective: 1000px; cursor: pointer; }
+.flip-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
-.flip-front, .flip-back { position: absolute; inset: 0; border-radius: var(--radius-sm); border: 1px solid var(--border); backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
-.flip-front { background: var(--blue-light); transition: background 0.2s; }
-.flip-card:hover .flip-front { background: #dce1f5; }
-.flip-back { background: #111827; transform: rotateY(180deg); }
-.flip-icon-wrap { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.65); display: flex; align-items: center; justify-content: center; margin-bottom: 7px; font-size: 17px; }
-.flip-label { font-size: 10px; font-weight: 500; color: var(--blue); text-align: center; }
-.flip-hint { font-size: 9px; color: var(--text-muted); margin-top: 4px; }
-.flip-back-play { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
-.back-play-icon { width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 11px solid rgba(255,255,255,0.85); margin-left: 3px; }
-.flip-back-label { font-size: 10px; color: rgba(255,255,255,0.65); text-align: center; }
 
-/* ── Textos internos de tarjetas ── */
-.card h2 { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 12px; }
-.card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 12px; }
-.highlight-box { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px; margin: 16px 0; }
-.highlight-box p { color: var(--text); margin: 0; }
+.flip-front, .flip-back {
+  position: absolute; inset: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  backface-visibility: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
 
-/* ── Responsive ── */
-@media (max-width: 820px) {
-  .hero-card, .two-col { grid-template-columns: 1fr; }
-  .cards-grid { grid-template-columns: repeat(3, 1fr); }
-  .main-content { margin-left: 0; width: 100%; } /* Si colapsas la sidebar en móvil */
+.flip-front { background-color: var(--blue-light); transition: background 0.3s; }
+.flip-card:hover .flip-front { background-color: #dce1f5; }
+.flip-back { background-color: #1a1b2e; transform: rotateY(180deg); }
+
+.flip-icon-wrap { font-size: 24px; margin-bottom: 10px; }
+.flip-label { font-size: 12px; font-weight: 600; color: var(--blue); }
+.flip-hint { font-size: 10px; color: var(--text-muted); margin-top: 5px; }
+
+.flip-back-play {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+}
+.flip-back-label { color: white; font-size: 11px; font-weight: 500;}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (Móviles y Tablets)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .hero-card { grid-template-columns: 1fr; }
+  .video-box { max-width: 500px; margin: 0 auto; width: 100%; }
+  .main-content { margin-left: 0; width: 100%; } /* Si ocultas el sidebar en móvil */
+}
+
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-wrapper { padding: 20px; }
+  .anchor-nav { overflow-x: auto; white-space: nowrap; }
 }
