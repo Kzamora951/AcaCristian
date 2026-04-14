@@ -321,10 +321,92 @@
     </div>
 </main>
 
-   <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ── 1. Generador de Fichas (Flip cards) del Glosario ──
+    /* =========================================================
+       1. LÓGICA DE LA BARRA LATERAL (SIDEBAR Y MENÚS)
+       ========================================================= */
+       
+    // Toggle sidebar principal
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+    }
+
+    // Mostrar sidebar por defecto y expandir Semestre 1
+    const fundamentosSubjects = document.getElementById('fundamentos-subjects');
+    const fundamentosIcon = document.getElementById('fundamentos-icon');
+    
+    if (fundamentosSubjects && fundamentosIcon) {
+        fundamentosSubjects.classList.add('show');
+        fundamentosIcon.classList.add('rotated');
+    }
+
+    // Toggle Fundamentos de Diseño subjects
+    const fundamentosToggle = document.getElementById('fundamentos-toggle');
+    if (fundamentosToggle) {
+        fundamentosToggle.addEventListener('click', function(e) {
+            if (fundamentosSubjects.classList.contains('show')) {
+                fundamentosSubjects.classList.remove('show');
+                fundamentosIcon.classList.remove('rotated');
+            } else {
+                fundamentosSubjects.classList.add('show');
+                fundamentosIcon.classList.add('rotated');
+            }
+        });
+    }
+
+    // Toggle Teoría y Métodos subjects
+    const teoriaToggle = document.getElementById('teoria-toggle');
+    if (teoriaToggle) {
+        teoriaToggle.addEventListener('click', function(e) {
+            const subjects = document.getElementById('teoria-subjects');
+            const icon = document.getElementById('teoria-icon');
+            if (subjects.classList.contains('show')) {
+                subjects.classList.remove('show');
+                icon.classList.remove('rotated');
+            } else {
+                subjects.classList.add('show');
+                icon.classList.add('rotated');
+            }
+        });
+    }
+
+    // Toggle Diseño y Biónica subjects
+    const disenoToggle = document.getElementById('diseno-toggle');
+    if (disenoToggle) {
+        disenoToggle.addEventListener('click', function(e) {
+            const subjects = document.getElementById('diseno-subjects');
+            const icon = document.getElementById('diseno-icon');
+            if (subjects.classList.contains('show')) {
+                subjects.classList.remove('show');
+                icon.classList.remove('rotated');
+            } else {
+                subjects.classList.add('show');
+                icon.classList.add('rotated');
+            }
+        });
+    }
+
+    // Funcionalidad de Búsqueda
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = e.target.value;
+                console.log('Buscando:', searchTerm);
+                // Aquí va la lógica de búsqueda
+            }
+        });
+    }
+
+    /* =========================================================
+       2. LÓGICA DEL CONTENIDO (FICHAS DEL GLOSARIO)
+       ========================================================= */
+       
     const glossary = [
         { label: 'Equilibrio',  icon: '⚖️' },
         { label: 'Tensión',     icon: '↔'  },
@@ -335,8 +417,6 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const grid = document.getElementById('cards-grid');
-    
-    // Verificamos que el contenedor exista antes de inyectar el HTML
     if (grid) {
         glossary.forEach(item => {
             const card = document.createElement('div');
@@ -358,7 +438,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ── 2. Resaltar enlace activo en el menú de anclaje interno (Opcional) ──
+    /* =========================================================
+       3. LÓGICA DEL NAVEGADOR INTERNO (Scroll Spy)
+       ========================================================= */
+       
     const anchorNav = document.getElementById('anchor-nav');
     if (anchorNav) {
         const sectionsObj = document.querySelectorAll('.section-block');
