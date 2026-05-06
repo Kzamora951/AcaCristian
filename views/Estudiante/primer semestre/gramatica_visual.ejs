@@ -21,6 +21,16 @@
             background-color: #3a4e9a !important;
             color: white !important;
         }
+
+        /* Contenedor de video expandible */
+        .video-sm {
+            transition: height 0.3s ease;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .video-sm.expanded {
+            height: 200px !important;
+        }
     </style>
 </head>
 
@@ -194,12 +204,7 @@
             </div>
         </aside>
 <main class="main-content">
-    <nav class="anchor-nav" id="anchor-nav">
-        <a href="#resumen" class="active">Resumen</a>
-        <a href="#glosario">Glosario</a>
-        <a href="#practica">Aplicación práctica</a>
-        <a href="#docente">Conexión docente</a>
-    </nav>
+    
 
     <div class="page-wrapper">
         <section class="section-block" id="resumen">
@@ -242,7 +247,12 @@
                         <h3>Elementos de composición</h3>
                     </div>
                     <p>Punto, línea, contorno, tono, color, textura, dimensión, escala y movimiento. Los ingredientes fundamentales con los que se construye cualquier mensaje visual.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+                    <div class="video-sm">
+                        <video class="expandable-video" controls controlsList="nodownload" disablePictureInPicture loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: height 0.3s ease;">
+                            <source src="/videos/gramatica/1.1_ELEMENTOS_DE_COMPOSICION.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
                 </div>
                 <div class="sub-card">
                     <div class="sub-card-header">
@@ -250,7 +260,12 @@
                         <h3>Sintaxis visual en proyectos</h3>
                     </div>
                     <p>Cómo aplicar la sintaxis visual en el diseño de herramientas pedagógicas: el contraste para resaltar piezas de agarre, la proporción respecto a la escala del usuario.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+                    <div class="video-sm">
+                        <video class="expandable-video" controls controlsList="nodownload" disablePictureInPicture loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: height 0.3s ease;">
+                            <source src="/videos/gramatica/1.1 APLICACION EN PROYECTOS.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
@@ -293,7 +308,12 @@
                         <h3>Demostración: contraste</h3>
                     </div>
                     <p>Análisis de un objeto real donde el contraste guía al usuario hacia los puntos de interacción correctos.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+                    <div class="video-sm">
+                        <video class="expandable-video" controls controlsList="nodownload" disablePictureInPicture loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: height 0.3s ease;">
+                            <source src="/videos/gramatica/1.1_DEMOSTRACION_CONTRASTE.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
                 </div>
                 <div class="sub-card">
                     <div class="sub-card-header">
@@ -301,7 +321,12 @@
                         <h3>Demostración: proporción</h3>
                     </div>
                     <p>Análisis de escala y relación con el cuerpo humano en prototipos físicos del taller.</p>
-                    <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+                    <div class="video-sm">
+                        <video class="expandable-video" controls controlsList="nodownload" disablePictureInPicture loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: height 0.3s ease;">
+                            <source src="/videos/gramatica/1.1_DEMOSTRACION_PROPORCION.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
@@ -409,12 +434,12 @@ document.addEventListener('DOMContentLoaded', function() {
        ========================================================= */
        
     const glossary = [
-        { label: 'Equilibrio',  icon: '⚖️' },
-        { label: 'Tensión',     icon: '↔'  },
-        { label: 'Contraste',   icon: '◑'  },
-        { label: 'Armonía',     icon: '◎'  },
-        { label: 'Proporción',  icon: '📐' },
-        { label: 'Ritmo',       icon: '≋'  },
+        { label: 'Equilibrio',  icon: '⚖️', video: '/videos/gramatica/1.1_CONCEPTO_EQUILIBRIO.mp4' },
+        { label: 'Tensión',     icon: '↔',  video: '/videos/gramatica/1.1_CONCEPTO_TENSION.mp4' },
+        { label: 'Contraste',   icon: '◑',  video: '/videos/gramatica/1.1_CONCEPTO_CONTRASTE.mp4' },
+        { label: 'Armonía',     icon: '◎',  video: '/videos/gramatica/1.1_CONCEPTO_ARMONIA.mp4' },
+        { label: 'Proporción',  icon: '📐', video: '/videos/gramatica/1.1_CONCEPTO_PROPORCION.mp4' },
+        { label: 'Ritmo',       icon: '≋',  video: '/videos/gramatica/1.1_CONCEPTO_RITMO.mp4' },
     ];
 
     const grid = document.getElementById('cards-grid');
@@ -430,7 +455,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="flip-hint">▸ clic para video</div>
                     </div>
                     <div class="flip-back">
-                        <div class="flip-back-play"><div class="back-play-icon"></div></div>
+                        <div class="flip-back-video">
+                            ${item.video ? `<video class="glosario-video" controls controlsList="nodownload" disablePictureInPicture loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"><source src="${item.video}" type="video/mp4"></video>` : '<div class="flip-back-play"><div class="back-play-icon"></div></div>'}
+                        </div>
                         <div class="flip-back-label">${item.label}</div>
                     </div>
                 </div>`;
@@ -463,6 +490,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+    document.querySelectorAll('.expandable-video').forEach(video => {
+        video.addEventListener('play', function() {
+            document.querySelectorAll('.expandable-video').forEach(v => {
+                const container = v.closest('.video-sm');
+                if (v === this) {
+                    container.classList.add('expanded');
+                    v.style.height = '100%';
+                } else {
+                    container.classList.remove('expanded');
+                    v.pause();
+                    v.style.height = '100%';
+                }
+            });
+        });
+    });
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.expandable-video')) {
+            document.querySelectorAll('.expandable-video').forEach(v => {
+                v.closest('.video-sm').classList.remove('expanded');
+                v.pause();
+                v.style.height = '100%';
+            });
+        }
+        if (!e.target.closest('.glosario-video')) {
+            document.querySelectorAll('.glosario-video').forEach(v => v.pause());
+        }
+    });
 </script>
 </body>
 </html>
