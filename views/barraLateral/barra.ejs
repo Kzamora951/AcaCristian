@@ -1,0 +1,479 @@
+<style>
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+    --barra-primary-color: #4a60c0;
+    --barra-primary-dark: #3a4e9a;
+    --barra-light-bg: #f0f3ff;
+    --barra-white: #ffffff;
+    --barra-text-dark: #2c3e50;
+    --barra-text-muted: #6c757d;
+    --barra-border-color: #dee2e6;
+    --barra-sidebar-width: 280px;
+    --barra-top-nav-height: 70px;
+}
+
+/* ── Barra lateral ─────────────────────────────────────── */
+.barra-lateral {
+    width: var(--barra-sidebar-width);
+    background: var(--barra-white);
+    border-right: 1px solid var(--barra-border-color);
+    position: fixed;
+    top: var(--barra-top-nav-height);
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.barra-lateral.collapsed {
+    transform: translateX(-100%);
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.barra-lateral-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--barra-border-color);
+    flex-shrink: 0;
+}
+
+.barra-lateral-header h3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--barra-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0;
+}
+
+/* ── Nav ───────────────────────────────────────────────── */
+.barra-semester-nav {
+    padding: 12px 0;
+    flex: 1;
+}
+
+.barra-semester-group {
+    margin-bottom: 4px;
+}
+
+.barra-semester-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--barra-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 10px 20px 4px;
+    display: block;
+}
+
+.barra-subject-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Trigger (cabecera del semestre) ───────────────────── */
+.barra-semester-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.barra-semester-toggle-container:hover {
+    background-color: var(--barra-light-bg);
+}
+
+.barra-semester-toggle-container.open {
+    background-color: var(--barra-primary-color);
+}
+
+.barra-semester-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 0 11px 20px;
+    color: var(--barra-text-dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.barra-semester-toggle-container.open .barra-semester-link {
+    color: var(--barra-white);
+}
+
+.barra-semester-link i {
+    font-size: 0.9rem;
+    width: 18px;
+    flex-shrink: 0;
+}
+
+.barra-arrow-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 11px 16px;
+    color: var(--barra-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.barra-semester-toggle-container.open .barra-arrow-toggle {
+    color: rgba(255,255,255,0.8);
+}
+
+.barra-arrow-toggle i {
+    font-size: 0.75rem;
+    transition: transform 0.25s ease;
+    display: block;
+}
+
+.barra-arrow-toggle i.rotated {
+    transform: rotate(90deg);
+}
+
+/* ── Subjects (sub-lista desplegable) ──────────────────── */
+.barra-subjects-panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+}
+
+.barra-subjects-panel.open {
+    max-height: 600px;
+}
+
+.barra-subjects-panel .barra-subject-item a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px 9px 36px;
+    color: var(--barra-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: background 0.15s, color 0.15s, border-left-color 0.15s;
+    border-left: 3px solid transparent;
+}
+
+.barra-subjects-panel .barra-subject-item a:hover {
+    background-color: var(--barra-light-bg);
+    color: var(--barra-primary-color);
+    border-left-color: var(--barra-primary-color);
+}
+
+.barra-subjects-panel .barra-subject-item a i:first-child {
+    font-size: 0.8rem;
+    width: 16px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.barra-subjects-panel .barra-subject-item a span {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.barra-subjects-panel .barra-subject-item a i:last-child {
+    font-size: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+}
+
+.barra-subjects-panel .barra-subject-item a:hover i:last-child {
+    opacity: 0.6;
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.barra-sidebar-footer {
+    padding: 12px;
+    border-top: 1px solid var(--barra-border-color);
+    flex-shrink: 0;
+}
+
+.barra-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    color: var(--barra-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.barra-back-btn:hover {
+    background-color: var(--barra-light-bg);
+    color: var(--barra-primary-color);
+}
+
+.barra-back-btn i {
+    font-size: 0.85rem;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 992px) {
+    .barra-lateral {
+        transform: translateX(-100%);
+    }
+    .barra-lateral.open {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .barra-lateral {
+        width: 100%;
+    }
+}
+</style>
+
+<!-- ══════════════════════ SIDEBAR ══════════════════════ -->
+<aside class="barra-lateral" id="sidebar">
+
+    <div class="barra-lateral-header">
+        <h3>Línea de Diseño</h3>
+    </div>
+
+    <nav class="barra-semester-nav">
+
+        <!-- SEMESTRE 1 -->
+        <div class="barra-semester-group">
+            <span class="barra-semester-title">Semestre 1</span>
+            <ul class="barra-subject-list">
+                <li>
+                    <div class="barra-semester-toggle-container" id="trigger-fundamentos">
+                        <a href="/Estudiante/primersemestre" class="barra-semester-link">
+                            <i class="fas fa-palette"></i>
+                            <span>1. Fundamentos de Diseño</span>
+                        </a>
+                        <button class="barra-arrow-toggle" aria-label="Expandir semestre 1" aria-expanded="false" aria-controls="panel-fundamentos">
+                            <i class="fas fa-chevron-right" id="icon-fundamentos"></i>
+                        </button>
+                    </div>
+                    <div class="barra-subjects-panel" id="panel-fundamentos">
+                        <ul class="barra-subject-list">
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/gramatica_visual">
+                                    <i class="fas fa-shapes"></i>
+                                    <span>1.1 Gramática Visual y Composición</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/diseno_bidimensional">
+                                    <i class="fas fa-pencil-ruler"></i>
+                                    <span>1.2 Diseño Bidimensional y Tridimensional</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/principios_diseno">
+                                    <i class="fas fa-th-large"></i>
+                                    <span>1.3 Principios Universales de Diseño</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/naturaleza_objetos">
+                                    <i class="fas fa-cube"></i>
+                                    <span>1.4 La Naturaleza de los Objetos</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SEMESTRE 2 -->
+        <div class="barra-semester-group">
+            <span class="barra-semester-title">Semestre 2</span>
+            <ul class="barra-subject-list">
+                <li>
+                    <div class="barra-semester-toggle-container" id="trigger-teoria">
+                        <a href="/Estudiante/segundosemestre" class="barra-semester-link">
+                            <i class="fas fa-brain"></i>
+                            <span>2. Teoría y Métodos de Diseño</span>
+                        </a>
+                        <button class="barra-arrow-toggle" aria-label="Expandir semestre 2" aria-expanded="false" aria-controls="panel-teoria">
+                            <i class="fas fa-chevron-right" id="icon-teoria"></i>
+                        </button>
+                    </div>
+                    <div class="barra-subjects-panel" id="panel-teoria">
+                        <ul class="barra-subject-list">
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/epistemologia">
+                                    <i class="fas fa-atom"></i>
+                                    <span>2.1 Epistemología y Evolución del Diseño</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/pensamientoDiseno">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <span>2.2 El Pensamiento de Diseño (Design Thinking)</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/historiaImpacto">
+                                    <i class="fas fa-book"></i>
+                                    <span>2.3 Historia e Impacto Social</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SEMESTRE 3 -->
+        <div class="barra-semester-group">
+            <span class="barra-semester-title">Semestre 3</span>
+            <ul class="barra-subject-list">
+                <li>
+                    <div class="barra-semester-toggle-container" id="trigger-diseno">
+                        <a href="/Estudiante/tercersemestre" class="barra-semester-link">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>3. Diseño y Biónica</span>
+                        </a>
+                        <button class="barra-arrow-toggle" aria-label="Expandir semestre 3" aria-expanded="false" aria-controls="panel-diseno">
+                            <i class="fas fa-chevron-right" id="icon-diseno"></i>
+                        </button>
+                    </div>
+                    <div class="barra-subjects-panel" id="panel-diseno">
+                        <ul class="barra-subject-list">
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/tercersemestre">
+                                    <i class="fas fa-atom"></i>
+                                    <span>3.1 La física como escultora de la vida</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/tercersemestre">
+                                    <i class="fas fa-dna"></i>
+                                    <span>3.2 Biomecánica y Estructuras</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="barra-subject-item">
+                                <a href="/Estudiante/tercersemestre">
+                                    <i class="fas fa-cube"></i>
+                                    <span>3.3 El Objeto y su Contexto</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="barra-sidebar-footer">
+        <a href="/Estudiante/HomeEstudiante" class="barra-back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Volver al Inicio</span>
+        </a>
+    </div>
+
+</aside>
+
+<script>
+(function () {
+    // Mapa: clave -> rutas que activan ese semestre
+    var semestres = {
+        fundamentos: ['/primersemestre', '/gramatica_visual', '/diseno_bidimensional', '/principios_diseno', '/naturaleza_objetos'],
+        teoria:      ['/segundosemestre', '/epistemologia', '/pensamientoDiseno', '/historiaImpacto'],
+        diseno:      ['/tercersemestre']
+    };
+
+    function abrirSemestre(key) {
+        var trigger = document.getElementById('trigger-' + key);
+        var panel   = document.getElementById('panel-' + key);
+        var icon    = document.getElementById('icon-' + key);
+        var btn     = trigger ? trigger.querySelector('.barra-arrow-toggle') : null;
+
+        if (!trigger || !panel || !icon) return;
+
+        trigger.classList.add('open');
+        panel.classList.add('open');
+        icon.classList.add('rotated');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+
+    function cerrarSemestre(key) {
+        var trigger = document.getElementById('trigger-' + key);
+        var panel   = document.getElementById('panel-' + key);
+        var icon    = document.getElementById('icon-' + key);
+        var btn     = trigger ? trigger.querySelector('.barra-arrow-toggle') : null;
+
+        if (!trigger || !panel || !icon) return;
+
+        trigger.classList.remove('open');
+        panel.classList.remove('open');
+        icon.classList.remove('rotated');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleSemestre(key) {
+        var panel = document.getElementById('panel-' + key);
+        if (!panel) return;
+
+        var estaAbierto = panel.classList.contains('open');
+
+        // Cerrar todos primero (acordeón exclusivo)
+        Object.keys(semestres).forEach(function (k) { cerrarSemestre(k); });
+
+        // Si estaba cerrado, abrir el clickeado
+        if (!estaAbierto) { abrirSemestre(key); }
+    }
+
+    // Registrar clicks en cada botón de flecha
+    Object.keys(semestres).forEach(function (key) {
+        var trigger = document.getElementById('trigger-' + key);
+        if (!trigger) return;
+
+        var btn = trigger.querySelector('.barra-arrow-toggle');
+        if (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSemestre(key);
+            });
+        }
+    });
+
+    // Auto-expandir el semestre de la página activa
+    var path = window.location.pathname;
+    Object.keys(semestres).forEach(function (key) {
+        var activo = semestres[key].some(function (ruta) {
+            return path.includes(ruta);
+        });
+        if (activo) { abrirSemestre(key); }
+    });
+
+    // Toggle del sidebar desde el botón hamburguesa (menuToggle)
+    var menuToggle = document.getElementById('menuToggle');
+    var sidebar    = document.getElementById('sidebar');
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('collapsed');
+        });
+    }
+})();
+</script>

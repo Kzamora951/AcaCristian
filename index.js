@@ -212,6 +212,24 @@ app.get('/Estudiante/naturaleza_objetos', (req, res) => {
 
 });
 
+app.get('/Estudiante/epistemologia', (req, res) => {
+
+  res.render('Estudiante/segundo semestre/epistemologia');
+
+});
+
+app.get('/Estudiante/pensamientoDiseno', (req, res) => {
+
+  res.render('Estudiante/segundo semestre/pensamientoDiseno');
+
+});
+
+app.get('/Estudiante/historiaImpacto', (req, res) => {
+
+  res.render('Estudiante/segundo semestre/historiaImpacto');
+
+});
+
 
 
 

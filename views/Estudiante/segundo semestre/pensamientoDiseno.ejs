@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2 El Pensamiento de Diseño - Universidad Pedagógica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/estudiante/subtemas/pensamientoDiseño.css">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-brand">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>UPN</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar en el repositorio..." class="search-input">
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="user-info">
+                    <span class="user-name">Bienvenido Estudiante</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <%- include('../../barraLateral/barra') %>
+        <main class="main-content pensamiento-page">
+
+            <!-- SECCIÓN 1: RESUMEN DEL TEMA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    RESUMEN DEL TEMA
+                </div>
+
+                <div class="hero-card">
+                    <div class="hero-card__content">
+                        <p class="hero-card__breadcrumb">Teoría y Métodos de Diseño · El Pensamiento de Diseño (Design Thinking)</p>
+                        <h1 class="hero-card__title">¿Qué es el<br>Pensamiento<br>de Diseño?</h1>
+                        <p class="hero-card__body">
+                            Nigel Cross propone que el diseño no es una rama de la ciencia ni de las humanidades,
+                            sino una <strong>tercera cultura</strong> con su propio intelecto y métodos. La interdisciplinariedad
+                            se manifiesta en la capacidad del diseñador para navegar entre problemas "mal estructurados"
+                            que requieren conocimientos técnicos, sociales y estéticos. A diferencia de otras disciplinas
+                            que buscan describir el mundo, el diseño busca <strong>cambiar el mundo</strong> creando cosas
+                            que aún no existen.
+                        </p>
+                        <div class="hero-card__actions">
+                            <a href="https://www.academia.edu/87059454/Design_Thinking_Understanding_How_Designers_Think_and_Work" target="_blank" class="btn-primary">
+                                <span class="btn-primary__icon">▶</span> Ver introducción
+                            </a>
+                            <a href="https://www.academia.edu/87059454/Design_Thinking_Understanding_How_Designers_Think_and_Work" target="_blank" class="btn-link">
+                                <span>📄</span> Acceso al PDF del libro
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-card__media">
+                        <div class="video-player">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                        <p class="hero-card__media-caption">Introducción al tema · Nigel Cross y el Design Thinking</p>
+                    </div>
+                </div>
+
+                <!-- Sub-temas cards -->
+                <div class="subtemas-grid">
+                    <div class="subtema-card">
+                        <div class="subtema-card__number">1</div>
+                        <div class="subtema-card__info">
+                            <h3 class="subtema-card__title">Ciencia vs. Ingeniería vs. Diseño</h3>
+                            <p class="subtema-card__desc">
+                                El científico analiza y descubre la verdad. El ingeniero resuelve problemas conocidos.
+                                El diseñador enfrenta la incertidumbre: su objetivo no es la verdad, sino la
+                                pertinencia y el valor de una propuesta nueva.
+                            </p>
+                        </div>
+                        <div class="subtema-card__video">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="subtema-card">
+                        <div class="subtema-card__number">2</div>
+                        <div class="subtema-card__info">
+                            <h3 class="subtema-card__title">De la Caja Negra a la Caja Transparente</h3>
+                            <p class="subtema-card__desc">
+                                La creatividad mágica del "genio" no puede evaluarse ni enseñarse. La sistematización
+                                del proceso convierte cada decisión en un argumento documentado, visible y criticable.
+                            </p>
+                        </div>
+                        <div class="subtema-card__video">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: GLOSARIO -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    GLOSARIO · CONCEPTOS CLAVE DEL DESIGN THINKING
+                    <span class="section-label__hint">Haz clic en cada ficha para ver el video explicativo</span>
+                </div>
+
+                <div class="glosario-card">
+                    <div class="glosario-grid">
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🔬</div>
+                            <p class="glosario-item__name">Deducción</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">📊</div>
+                            <p class="glosario-item__name">Inducción</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">💡</div>
+                            <p class="glosario-item__name">Abducción</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🧩</div>
+                            <p class="glosario-item__name">Problema Mal Estructurado</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🔄</div>
+                            <p class="glosario-item__name">Co-evolución</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">📦</div>
+                            <p class="glosario-item__name">Caja Transparente</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: APLICACIÓN PRÁCTICA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    APLICACIÓN PRÁCTICA EN EL TALLER DE DISEÑO
+                </div>
+
+                <div class="aplicacion-card">
+                    <h2 class="aplicacion-card__title">¿Cómo se usa esto en los proyectos?</h2>
+                    <p class="aplicacion-card__intro">
+                        Premisa: transitar de la "Caja Negra" a la "Caja Transparente". Cada decisión proyectual
+                        debe ser documentada y argumentada con base en la lógica de la abducción y la
+                        co-evolución entre problema y solución.
+                    </p>
+
+                    <div class="aplicacion-highlight">
+                        El estudiante no dice <strong>"puse esto porque me gusta"</strong>, sino <strong>"según el proceso
+                        de abducción y el encuadre del problema, este mecanismo resuelve la incertidumbre
+                        técnica detectada en la fase de prototipado"</strong>. Esa es la diferencia entre
+                        creatividad mágica y pensamiento de diseño experto.
+                    </div>
+
+                    <div class="aplicacion-items">
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">01</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">La Caja Negra → Creatividad sin rastro</h4>
+                                <p class="aplicacion-item__desc">El diseño ocurre de forma misteriosa en la mente del "genio". No hay registro de por qué se tomó una decisión, lo que impide la crítica técnica y el aprendizaje sistemático.</p>
+                            </div>
+                        </div>
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">02</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">La Caja Transparente → Proceso lógico documentado</h4>
+                                <p class="aplicacion-item__desc">Cada decisión (material, forma, mecanismo) es documentada y argumentada. Permite la crítica, la evaluación formativa y el aprendizaje iterativo.</p>
+                            </div>
+                        </div>
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">03</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Co-evolución → El problema cambia con la solución</h4>
+                                <p class="aplicacion-item__desc">Las decisiones se justifican demostrando cómo el entendimiento del problema evolucionó a medida que se probaban soluciones. La iteración es evidencia de pensamiento experto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: CONEXIÓN LDT -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    CONEXIÓN CON LA PRÁCTICA DOCENTE (LDT)
+                </div>
+
+                <div class="ldt-grid">
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">📋</div>
+                        <h3 class="ldt-card__title">Sistematización del Proceso</h3>
+                        <p class="ldt-card__desc">El docente exige la "Caja Transparente": evalúa no solo el artefacto final (la maqueta), sino la trayectoria del pensamiento del estudiante a través de bitácoras y matrices.</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">🧭</div>
+                        <h3 class="ldt-card__title">Mediación en la Incertidumbre</h3>
+                        <p class="ldt-card__desc">El docente no entrega soluciones, sino que enseña métodos para "encuadrar" el problema. Se enseña que el diseño es una forma de pensamiento rigurosa, no solo una actividad manual.</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">📈</div>
+                        <h3 class="ldt-card__title">Evaluación Formativa</h3>
+                        <p class="ldt-card__desc">Al hacer visible el proceso, el docente identifica en qué punto de la lógica (inducción, deducción o abducción) el estudiante falla y realiza una intervención pedagógica precisa.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REFERENCIA BIBLIOGRÁFICA -->
+            <section class="section-block">
+                <div class="referencia-bar">
+                    <span class="referencia-bar__label">REFERENCIA BIBLIOGRÁFICA</span>
+                    <p class="referencia-bar__text">Cross, N. (2011). <em>Design Thinking: Understanding How Designers Think and Work.</em> Berg Publishers. Docente: Juan Carlos Estupiñán. 
+                        <a href="https://www.academia.edu/87059454/Design_Thinking_Understanding_How_Designers_Think_and_Work" target="_blank" class="referencia-bar__link">Ver en Academia.edu →</a>
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleGlosario(el) {
+            const video = el.querySelector('.glosario-item__video');
+            const cta = el.querySelector('.glosario-item__cta');
+            if (video.classList.contains('hidden')) {
+                document.querySelectorAll('.glosario-item__video').forEach(v => v.classList.add('hidden'));
+                document.querySelectorAll('.glosario-item__cta').forEach(c => c.style.display = '');
+                document.querySelectorAll('.glosario-item').forEach(i => i.classList.remove('active'));
+                video.classList.remove('hidden');
+                cta.style.display = 'none';
+                el.classList.add('active');
+            } else {
+                video.classList.add('hidden');
+                cta.style.display = '';
+                el.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

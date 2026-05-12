@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Historia e Impacto Social - Universidad Pedagógica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/estudiante/subtemas/historiaImpacto.css">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-brand">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>UPN</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar en el repositorio..." class="search-input">
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="user-info">
+                    <span class="user-name">Bienvenido Estudiante</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <%- include('../../barraLateral/barra') %>
+        <main class="main-content historia-page">
+
+            <!-- SECCIÓN 1: RESUMEN DEL TEMA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    RESUMEN DEL TEMA
+                </div>
+
+                <div class="hero-card">
+                    <div class="hero-card__content">
+                        <p class="hero-card__breadcrumb">Teoría y Métodos de Diseño · Historia e Impacto Social del Diseño</p>
+                        <h1 class="hero-card__title">¿Qué es la<br>Mediación<br>Artefactual?</h1>
+                        <p class="hero-card__body">
+                            Isabel Campi propone que el diseño no es simplemente la creación de objetos estéticos o
+                            funcionales, sino un proceso de <strong>mediación artefactual</strong>: el objeto diseñado actúa
+                            como puente entre el ser humano y su entorno. Para Campi, la historia del diseño es la historia
+                            de cómo los objetos han transformado la cultura y la sociedad. Los objetos no son neutrales;
+                            ellos "dictan" comportamientos, reflejan valores de una época y modifican la estructura social.
+                        </p>
+                        <div class="hero-card__actions">
+                            <a href="#" class="btn-primary">
+                                <span class="btn-primary__icon">▶</span> Ver introducción
+                            </a>
+                            <a href="#" class="btn-link">
+                                <span>📄</span> Extracto Editorial GG — Isabel Campi
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-card__media">
+                        <div class="video-player">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                        <p class="hero-card__media-caption">Introducción al tema · Isabel Campi y la Historia del Diseño</p>
+                    </div>
+                </div>
+
+                <!-- Sub-temas cards -->
+                <div class="subtemas-grid">
+                    <div class="subtema-card">
+                        <div class="subtema-card__number">1</div>
+                        <div class="subtema-card__info">
+                            <h3 class="subtema-card__title">Cultura Material e Impacto Social</h3>
+                            <p class="subtema-card__desc">
+                                El conjunto de objetos que rodean a una sociedad permite entender sus valores, tecnología
+                                y organización en un momento histórico dado. El diseño tiene una responsabilidad ética:
+                                un objeto bien diseñado mejora la autonomía y la dignidad del usuario.
+                            </p>
+                        </div>
+                        <div class="subtema-card__video">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="subtema-card">
+                        <div class="subtema-card__number">2</div>
+                        <div class="subtema-card__info">
+                            <h3 class="subtema-card__title">Metodología de Trabajo en Tres Fases</h3>
+                            <p class="subtema-card__desc">
+                                Fundamentación teórica (análisis comparativo de posturas), ejercitación analítica
+                                (matrices de necesidades y mapas de variables) y aplicación con transferencia
+                                (co-creación y evaluación usuario-artefacto-contexto).
+                            </p>
+                        </div>
+                        <div class="subtema-card__video">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: GLOSARIO -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    GLOSARIO · CONCEPTOS CLAVE DE ISABEL CAMPI
+                    <span class="section-label__hint">Haz clic en cada ficha para ver el video explicativo</span>
+                </div>
+
+                <div class="glosario-card">
+                    <div class="glosario-grid">
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🔗</div>
+                            <p class="glosario-item__name">Mediación Artefactual</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🏺</div>
+                            <p class="glosario-item__name">Cultura Material</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">⚖️</div>
+                            <p class="glosario-item__name">Responsabilidad Ética</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">📖</div>
+                            <p class="glosario-item__name">Teoría Crítica</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🌍</div>
+                            <p class="glosario-item__name">Impacto Social</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🧱</div>
+                            <p class="glosario-item__name">Calidad de Vida</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: APLICACIÓN PRÁCTICA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    APLICACIÓN PRÁCTICA EN EL TALLER DE DISEÑO
+                </div>
+
+                <div class="aplicacion-card">
+                    <h2 class="aplicacion-card__title">¿Cómo se usa esto en los proyectos?</h2>
+                    <p class="aplicacion-card__intro">
+                        Premisa: pasar de la pregunta <strong>"¿cómo lo hago?"</strong> a la pregunta
+                        <strong>"¿qué impacto tendrá este objeto en la sociedad?"</strong>. Cada decisión proyectual
+                        debe argumentarse demostrando su efecto sobre la vida del usuario y su contexto cultural.
+                    </p>
+
+                    <div class="aplicacion-highlight">
+                        <strong>"Esta solución no solo resuelve un problema técnico; se justifica socialmente porque
+                        reduce el esfuerzo físico del usuario en un 30%, permitiéndole mayor autonomía en su
+                        entorno doméstico"</strong> — así se argumenta desde la mediación artefactual de Campi.
+                        No se aceptan decisiones basadas en el gusto personal; todo debe estar respaldado por datos.
+                    </div>
+
+                    <div class="aplicacion-items">
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">01</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Argumentación de Mejora en Calidad de Vida</h4>
+                                <p class="aplicacion-item__desc">Justifica la propuesta demostrando cómo mejora la autonomía, dignidad o capacidad de acción del usuario. La mediación artefactual es el argumento central.</p>
+                            </div>
+                        </div>
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">02</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Contextualización Histórica</h4>
+                                <p class="aplicacion-item__desc">Las decisiones de materiales o formas se justifican respondiendo a una necesidad actual de la sociedad (sostenibilidad, accesibilidad), no a un capricho visual.</p>
+                            </div>
+                        </div>
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">03</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Evaluación del Impacto</h4>
+                                <p class="aplicacion-item__desc">Se demuestra que se pensaron las consecuencias del objeto: ¿cómo transforma la rutina del usuario? ¿Qué nuevos hábitos genera? ¿Qué cultura material produce?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: METODOLOGÍA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    METODOLOGÍA DE TRABAJO — TRES FASES
+                </div>
+
+                <div class="fases-grid">
+                    <div class="fase-card">
+                        <div class="fase-card__badge">Fase 1</div>
+                        <h3 class="fase-card__title">Fundamentación</h3>
+                        <p class="fase-card__sub">La Teoría</p>
+                        <p class="fase-card__desc">Análisis comparativo de posturas teóricas, estudio de métodos clásicos y contemporáneos, y construcción de mapas metodológicos.</p>
+                    </div>
+                    <div class="fase-card">
+                        <div class="fase-card__badge">Fase 2</div>
+                        <h3 class="fase-card__title">Ejercitación</h3>
+                        <p class="fase-card__sub">La Práctica Analítica</p>
+                        <p class="fase-card__desc">Construcción de matrices de necesidades, mapas de variables contextuales y desarrollo audiovisual de esquemas metodológicos.</p>
+                    </div>
+                    <div class="fase-card">
+                        <div class="fase-card__badge">Fase 3</div>
+                        <h3 class="fase-card__title">Aplicación</h3>
+                        <p class="fase-card__sub">La Transferencia</p>
+                        <p class="fase-card__desc">Generación de múltiples alternativas de solución. Procesos de co-creación y evaluación de la interacción usuario-artefacto-contexto.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: CONEXIÓN LDT -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    CONEXIÓN CON LA PRÁCTICA DOCENTE (LDT)
+                </div>
+
+                <div class="ldt-grid">
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">🧠</div>
+                        <h3 class="ldt-card__title">Formación Crítica en el Aula</h3>
+                        <p class="ldt-card__desc">Enseñar que la tecnología no es solo "aparatos", sino cultura. El docente invita a los alumnos a analizar cómo el celular o la silla transforman sus vidas.</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">🌱</div>
+                        <h3 class="ldt-card__title">Proyectos con Sentido Social</h3>
+                        <p class="ldt-card__desc">Los desafíos de diseño en clase se ligan a problemas reales de la comunidad, para que el alumno entienda su responsabilidad como "creador de cultura material".</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">📜</div>
+                        <h3 class="ldt-card__title">Análisis Documental</h3>
+                        <p class="ldt-card__desc">Usar la historia del diseño para que los alumnos entiendan la evolución de los objetos como respuesta a crisis o cambios sociales (p. ej., útiles escolares).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REFERENCIA BIBLIOGRÁFICA -->
+            <section class="section-block">
+                <div class="referencia-bar">
+                    <span class="referencia-bar__label">REFERENCIA BIBLIOGRÁFICA</span>
+                    <p class="referencia-bar__text">Campi, I. (s.f.). <em>La historia y la teoría del diseño.</em> Extracto Editorial GG. Docente: Juan Carlos Estupiñán.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleGlosario(el) {
+            const video = el.querySelector('.glosario-item__video');
+            const cta = el.querySelector('.glosario-item__cta');
+            if (video.classList.contains('hidden')) {
+                document.querySelectorAll('.glosario-item__video').forEach(v => v.classList.add('hidden'));
+                document.querySelectorAll('.glosario-item__cta').forEach(c => c.style.display = '');
+                document.querySelectorAll('.glosario-item').forEach(i => i.classList.remove('active'));
+                video.classList.remove('hidden');
+                cta.style.display = 'none';
+                el.classList.add('active');
+            } else {
+                video.classList.add('hidden');
+                cta.style.display = '';
+                el.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
