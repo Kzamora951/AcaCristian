@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/stylesheets/estudiante/subtemas/naturaleza_objetos.css">
     <style>
-        /* Estilo para tema activo en barra lateral */
         .subject-item a[href="/Estudiante/naturaleza_objetos"] {
             background-color: #4a60c0 !important;
             color: white !important;
@@ -16,16 +15,87 @@
             padding: 10px 15px;
             margin: 2px 0;
         }
-        
         .subject-item a[href="/Estudiante/naturaleza_objetos"]:hover {
             background-color: #3a4e9a !important;
             color: white !important;
+        }
+        .meta-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+        .meta-list li { margin-bottom: 6px; }
+        .meta-list strong { color: var(--text); font-weight: 600; }
+        .card-prose ul {
+            margin: 12px 0;
+            padding-left: 22px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+        .card-prose li { margin-bottom: 8px; }
+        .numbered-steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0;
+        }
+        .numbered-steps > li {
+            counter-increment: step;
+            position: relative;
+            padding-left: 36px;
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+        .numbered-steps > li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .criteria-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+        .criteria-list li {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.65;
+            padding-left: 18px;
+            position: relative;
+        }
+        .criteria-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blue);
         }
     </style>
 </head>
 
 <body>
-    <!-- Top Navigation -->
     <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-left">
@@ -40,7 +110,7 @@
             <div class="nav-center">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Buscar en el repositorio (ej: 'Biomímesis', 'Deductivo')..." class="search-input">
+                    <input type="text" placeholder="Buscar en el repositorio (ej: 'Sudjic', 'Maier', 'Horta Mesa')..." class="search-input">
                 </div>
             </div>
             <div class="nav-right">
@@ -57,88 +127,288 @@
     <div class="main-container">
         <%- include('../../barraLateral/barra') %>
 
-        <!-- Main Content -->
         <main class="main-content">
         <div class="page-wrapper">
-        <!-- -->
-        
-    <script>
-    // ── Sidebar toggle ──────────────────────────────────────
+
+      <section class="section-block" id="resumen">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Resumen del tema</span>
+        </div>
+
+        <div class="upn-card">
+          <div class="hero-grid">
+            <div>
+              <p class="hero-eyebrow">Fundamentos de Diseño · Deyan Sudjic — El lenguaje de las cosas</p>
+              <h1 class="hero-title">La Naturaleza<br>de los Objetos</h1>
+              <ul class="meta-list">
+                <li><strong>Asignatura:</strong> Fundamentos de Diseño</li>
+                <li><strong>Docente referente:</strong> Ricardo Andrés Bohórquez</li>
+                <li><strong>Autor clave:</strong> Deyan Sudjic (<em>El lenguaje de las cosas</em>)</li>
+                <li><strong>Autores complementarios:</strong> Enric Maier (Alfabetización visual) y A. A. Horta Mesa (Educación tecnológica)</li>
+              </ul>
+              <p class="hero-desc">
+                Deyan Sudjic plantea que los objetos son un lenguaje no verbal. No solo diseñamos
+                funciones, sino que diseñamos identidades. Para un Licenciado en Diseño Tecnológico,
+                entender a Sudjic implica reconocer que un objeto tecnológico (como un smartphone o una
+                silla) comunica quién es el usuario y qué valores tiene la sociedad que lo produjo.
+              </p>
+              <div class="hero-actions">
+                <a href="#" class="btn-upn"><i class="fas fa-play"></i> Ver introducción</a>
+                <a href="https://es.scribd.com/document/832361347/El-Lenguaje-de-Las-Cosas" target="_blank" rel="noopener noreferrer" class="btn-link-upn"><i class="fas fa-book-open"></i> Leer en Scribd (PDF)</a>
+              </div>
+            </div>
+            <div>
+              <video class="video-box" controls style="max-width: 100%; width: 100%; height: auto; max-height: 400px;">
+                <source src="/videos/NATURALEZA.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+              </video>
+              <p class="video-caption">Introducción al tema · El lenguaje de las cosas</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="upn-card card-prose">
+          <h2>El lenguaje de las cosas: Sudjic</h2>
+          <div class="highlight-upn">
+            <p>
+              <em>«Los objetos son el rastro que dejamos atrás; son la evidencia arqueológica de
+              nuestras ambiciones y miedos.»</em>
+            </p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">M</div>
+              <h3>Enric Maier</h3>
+            </div>
+            <p>Alfabetización visual: el estudiante aprende a «leer» imágenes y objetos con la misma profundidad que un texto.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">H</div>
+              <h3>A. A. Horta Mesa</h3>
+            </div>
+            <p>Educación tecnológica crítica: no solo «hacer» cosas, sino comprender la cultura tecnológica y su contexto social.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="section-block" id="conceptos">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Conceptos clave de la obra</span>
+          <span class="section-hint">Haz clic en cada ficha para ver el video explicativo</span>
+        </div>
+
+        <div class="upn-card">
+          <div class="cards-grid" id="cards-grid"></div>
+        </div>
+
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">A</div>
+              <h3>Identidad y estatus</h3>
+            </div>
+            <p>Los objetos actúan como símbolos de pertenencia o aspiración. Al diseñar, debemos preguntarnos: ¿qué mensaje proyecta este objeto? Un diseño «robusto» comunica seguridad técnica; un diseño «minimalista» comunica vanguardia y sofisticación.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge">B</div>
+              <h3>La arqueología del presente</h3>
+            </div>
+            <p>Los objetos narran la historia de la tecnología y el gusto. Analizar la evolución de un artefacto (del telégrafo al WhatsApp) no es solo cronológico, es social: Sudjic nos enseña a «leer» los objetos como documentos históricos.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+        <div class="upn-card" style="margin-top: 16px;">
+          <div class="sub-card-header" style="margin-bottom: 12px;">
+            <div class="step-badge">C</div>
+            <h3>El lujo y el valor (más allá del precio)</h3>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.75; margin: 0;">
+            El valor de un objeto a menudo reside en su historia, su proceso de fabricación o su carga
+            simbólica, no solo en su utilidad práctica inmediata.
+          </p>
+        </div>
+
+      </section>
+
+      <section class="section-block" id="practica">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Dimensión pedagógica y aplicación en la sustentación</span>
+        </div>
+
+        <div class="upn-card card-prose">
+          <h2>Dimensión pedagógica: Maier y Horta Mesa</h2>
+          <p>Para llevar esta teoría al aula (práctica docente), integramos a estos autores:</p>
+          <ul>
+            <li><strong>Enric Maier (Alfabetización visual):</strong> propone que el estudiante aprenda a «leer» las imágenes y los objetos con la misma profundidad que lee un libro. En el taller se usa para descomponer visualmente las maquetas, analizando cómo la forma comunica la función antes de tocar el objeto.</li>
+            <li><strong>A. A. Horta Mesa (Pensamiento tecnológico):</strong> enfatiza que la Educación Tecnológica debe ser crítica. No se trata solo de «hacer» cosas, sino de entender la cultura tecnológica. En el taller justifica por qué el diseño debe responder a un contexto social y político específico, no solo a un problema técnico aislado.</li>
+          </ul>
+        </div>
+
+        <div class="upn-card">
+          <h2>¿Cómo integrar estos autores en las entregas del profesor Ricardo?</h2>
+          <p>
+            En la fase de investigación y sustentación, cada autor cumple un rol distinto en la
+            argumentación del prototipo:
+          </p>
+          <div class="highlight-upn">
+            <p>
+              <strong>Análisis del objeto (Sudjic):</strong> «No diseñamos simplemente un pupitre;
+              diseñamos un objeto que comunica la estructura de poder en el aula según Sudjic».
+            </p>
+          </div>
+          <ul class="criteria-list" style="margin-top: 16px;">
+            <li><strong>Justificación de la forma (Maier):</strong> explicar por qué la configuración geométrica del prototipo facilita la comprensión del usuario.</li>
+            <li><strong>Matriz de impacto (Horta Mesa):</strong> evaluar cómo el diseño tecnológico afecta la cultura material de la comunidad a la que va dirigido.</li>
+          </ul>
+        </div>
+
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-search" style="font-size:9px"></i></div>
+              <h3>Análisis sociocultural</h3>
+            </div>
+            <p>Utiliza a Sudjic en la investigación para explicar el contexto sociocultural del problema y el mensaje que proyecta el objeto.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-shapes" style="font-size:9px"></i></div>
+              <h3>Lectura visual de la maqueta</h3>
+            </div>
+            <p>Usa a Maier para argumentar por qué la forma del prototipo facilita la comprensión antes de la interacción física.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+        <div class="upn-card">
+          <h2>Reflexión para el LDT</h2>
+          <p>
+            Como diseñadores-docentes, no solo fabricamos «cosas»; fabricamos cultura. Sudjic nos da
+            la profundidad crítica para que nuestros alumnos de colegio no sean simples consumidores,
+            sino analistas de los objetos que los rodean.
+          </p>
+        </div>
+
+      </section>
+
+      <section class="section-block" id="docente">
+
+        <div class="section-heading">
+          <div class="section-acento"></div>
+          <span class="section-label">Metodología de trabajo y criterios de evaluación</span>
+        </div>
+
+        <div class="upn-card card-prose">
+          <h2>Metodología de trabajo (estrategias didácticas)</h2>
+          <p>En esta clase se aprende haciendo y reflexionando. El docente actúa como mediador utilizando:</p>
+          <ol class="numbered-steps">
+            <li><strong>Aprendizaje basado en problemas (ABP) y proyectos:</strong> no hay exámenes tradicionales, hay retos de diseño.</li>
+            <li><strong>Modelación conceptual:</strong> pasar de la idea abstracta al papel.</li>
+            <li><strong>Desarrollo de prototipos:</strong> construcción de maquetas (normalmente en papel, cartón, balso).</li>
+            <li><strong>Matrices de evaluación:</strong> herramienta clave para evaluar diseños con criterios objetivos (cuantitativos y cualitativos), no solo con «me gusta o no me gusta».</li>
+          </ol>
+        </div>
+
+        <div class="upn-card">
+          <h2>Criterios de evaluación</h2>
+          <p>La evaluación es continua y formativa. Para aprobar, se debe demostrar:</p>
+          <ul class="criteria-list">
+            <li><strong>Coherencia:</strong> que la maqueta final responda exactamente al modelo conceptual planteado.</li>
+            <li><strong>Aplicación técnica:</strong> correcto uso de los principios 2D y 3D (Wucius Wong).</li>
+            <li><strong>Argumentación:</strong> sustentación técnica de las decisiones (¿por qué usó ese material? ¿por qué esa forma?).</li>
+            <li><strong>Impacto pedagógico:</strong> ¿cómo sirve este prototipo para enseñar algo en un colegio?</li>
+          </ul>
+        </div>
+
+        <div class="two-col">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-table" style="font-size:9px"></i></div>
+              <h3>Matrices de evaluación</h3>
+            </div>
+            <p>Construcción de criterios objetivos para valorar prototipos: coherencia conceptual, aplicación técnica y argumentación.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div class="step-badge"><i class="fas fa-chalkboard-teacher" style="font-size:9px"></i></div>
+              <h3>Impacto en el aula de colegio</h3>
+            </div>
+            <p>Cómo el prototipo y su sustentación demuestran utilidad pedagógica real para estudiantes de bachillerato.</p>
+            <div class="video-sm"><div class="play-sm"><div class="play-sm-icon"></div></div></div>
+          </div>
+        </div>
+
+      </section>
+
+    </div></main>
+  </div>
+
+<script>
     document.getElementById('menuToggle').addEventListener('click', function () {
       document.getElementById('sidebar').classList.toggle('collapsed');
     });
 
-    // ── Expandir subtemas de semestre 1 al cargar ───────────
     document.addEventListener('DOMContentLoaded', function () {
-      const subjects = document.getElementById('fundamentos-subjects');
-      const icon     = document.getElementById('fundamentos-icon');
-      if (subjects && icon) {
-        subjects.classList.add('show');
-        icon.classList.add('rotated');
+      var fundamentosSubjects = document.getElementById('fundamentos-subjects');
+      var fundamentosIcon = document.getElementById('fundamentos-icon');
+      if (fundamentosSubjects && fundamentosIcon) {
+        fundamentosSubjects.classList.add('show');
+        fundamentosIcon.classList.add('rotated');
       }
     });
 
-    // ── Toggle accordions del sidebar ──────────────────────
-    ['fundamentos', 'teoria', 'diseno'].forEach(function (key) {
-      document.getElementById(key + '-toggle').addEventListener('click', function () {
-        const list = document.getElementById(key + '-subjects');
-        const icon = document.getElementById(key + '-icon');
-        list.classList.toggle('show');
-        icon.classList.toggle('rotated');
-      });
-    });
-
-    // ── Flip cards ──────────────────────────────────────────
-    const concepts = [
-      { label: 'Navaja de Ockham',           icon: '✂️' },
-      { label: 'Usabilidad Estética',         icon: '✦'  },
-      { label: 'Jerarquía',                   icon: '◈'  },
-      { label: 'Ley de Fitts',                icon: '⊙'  },
-      { label: 'Asequibilidad',               icon: '✋' },
-      { label: 'Señal-Ruido',                 icon: '≈'  },
-    ];
-
-    const grid = document.getElementById('cards-grid');
-    concepts.forEach(function (item) {
-      const card = document.createElement('div');
-      card.className = 'flip-card';
-      card.innerHTML =
-        '<div class="flip-inner">' +
-          '<div class="flip-front">' +
-            '<div class="flip-icon-wrap">' + item.icon + '</div>' +
-            '<div class="flip-label">'     + item.label + '</div>' +
-            '<div class="flip-hint">▸ clic para video</div>' +
-          '</div>' +
-          '<div class="flip-back">' +
-            '<div class="flip-back-play"><div class="back-play-icon"></div></div>' +
-            '<div class="flip-back-label">' + item.label + '</div>' +
-          '</div>' +
-        '</div>';
-      card.addEventListener('click', function () { card.classList.toggle('flipped'); });
-      grid.appendChild(card);
-    });
-
-    // ── Highlight active anchor on scroll ──────────────────
-    const sections = document.querySelectorAll('.section-block');
-    const navLinks = document.querySelectorAll('.anchor-nav a');
-
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (l) { l.classList.remove('active'); });
-          var active = document.querySelector('.anchor-nav a[href="#' + entry.target.id + '"]');
-          if (active) active.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-120px 0px -60% 0px' });
-
-    sections.forEach(function (s) { observer.observe(s); });
-
-    // ── Search ──────────────────────────────────────────────
     document.querySelector('.search-input').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') console.log('Buscando:', e.target.value);
     });
-  </script>
 
+    var concepts = [
+      { label: 'Identidad y estatus',       icon: '◆' },
+      { label: 'Arqueología del presente',  icon: '⌛' },
+      { label: 'Lujo y valor',              icon: '✦' },
+      { label: 'Alfabetización visual',     icon: '◎' },
+      { label: 'Pensamiento tecnológico',   icon: '⚙' },
+      { label: 'Cultura material',          icon: '⬡' },
+    ];
+
+    var grid = document.getElementById('cards-grid');
+    if (grid) {
+      concepts.forEach(function (item) {
+        var card = document.createElement('div');
+        card.className = 'flip-card';
+        card.innerHTML =
+          '<div class="flip-inner">' +
+            '<div class="flip-front">' +
+              '<div class="flip-icon-wrap">' + item.icon + '</div>' +
+              '<div class="flip-label">' + item.label + '</div>' +
+              '<div class="flip-hint">▸ clic para video</div>' +
+            '</div>' +
+            '<div class="flip-back">' +
+              '<div class="flip-back-play"><div class="back-play-icon"></div></div>' +
+              '<div class="flip-back-label">' + item.label + '</div>' +
+            '</div>' +
+          '</div>';
+        card.addEventListener('click', function () { card.classList.toggle('flipped'); });
+        grid.appendChild(card);
+      });
+    }
+</script>
 </body>
 </html>

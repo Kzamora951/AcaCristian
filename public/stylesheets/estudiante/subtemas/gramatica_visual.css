@@ -1,12 +1,7 @@
-/* Importar estilos base */
-@import url('../primersemestre.css');
-
-/* ==========================================================================
-   1. FUENTES Y VARIABLES GLOBALES
-   ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
+/* Estilos específicos de gramática visual (tipografía base en naturaleza_objetos.css) */
 
 :root {
+  --font-base: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   /* Colores de la marca y UI */
   --blue:       #2d3fb5;
   --blue-light: #e8ebf8;
@@ -31,13 +26,6 @@
   padding: 0;
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: var(--bg-app);
-  color: var(--text);
-  line-height: 1.6;
-}
-
 html { scroll-behavior: smooth; }
 
 /* ==========================================================================
@@ -58,44 +46,11 @@ html { scroll-behavior: smooth; }
 
 /* El contenedor principal empuja el contenido para dejarle espacio al sidebar */
 .main-content {
-  margin-left: 280px; /* DEBE COINCIDIR CON EL ANCHO DE TU SIDEBAR */
-  width: calc(100% - 280px);
   min-height: 100vh;
-  background-color: var(--bg-app);
 }
 
 /* ==========================================================================
-   3. NAVEGACIÓN INTERNA (Anchor Nav)
-   ========================================================================== */
-.anchor-nav {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex;
-  gap: 10px;
-  position: sticky;
-  top: 0; /* Cambia a 60px o 80px si tienes una barra superior fija */
-  z-index: 99;
-}
-
-.anchor-nav a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 15px 18px;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.anchor-nav a:hover, 
-.anchor-nav a.active {
-  color: var(--blue);
-  border-bottom-color: var(--blue);
-}
-
-/* ==========================================================================
-   4. ESTILOS DE LOS BLOQUES DE CONTENIDO (Tarjetas y Textos)
+   3. ESTILOS DE LOS BLOQUES DE CONTENIDO (Tarjetas y Textos)
    ========================================================================== */
 .page-wrapper {
   max-width: 1100px;
@@ -125,10 +80,10 @@ html { scroll-behavior: smooth; }
 }
 
 .section-label {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   color: var(--text-muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
@@ -148,18 +103,18 @@ html { scroll-behavior: smooth; }
 }
 
 .card h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 24px;
-  font-weight: 400;
+  font-family: var(--font-base);
+  font-size: 22px;
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 15px;
+  line-height: 1.75;
+  margin-bottom: 12px;
 }
 
 /* ── Tarjeta Principal (Hero) ── */
@@ -171,18 +126,26 @@ html { scroll-behavior: smooth; }
 }
 
 .hero-eyebrow {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
-  margin-bottom: 10px;
-  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
 }
 
 .hero-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 34px;
+  font-family: var(--font-base);
+  font-size: 28px;
+  font-weight: 700;
   line-height: 1.2;
   color: var(--text);
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+}
+
+.hero-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 22px;
 }
 
 /* ── Botones ── */
@@ -191,7 +154,7 @@ html { scroll-behavior: smooth; }
 .btn-primary {
   background-color: var(--blue);
   color: #ffffff !important;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-base);
   font-size: 14px;
   font-weight: 600;
   padding: 12px 24px;
@@ -257,8 +220,8 @@ html { scroll-behavior: smooth; }
   font-size: 12px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
-.sub-card h3 { font-size: 15px; color: var(--text); }
-.sub-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+.sub-card h3 { font-size: 14px; font-weight: 500; color: var(--text); }
+.sub-card p { font-size: 12px; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; flex-grow: 1; }
 
 .video-sm {
   background-color: #111;
@@ -335,5 +298,4 @@ html { scroll-behavior: smooth; }
   .two-col { grid-template-columns: 1fr; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .page-wrapper { padding: 20px; }
-  .anchor-nav { overflow-x: auto; white-space: nowrap; }
 }

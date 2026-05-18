@@ -60,14 +60,6 @@
     <main class="main-content">
     <div class="page-wrapper">
 
-      <!-- Navegación de anclaje -->
-      <nav class="anchor-nav" id="anchor-nav">
-        <a href="#resumen"   class="active">Resumen</a>
-        <a href="#conceptos">Conceptos clave</a>
-        <a href="#practica" >Aplicación práctica</a>
-        <a href="#docente"  >Conexión docente</a>
-      </nav>
-
       <!-- ─────────────────────────────────────────
            SECCIÓN 1 · RESUMEN
       ───────────────────────────────────────── -->
@@ -300,10 +292,24 @@
 
       </section>
 
-    </div></div>main>
+    </div>
+    </main>
   </div><!-- /main-container -->
 
-    
+<script>
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var fundamentosSubjects = document.getElementById('fundamentos-subjects');
+      var fundamentosIcon = document.getElementById('fundamentos-icon');
+      if (fundamentosSubjects && fundamentosIcon) {
+        fundamentosSubjects.classList.add('show');
+        fundamentosIcon.classList.add('rotated');
+      }
+    });
+
     // ── Flip cards ───────────────────────────────────────────
     var concepts = [
       { label: 'Del Punto al Volumen',    icon: '◆'  },
@@ -338,22 +344,6 @@
       card.addEventListener('click', function () { card.classList.toggle('flipped'); });
       grid.appendChild(card);
     });
-
-    // ── Highlight active anchor on scroll ───────────────────
-    var sections = document.querySelectorAll('.section-block');
-    var navLinks = document.querySelectorAll('.anchor-nav a');
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (l) { l.classList.remove('active'); });
-          var active = document.querySelector('.anchor-nav a[href="#' + entry.target.id + '"]');
-          if (active) active.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-120px 0px -60% 0px' });
-
-    sections.forEach(function (s) { observer.observe(s); });
 
     // ── Search ───────────────────────────────────────────────
     document.querySelector('.search-input').addEventListener('keypress', function (e) {

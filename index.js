@@ -40,13 +40,13 @@ const session = require('express-session');
 
 app.use(session({
 
-    secret: 'secreto_temporal',
+  secret: 'secreto_temporal',
 
-    resave: false,
+  resave: false,
 
-    saveUninitialized: false,
+  saveUninitialized: false,
 
-    cookie: { maxAge: 60000 }
+  cookie: { maxAge: 60000 }
 
 }));
 
@@ -66,11 +66,11 @@ app.use(flash());
 
 app.use((req, res, next) => {
 
-    res.locals.success_msg = req.flash('success_msg');
+  res.locals.success_msg = req.flash('success_msg');
 
-    res.locals.error_msg = req.flash('error_msg');
+  res.locals.error_msg = req.flash('error_msg');
 
-    next();
+  next();
 
 });
 
@@ -92,7 +92,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
 
-    res.render('login');
+  res.render('login');
 
 });
 
@@ -100,25 +100,25 @@ app.get('/login', (req, res) => {
 
 app.post('/login', (req, res) => {
 
-    const { correo, password } = req.body;
+  const { correo, password } = req.body;
 
-    
 
-    // Validación simple: kevin@gmail.com con contraseña 123
 
-    if (correo === 'kevin@gmail.com' && password === '123') {
+  // Validación simple: kevin@gmail.com con contraseña 123
 
-        req.flash('success_msg', '¡Inicio de sesión correcto! Redirigiendo...');
+  if (correo === 'kevin@gmail.com' && password === '123') {
 
-        res.redirect('/Estudiante/HomeEstudiante');
+    req.flash('success_msg', '¡Inicio de sesión correcto! Redirigiendo...');
 
-    } else {
+    res.redirect('/Estudiante/HomeEstudiante');
 
-        req.flash('error_msg', 'Credenciales incorrectas. Por favor, intenta nuevamente.');
+  } else {
 
-        res.redirect('/login');
+    req.flash('error_msg', 'Credenciales incorrectas. Por favor, intenta nuevamente.');
 
-    }
+    res.redirect('/login');
+
+  }
 
 });
 
@@ -128,19 +128,19 @@ app.post('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
 
-    req.session.destroy((err) => {
+  req.session.destroy((err) => {
 
-        if (err) {
+    if (err) {
 
-            return res.redirect('/login');
+      return res.redirect('/login');
 
-        }
+    }
 
-        req.flash('success_msg', 'Has cerrado sesión correctamente.');
+    req.flash('success_msg', 'Has cerrado sesión correctamente.');
 
-        res.redirect('/login');
+    res.redirect('/login');
 
-    });
+  });
 
 });
 
@@ -212,6 +212,8 @@ app.get('/Estudiante/naturaleza_objetos', (req, res) => {
 
 });
 
+
+// Rutas para subtemas del Semestre 2
 app.get('/Estudiante/epistemologia', (req, res) => {
 
   res.render('Estudiante/segundo semestre/epistemologia');
@@ -231,22 +233,37 @@ app.get('/Estudiante/historiaImpacto', (req, res) => {
 });
 
 
+// Rutas para subtemas del Semestre 3
 
+app.get('/Estudiante/fisica_escultura', (req, res) => {
+  
+  res.render('Estudiante/tercer semestre/fisica_escultura');
+});
+
+app.get('/Estudiante/biomecanica', (req, res) => {
+
+  res.render('Estudiante/tercer semestre/biomecanica');
+});
+
+app.get('/Estudiante/objeto_contexto', (req, res) => {
+
+  res.render('Estudiante/tercer semestre/objeto_contexto');
+});
 
 
 // Manejador de errores 404
 
 app.use((req, res) => {
 
-    res.status(404).render('Error/error', {
+  res.status(404).render('Error/error', {
 
-        title: 'Página no encontrada',
+    title: 'Página no encontrada',
 
-        message: 'La página que buscas no existe o ha sido movida.',
+    message: 'La página que buscas no existe o ha sido movida.',
 
-        errorCode: '404'
+    errorCode: '404'
 
-    });
+  });
 
 });
 
@@ -256,17 +273,17 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
 
-    console.error(err.stack);
+  console.error(err.stack);
 
-    res.status(500).render('Error/error', {
+  res.status(500).render('Error/error', {
 
-        title: 'Error del servidor',
+    title: 'Error del servidor',
 
-        message: 'Ha ocurrido un error interno. Por favor, intenta nuevamente más tarde.',
+    message: 'Ha ocurrido un error interno. Por favor, intenta nuevamente más tarde.',
 
-        errorCode: '500'
+    errorCode: '500'
 
-    });
+  });
 
 });
 
