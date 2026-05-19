@@ -235,9 +235,9 @@ app.get('/Estudiante/historiaImpacto', (req, res) => {
 
 // Rutas para subtemas del Semestre 3
 
-app.get('/Estudiante/fisica_escultura', (req, res) => {
+app.get('/Estudiante/forma_crecimiento', (req, res) => {
   
-  res.render('Estudiante/tercer semestre/fisica_escultura');
+  res.render('Estudiante/tercer semestre/forma_crecimiento');
 });
 
 app.get('/Estudiante/biomecanica', (req, res) => {

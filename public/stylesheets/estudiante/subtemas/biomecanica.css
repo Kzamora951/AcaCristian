@@ -1,0 +1,538 @@
+/* Importar estilos base */
+@import url('../primersemestre.css');
+
+/* ============================================================
+   biomecanica.css
+   Asignatura: Diseño y Biónica — Wainwright & McMahon
+   Path: /stylesheets/estudiante/subtemas/biomecanica.css
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --bm-bg:          #f0f2fa;
+  --bm-surface:     #ffffff;
+  --bm-primary:     #4a60c0;
+  --bm-primary-dk:  #3a4e9a;
+  --bm-accent:      #4a60c0;
+  --bm-accent-lt:   #eef0fb;
+  --bm-text:        #2c3e50;
+  --bm-text-muted:  #6b7280;
+  --bm-border:      rgba(74, 96, 192, 0.13);
+  --bm-highlight-bg:#eef0fb;
+  --bm-radius:      16px;
+  --bm-radius-sm:   10px;
+  --bm-shadow:      0 2px 16px rgba(74, 96, 192, 0.08);
+  --bm-shadow-md:   0 4px 24px rgba(74, 96, 192, 0.14);
+}
+
+/* ── Page wrapper ───────────────────────────────────────────── */
+.main-content {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: 100vh;
+  background-color: var(--bm-bg);
+}
+
+.biomecanica-page {
+  background: var(--bm-bg);
+  min-height: 100vh;
+  padding: 32px 24px 64px;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--bm-text);
+}
+
+/* ── Section block ──────────────────────────────────────────── */
+.section-block {
+  max-width: 1180px;
+  margin: 0 auto 48px;
+}
+
+/* ── Section label ──────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bm-text);
+  margin-bottom: 20px;
+}
+.section-label__bar {
+  display: block;
+  width: 4px;
+  height: 20px;
+  background: var(--bm-primary);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.section-label__hint {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--bm-text-muted);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ── Hero card ──────────────────────────────────────────────── */
+.hero-card {
+  background: var(--bm-surface);
+  border-radius: var(--bm-radius);
+  box-shadow: var(--bm-shadow);
+  padding: 40px 44px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hero-card__breadcrumb {
+  font-size: 0.8rem;
+  color: var(--bm-text-muted);
+  margin: 0 0 12px;
+}
+
+.hero-card__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--bm-text);
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+
+.hero-card__body {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #374151;
+  margin: 0 0 28px;
+}
+
+.hero-card__body strong {
+  color: var(--bm-primary);
+  font-weight: 600;
+}
+
+.hero-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ── Botones ────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bm-primary);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover {
+  background: var(--bm-primary-dk);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.btn-primary__icon { font-size: 0.75rem; }
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--bm-primary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-link:hover { opacity: 0.7; }
+
+/* ── Strip de autores ───────────────────────────────────────── */
+.autores-strip {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.autor-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bm-surface);
+  border: 1.5px solid var(--bm-border);
+  border-left: 4px solid var(--bm-primary);
+  border-radius: var(--bm-radius-sm);
+  padding: 12px 18px;
+  box-shadow: var(--bm-shadow);
+  flex: 1;
+  min-width: 240px;
+}
+
+.autor-badge i {
+  font-size: 1.2rem;
+  color: var(--bm-primary);
+  flex-shrink: 0;
+}
+
+.autor-badge__name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--bm-text);
+  line-height: 1.3;
+}
+
+.autor-badge__ref {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--bm-text-muted);
+  font-style: italic;
+}
+
+/* ── Video player ───────────────────────────────────────────── */
+.video-player {
+  background: #0f0f0f;
+  border-radius: var(--bm-radius-sm);
+  overflow: hidden;
+}
+.video-player video,
+.subtema-card__video video,
+.glosario-item__video video {
+  width: 100%;
+  display: block;
+  border-radius: var(--bm-radius-sm);
+  background: #111;
+}
+
+.hero-card__media-caption {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--bm-text-muted);
+  margin: 10px 0 0;
+}
+
+/* ── Sub-temas grid ─────────────────────────────────────────── */
+.subtemas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.subtema-card {
+  background: var(--bm-surface);
+  border-radius: var(--bm-radius);
+  box-shadow: var(--bm-shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.subtema-card__number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bm-highlight-bg);
+  color: var(--bm-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid var(--bm-border);
+}
+
+.subtema-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--bm-text);
+}
+
+.subtema-card__desc {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ── Glosario ───────────────────────────────────────────────── */
+.glosario-card {
+  background: var(--bm-surface);
+  border-radius: var(--bm-radius);
+  box-shadow: var(--bm-shadow);
+  padding: 32px;
+}
+
+.glosario-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.glosario-item {
+  background: var(--bm-highlight-bg);
+  border: 1.5px solid var(--bm-border);
+  border-radius: var(--bm-radius-sm);
+  padding: 20px 12px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.glosario-item:hover,
+.glosario-item.active {
+  border-color: var(--bm-primary);
+  box-shadow: 0 0 0 3px rgba(44, 74, 110, 0.1);
+  background: #e4ecf5;
+}
+
+.glosario-item__icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.glosario-item__name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bm-primary);
+  margin: 0;
+}
+
+.glosario-item__cta {
+  font-size: 0.72rem;
+  color: var(--bm-text-muted);
+  margin: 0;
+}
+
+.glosario-item__video {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ── Aplicación práctica ────────────────────────────────────── */
+.aplicacion-card {
+  background: var(--bm-surface);
+  border-radius: var(--bm-radius);
+  box-shadow: var(--bm-shadow);
+  padding: 40px 44px;
+}
+
+.aplicacion-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--bm-text);
+  margin: 0 0 16px;
+}
+
+.aplicacion-card__intro {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #374151;
+  margin: 0 0 28px;
+  max-width: 820px;
+}
+
+.aplicacion-highlight {
+  background: var(--bm-accent-lt);
+  border-left: 4px solid var(--bm-primary);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 24px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--bm-text);
+  margin-bottom: 32px;
+}
+
+.aplicacion-highlight strong {
+  color: var(--bm-primary);
+  font-weight: 700;
+}
+
+.aplicacion-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aplicacion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 24px;
+  background: var(--bm-highlight-bg);
+  border-radius: var(--bm-radius-sm);
+  border: 1px solid var(--bm-border);
+}
+
+.aplicacion-item__num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--bm-border);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 40px;
+  margin-top: 2px;
+}
+
+.aplicacion-item__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bm-text);
+  margin: 0 0 6px;
+}
+
+.aplicacion-item__desc {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ── LDT grid (4 tarjetas) ──────────────────────────────────── */
+.ldt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.ldt-card {
+  background: var(--bm-surface);
+  border-radius: var(--bm-radius);
+  box-shadow: var(--bm-shadow);
+  padding: 24px 22px 28px;
+  border-top: 4px solid var(--bm-primary);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.ldt-card:hover {
+  box-shadow: var(--bm-shadow-md);
+  transform: translateY(-2px);
+}
+
+.ldt-card__icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.ldt-card__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--bm-text);
+  margin: 0 0 10px;
+}
+
+.ldt-card__desc {
+  font-size: 0.83rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ── Referencia bibliográfica ───────────────────────────────── */
+.referencia-bar {
+  background: var(--bm-surface);
+  border-radius: var(--bm-radius-sm);
+  border: 1px solid var(--bm-border);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.referencia-bar__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bm-primary);
+  white-space: nowrap;
+}
+
+.referencia-bar__text {
+  font-size: 0.84rem;
+  color: var(--bm-text-muted);
+  margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .ldt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+  .hero-card__media {
+    order: -1;
+  }
+  .glosario-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .biomecanica-page {
+    padding: 20px 16px 48px;
+  }
+  .hero-card {
+    padding: 24px 20px;
+  }
+  .hero-card__title {
+    font-size: 1.5rem;
+  }
+  .subtemas-grid {
+    grid-template-columns: 1fr;
+  }
+  .ldt-grid {
+    grid-template-columns: 1fr;
+  }
+  .glosario-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .aplicacion-card {
+    padding: 24px 20px;
+  }
+  .autores-strip {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .glosario-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-card__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

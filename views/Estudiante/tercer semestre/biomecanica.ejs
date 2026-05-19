@@ -6,19 +6,8 @@
     <title>3.2 Biomecánica y Estructuras - Universidad Pedagógica</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/stylesheets/estudiante/subtemas/naturaleza_objetos.css">
-    <style>
-        .subject-item a[href="/Estudiante/biomecanica"],
-        .barra-subject-item a[href="/Estudiante/biomecanica"] {
-            background-color: #4a60c0 !important;
-            color: white !important;
-            border-radius: 8px;
-        }
-        .subject-item a[href="/Estudiante/biomecanica"] i,
-        .barra-subject-item a[href="/Estudiante/biomecanica"] i {
-            color: white !important;
-        }
-    </style>
+    <link rel="stylesheet" href="/stylesheets/estudiante/subtemas/biomecanica.css">
+
 </head>
 <body>
     <nav class="top-nav">
@@ -50,48 +39,282 @@
     <div class="main-container">
         <%- include('../../barraLateral/barra') %>
 
-        <main class="main-content">
-        <div class="page-wrapper">
+        <main class="main-content biomecanica-page">
 
-      <section class="section-block" id="resumen">
-        <div class="section-heading">
-          <div class="section-acento"></div>
-          <span class="section-label">Resumen del tema</span>
-        </div>
+            <!-- SECCIÓN 1: RESUMEN DEL TEMA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    RESUMEN DEL TEMA
+                </div>
 
-        <div class="upn-card">
-          <div class="hero-grid">
-            <div>
-              <p class="hero-eyebrow">Diseño y Biónica · Semestre 3</p>
-              <h1 class="hero-title">Biomecánica<br>y Estructuras</h1>
-              <p class="hero-desc">
-                Estudio de cómo los organismos soportan cargas, distribuyen esfuerzos y optimizan materiales.
-                El diseñador tecnológico aplica estos principios para crear estructuras ligeras, resistentes
-                y adaptadas a las necesidades del usuario y del contexto de uso.
-              </p>
-              <div class="hero-actions">
-                <a href="#" class="btn-upn"><i class="fas fa-play"></i> Ver introducción</a>
-                <a href="#" class="btn-link-upn"><i class="fas fa-book-open"></i> Material de apoyo</a>
-              </div>
-            </div>
-            <div>
-              <div class="video-box">
-                <div class="play-btn"><div class="play-icon"></div></div>
-              </div>
-              <p class="video-caption">Introducción al tema · Biomecánica aplicada al diseño</p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div class="hero-card">
+                    <div class="hero-card__content">
+                        <p class="hero-card__breadcrumb">Diseño y Biónica · Biomecánica y Estructuras</p>
+                        <h1 class="hero-card__title">La ingeniería<br>de la vida</h1>
+                        <p class="hero-card__body">
+                            La biomecánica estudia los organismos como <strong>sistemas mecánicos</strong>.
+                            Wainwright se enfoca en cómo los materiales biológicos (queratina, colágeno,
+                            celulosa, quitina) se organizan jerárquicamente para soportar cargas. McMahon
+                            analiza la locomoción y el diseño muscular, estableciendo cómo las leyes de la
+                            física dictan velocidades, ritmos de paso y gasto energético. Juntos proponen que
+                            la naturaleza logra <strong>máxima resistencia con mínima densidad de material</strong>.
+                        </p>
+                        <div class="hero-card__actions">
+                            <a href="#" class="btn-primary">
+                                <span class="btn-primary__icon">▶</span> Ver introducción
+                            </a>
+                            <a href="#" class="btn-link">
+                                <span>📄</span> Mechanical Design in Organisms (Ref)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-card__media">
+                        <div class="video-player">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                        <p class="hero-card__media-caption">Introducción al tema · Wainwright & McMahon — Biomecánica</p>
+                    </div>
+                </div>
 
-        </div>
+                <!-- Autores badge -->
+                <div class="autores-strip">
+                    <div class="autor-badge">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <span class="autor-badge__name">Steven A. Wainwright</span>
+                            <span class="autor-badge__ref">Mechanical Design in Organisms</span>
+                        </div>
+                    </div>
+                    <div class="autor-badge">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <span class="autor-badge__name">Thomas McMahon</span>
+                            <span class="autor-badge__ref">Muscles, Reflexes, and Locomotion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-temas cards -->
+                <div class="subtemas-grid">
+                    <div class="subtema-card">
+                        <div class="subtema-card__number">1</div>
+                        <div class="subtema-card__info">
+                            <h3 class="subtema-card__title">Materiales Compuestos y Sistemas de Palancas</h3>
+                            <p class="subtema-card__desc">
+                                La naturaleza mezcla componentes rígidos (calcio) con flexibles (colágeno)
+                                para evitar fracturas frágiles. Los huesos y músculos actúan como máquinas
+                                simples: puntos de apoyo, potencia y resistencia para generar movimiento eficiente.
+                            </p>
+                        </div>
+                        <div class="subtema-card__video">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="subtema-card">
+                        <div class="subtema-card__number">2</div>
+                        <div class="subtema-card__info">
+                            <h3 class="subtema-card__title">Hidrostática, Elasticidad y Locomoción</h3>
+                            <p class="subtema-card__desc">
+                                Organismos blandos mantienen su forma mediante presión de fluidos internos
+                                (esqueleto hidrostático). Los tendones almacenan y liberan energía cinética
+                                durante la marcha o el salto, actuando como resortes biológicos.
+                            </p>
+                        </div>
+                        <div class="subtema-card__video">
+                            <video controls>
+                                <source src="#" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: GLOSARIO -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    GLOSARIO · CONCEPTOS CLAVE DE BIOMECÁNICA
+                    <span class="section-label__hint">Haz clic en cada ficha para ver el video explicativo</span>
+                </div>
+
+                <div class="glosario-card">
+                    <div class="glosario-grid">
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🦴</div>
+                            <p class="glosario-item__name">Palancas Biológicas</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🧬</div>
+                            <p class="glosario-item__name">Materiales Compuestos</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">💧</div>
+                            <p class="glosario-item__name">Esqueleto Hidrostático</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🌀</div>
+                            <p class="glosario-item__name">Elasticidad y Resiliencia</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">🏃</div>
+                            <p class="glosario-item__name">Locomoción y Ritmo</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                        <div class="glosario-item" onclick="toggleGlosario(this)">
+                            <div class="glosario-item__icon">⚖️</div>
+                            <p class="glosario-item__name">Optimización Estructural</p>
+                            <p class="glosario-item__cta">▶ clic para video</p>
+                            <div class="glosario-item__video hidden">
+                                <video controls><source src="#" type="video/mp4"></video>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: APLICACIÓN PRÁCTICA -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    APLICACIÓN PRÁCTICA EN EL TALLER DE DISEÑO
+                </div>
+
+                <div class="aplicacion-card">
+                    <h2 class="aplicacion-card__title">¿Cómo se usa esto en los proyectos?</h2>
+                    <p class="aplicacion-card__intro">
+                        Premisa: cada decisión mecánica del prototipo debe poder justificarse con un
+                        referente biológico equivalente. Wainwright y McMahon dan el lenguaje técnico
+                        para argumentar selección de materiales, mecanismos y gestión de energía.
+                    </p>
+
+                    <div class="aplicacion-highlight">
+                        <strong>"La carcasa del dispositivo utiliza una estructura tipo sandwich inspirada en
+                        la quitina de los insectos, permitiendo que sea ligera pero resistente a impactos
+                        directos"</strong> — así se argumenta una decisión de material desde la biomecánica
+                        de Wainwright.
+                    </div>
+
+                    <div class="aplicacion-items">
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">01</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Selección de Mecanismos</h4>
+                                <p class="aplicacion-item__desc">"Se implementó un sistema de palancas de tercer género en las extremidades del robot biónico para privilegiar el rango de movimiento y la velocidad, emulando la biomecánica del miembro posterior de un felino."</p>
+                            </div>
+                        </div>
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">02</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Eficiencia Estructural</h4>
+                                <p class="aplicacion-item__desc">"La carcasa utiliza estructura tipo sandwich inspirada en la quitina de los insectos: ligera pero resistente a impactos. Máxima resistencia con mínima densidad de material."</p>
+                            </div>
+                        </div>
+                        <div class="aplicacion-item">
+                            <div class="aplicacion-item__num">03</div>
+                            <div class="aplicacion-item__body">
+                                <h4 class="aplicacion-item__title">Gestión de Energía</h4>
+                                <p class="aplicacion-item__desc">"Se incorporaron elementos elásticos que actúan como tendones biológicos, recuperando energía en cada ciclo de movimiento y reduciendo el consumo de batería del sistema."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: CONEXIÓN LDT -->
+            <section class="section-block">
+                <div class="section-label">
+                    <span class="section-label__bar"></span>
+                    CONEXIÓN CON LA PRÁCTICA DOCENTE (LDT)
+                </div>
+
+                <div class="ldt-grid">
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">💉</div>
+                        <h3 class="ldt-card__title">Laboratorio de Máquinas Simples</h3>
+                        <p class="ldt-card__desc">Construcción de maquetas con jeringas (hidráulica) para explicar los esqueletos hidrostáticos y el movimiento muscular de forma tangible y experimental.</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">🔩</div>
+                        <h3 class="ldt-card__title">Análisis de Fallas en Materiales</h3>
+                        <p class="ldt-card__desc">Experimentar con papel, cartón y madera imitando estructuras óseas para que el estudiante comprenda por qué fallan bajo carga y cómo la forma previene la ruptura.</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">🤖</div>
+                        <h3 class="ldt-card__title">Robótica Educativa</h3>
+                        <p class="ldt-card__desc">Integrar la biomecánica en el diseño de robots caminantes: el diseño no es solo "hacer que se mueva", sino "hacer que se mueva con eficiencia energética y estructural".</p>
+                    </div>
+                    <div class="ldt-card">
+                        <div class="ldt-card__icon">🦾</div>
+                        <h3 class="ldt-card__title">Alfabetización Tecnológica</h3>
+                        <p class="ldt-card__desc">Ver el cuerpo humano no solo como anatomía médica, sino como un sistema tecnológico complejo. Fomenta el pensamiento crítico sobre prótesis y herramientas ergonómicas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REFERENCIA BIBLIOGRÁFICA -->
+            <section class="section-block">
+                <div class="referencia-bar">
+                    <span class="referencia-bar__label">REFERENCIA BIBLIOGRÁFICA</span>
+                    <p class="referencia-bar__text">
+                        Wainwright, S. A. et al. (1976). <em>Mechanical Design in Organisms.</em> Princeton University Press. ·
+                        McMahon, T. (1984). <em>Muscles, Reflexes, and Locomotion.</em> Princeton University Press.
+                        Docente: Fabio González Rodríguez.
+                    </p>
+                </div>
+            </section>
+
         </main>
     </div>
 
-<script>
-    document.querySelector('.search-input').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') console.log('Buscando:', e.target.value);
-    });
-</script>
+    <script>
+        function toggleGlosario(el) {
+            const video = el.querySelector('.glosario-item__video');
+            const cta = el.querySelector('.glosario-item__cta');
+            if (video.classList.contains('hidden')) {
+                document.querySelectorAll('.glosario-item__video').forEach(v => v.classList.add('hidden'));
+                document.querySelectorAll('.glosario-item__cta').forEach(c => c.style.display = '');
+                document.querySelectorAll('.glosario-item').forEach(i => i.classList.remove('active'));
+                video.classList.remove('hidden');
+                cta.style.display = 'none';
+                el.classList.add('active');
+            } else {
+                video.classList.add('hidden');
+                cta.style.display = '';
+                el.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
